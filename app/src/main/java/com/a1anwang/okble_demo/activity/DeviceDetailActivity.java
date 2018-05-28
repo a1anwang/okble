@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.a1anwang.okble.client.core.DeviceListener;
 import com.a1anwang.okble.client.core.OKBLECharacteristicModel;
 import com.a1anwang.okble.client.core.OKBLEDevice;
+import com.a1anwang.okble.client.core.OKBLEDeviceImp;
 import com.a1anwang.okble.client.core.OKBLEServiceModel;
 import com.a1anwang.okble.client.scan.BLEScanResult;
 import com.a1anwang.okble.common.LogUtils;
@@ -91,7 +92,7 @@ public class DeviceDetailActivity extends BaseActivity implements DeviceListener
     @Override
     public void afterInitView() {
         if(bleScanResult!=null){
-            okbleDevice=new OKBLEDevice(mContext,bleScanResult);
+            okbleDevice=new OKBLEDeviceImp(mContext,bleScanResult);
             okbleDevice.addDeviceListener(this);
             okbleDevice.connect(true);
 
@@ -107,7 +108,7 @@ public class DeviceDetailActivity extends BaseActivity implements DeviceListener
 
     @Override
     public void onHeadRightClick(View v) {
-        if(okbleDevice.getDeviceStatus()== OKBLEDevice.DeviceStatus.DEVICE_STATUS_CONNECTED){
+        if(okbleDevice.getDeviceStatus()== OKBLEDeviceImp.DeviceStatus.DEVICE_STATUS_CONNECTED){
             final MyDialog dialog=new MyDialog(this);
             dialog.setTitle("");
             dialog.setContent(getString(R.string.caution_want_to_disconnect));
@@ -127,7 +128,7 @@ public class DeviceDetailActivity extends BaseActivity implements DeviceListener
                 }
             });
             dialog.show();
-        }else if(okbleDevice.getDeviceStatus()== OKBLEDevice.DeviceStatus.DEVICE_STATUS_DISCONNECTED){
+        }else if(okbleDevice.getDeviceStatus()== OKBLEDeviceImp.DeviceStatus.DEVICE_STATUS_DISCONNECTED){
             okbleDevice.connect(true);
             updateDeviceStatus();
         }
