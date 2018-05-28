@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">OKBLE-master</string>
+
+
+    <string name="caution_want_to_disconnect">是否断开连接?</string>
+
+    <string name="yes">是</string>
+
+    <string name="no">否</string>
+</resources>

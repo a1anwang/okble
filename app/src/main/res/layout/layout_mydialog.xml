@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+        android:background="@color/transparent"
+  >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/bg_round_dialog_alpha_80"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="33dp"
+        android:layout_marginRight="33dp"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+
+        android:layout_marginTop="15dp"
+        android:text="标题"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+         />
+
+    <TextView
+        android:id="@+id/text_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="6dp"
+
+        android:text="content"
+        android:textColor="@color/white_alpha60"
+        android:textSize="18sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/transparent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentRight="true" >
+
+        <Button
+            android:id="@+id/btn_mydialog_left"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/line_vertical"
+            android:gravity="center"
+            android:textColor="@drawable/select_color_clickbtn_100_60"
+            android:text="确认"
+            android:background="@color/transparent"
+            android:textSize="18sp" />
+
+        <View
+            android:id="@+id/line_vertical"
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@color/transparent" />
+
+        <Button
+            android:id="@+id/btn_mydialog_right"
+            android:textAllCaps="false"
+            android:layout_width="match_parent"
+            android:text="取消"
+            android:textColor="@drawable/select_color_clickbtn_100_60"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/line_vertical"
+            android:gravity="center"
+            android:background="@color/transparent"
+            android:textSize="18sp" />
+    </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

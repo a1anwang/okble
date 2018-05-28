@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!-- 默认时的图片 -->
+    <item android:color="@color/white_alpha60" android:state_pressed="true"/>
+    <!-- 点击时的图片 -->
+    <item android:color="@color/white" android:state_pressed="false"/>
+    
+    
+
+</selector>

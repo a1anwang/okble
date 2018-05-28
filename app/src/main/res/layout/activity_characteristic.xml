@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/rootview"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <Button
+        android:id="@+id/btn_read"
+        android:layout_width="match_parent"
+        android:text="Read"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:visibility="gone"
+        android:layout_marginTop="20dp"
+        android:textAllCaps="false"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_write"
+        android:layout_width="match_parent"
+        android:text="Write"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:visibility="gone"
+        android:textAllCaps="false"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_notify"
+        android:layout_width="match_parent"
+        android:text="Notification disabled"
+        android:layout_marginLeft="20dp"
+        android:visibility="gone"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="20dp"
+        android:textAllCaps="false"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_indicate"
+        android:layout_width="match_parent"
+        android:text="Indication disabled"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:visibility="gone"
+        android:layout_marginRight="20dp"
+        android:textAllCaps="false"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:background="#0f000000"
+        android:layout_height="30dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="Log:"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_height="match_parent" />
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="wrap_content"
+            android:text="clear"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:background="@null"
+            android:layout_gravity="right"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:background="#0f000000"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/tv_log"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

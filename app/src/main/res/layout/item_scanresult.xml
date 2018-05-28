@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+  >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_rssi"
+            android:layout_width="70dp"
+            android:textColor="@color/dark_gray"
+            android:text="-145"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:layout_height="match_parent" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:gravity="left|center_vertical"
+            android:orientation="vertical"
+            android:layout_height="70dp">
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:text="XXXXXXXXXXX"
+                android:singleLine="true"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_mac"
+                android:layout_width="wrap_content"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:text="ssss"
+                android:textColor="@color/black_alpha80"
+                android:layout_height="20dp" />
+        </LinearLayout>
+        <ImageView
+            android:id="@+id/btn_expand"
+            android:layout_width="50dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/icon_arrow_down"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout_expand"
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:paddingBottom="10dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Advertising data:"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_raw"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black_alpha80"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Service UUID:"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_service_uuid"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black_alpha80"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Manufacturer data"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="40dp"
+
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Company id:"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_company_id"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/black_alpha80"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="40dp"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="data:"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_company_value"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/black_alpha80"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Service data:"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_service_data"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black_alpha80"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="CompleteLocalName:"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_localname"
+                android:layout_marginLeft="5dp"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black_alpha80"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

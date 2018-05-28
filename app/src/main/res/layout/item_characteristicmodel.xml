@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:descendantFocusability="blocksDescendants"
+    android:background="@drawable/shape_bottom">
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="1dp"
+        android:background="@color/light_gray"
+        android:layout_height="1px"/>
+        <LinearLayout
+            android:id="@+id/layout_right"
+            android:padding="5dp"
+            android:layout_width="match_parent"
+            android:layout_marginRight="5dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_c"
+                android:layout_width="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:text="Characteristic"
+                android:gravity="center"
+                android:layout_alignBottom="@+id/layout_right"
+                android:layout_alignTop="@+id/layout_right"
+                android:textSize="12sp"
+                android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/dark_gray"
+                android:text="Deviceinfo"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:textColor="@color/text_light_gray"
+                android:text="sdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsdsd"
+                android:gravity="left|center_vertical"
+                android:textSize="12sp"
+                android:layout_height="wrap_content" />
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                android:layout_marginBottom="5dp"
+                app:flexWrap="wrap"
+
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_read"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:text="Read"
+                    android:paddingTop="4dp"
+                    android:layout_marginRight="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/bg_tag"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_write"
+                    android:layout_width="wrap_content"
+                    android:text="Write"
+                    android:paddingTop="4dp"
+                    android:layout_marginRight="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/bg_tag"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_write_no_response"
+                    android:layout_width="wrap_content"
+                    android:text="Write Without Response"
+                    android:paddingTop="4dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="4dp"
+                    android:layout_marginRight="10dp"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/bg_tag"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_notify"
+                    android:layout_width="wrap_content"
+                    android:text="Notify"
+                    android:layout_marginRight="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/bg_tag"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_indicate"
+                    android:layout_width="wrap_content"
+                    android:text="Indicate"
+                    android:paddingTop="4dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="10dp"
+                    android:background="@drawable/bg_tag"
+                    android:layout_height="wrap_content" />
+            </com.google.android.flexbox.FlexboxLayout>
+
+        </LinearLayout>
+</RelativeLayout>

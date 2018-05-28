@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">OKBLE-master</string>
+
+
+    <string name="caution_want_to_disconnect">do you want to disconnect the device?</string>
+
+
+    <string name="yes">Yes</string>
+
+    <string name="no">No</string>
+</resources>
