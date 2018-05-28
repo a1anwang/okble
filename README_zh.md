@@ -17,9 +17,149 @@
  - 双回调,处理灵活:定义了统一的listener来监听设备的状态, 也可以为每一个蓝牙通讯操作设置单独的监听,方便页面多的情况下使用
  - 自动连接:断开后可以实现自动连接,直到连接成功
  - 自动识别write type,自动识别notify or indicate
- 
+ - 多设备连接管理简单
+
  ## 立即开始
- 
- 
- 
- 
+  #### 添加依赖
+ ```
+   repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+   }
+   dependencies {
+         implementation 'com.github.a1anwang:okble:1.0.2'
+   }
+ ```
+  #### 扫描外设
+ ```
+  OKBLEScanManager scanManager=new OKBLEScanManager(this);
+  scanManager.setScanCallBack(scanCallBack);
+  DeviceScanCallBack scanCallBack=new DeviceScanCallBack() {
+        @Override
+        public void onBLEDeviceScan(BLEScanResult device, int rssi) {
+            LogUtils.e(" scan:"+device.toString());
+        }
+
+        @Override
+        public void onFailed(int code) {
+            switch (code){
+                case DeviceScanCallBack.SCAN_FAILED_BLE_NOT_SUPPORT:
+                    Toast.makeText(mContext,"该设备不支持BLE",Toast.LENGTH_SHORT).show();
+                    break;
+                case DeviceScanCallBack.SCAN_FAILED_BLUETOOTH_DISABLE:
+                    Toast.makeText(mContext,"请打开手机蓝牙",Toast.LENGTH_SHORT).show();
+                    break;
+                case DeviceScanCallBack.SCAN_FAILED_LOCATION_PERMISSION_DISABLE:
+                    Toast.makeText(mContext,"请授予位置权限以扫描周围的蓝牙设备",Toast.LENGTH_SHORT).show();
+                    break;
+                case DeviceScanCallBack.SCAN_FAILED_LOCATION_PERMISSION_DISABLE_FOREVER:
+                    Toast.makeText(mContext,"位置权限被您永久拒绝,请在设置里授予位置权限以扫描周围的蓝牙设备",Toast.LENGTH_SHORT).show();
+                    break;
+            }
+        }
+
+        @Override
+        public void onStartSuccess() {
+        }
+    };
+  ```
+#### 连接外设
+```
+OKBLEDevice okbleDevice=new OKBLEDeviceImp(mContext,bleScanResult);
+//okbleDevice=new OKBLEDeviceImp(mContext);
+//okbleDevice.setBluetoothDevice(mBluetoothDevice);
+okbleDevice.addDeviceListener(this);
+okbleDevice.connect(true);
+```
+#### 数据通讯
+###### Read
+```
+  okbleDevice.addReadOperation("feea", new BLEOperation.ReadOperationListener() {
+                      @Override
+                      public void onReadValue(final byte[] value) {
+                          runOnUiThread(new Runnable() {
+                              @Override
+                              public void run() {
+                                  addLog("onReadValue:"+ OKBLEDataUtils.BytesToHexString(value)+" ("+new String(value)+")");
+                              }
+                          });
+                      }
+
+                      @Override
+                      public void onFail(int code, final String errMsg) {
+                          runOnUiThread(new Runnable() {
+                              @Override
+                              public void run() {
+                                  addLog("read onFail:"+ errMsg);
+                              }
+                          });
+                      }
+
+                      @Override
+                      public void onExecuteSuccess(BLEOperation.OperationType type) {
+
+                      }
+                  });
+```
+###### Write
+```
+okbleDevice.addWriteOperation("feea",value,new BLEOperation.WriteOperationListener() {
+                                    @Override
+                                    public void onWriteValue(final byte[] byteValue) {
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                addLog(" onWriteValue:"+value);
+                                            }
+                                        });
+                                    }
+
+                                    @Override
+                                    public void onFail(int code, final String errMsg) {
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                addLog("write onFail:"+errMsg);
+                                            }
+                                        });
+                                    }
+
+                                    @Override
+                                    public void onExecuteSuccess(BLEOperation.OperationType type) {
+                                        runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                addLog("write value execute success");
+                                            }
+                                        });
+                                    }
+                                });
+```
+###### Notify/Indicate
+```
+okbleDevice.addNotifyOrIndicateOperation("feea", true, new BLEOperation.NotifyOrIndicateOperationListener() {
+                    @Override
+                    public void onNotifyOrIndicateComplete() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                addLog("onNotifyOrIndicateComplete");
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onFail(int code, final String errMsg) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                addLog("NotifyOrIndicate onFail:"+ errMsg);
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onExecuteSuccess(BLEOperation.OperationType type) {
+                    }
+                });
+```
