@@ -57,9 +57,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
      */
     private  boolean autoReconnect;
 
-    public enum DeviceStatus{
-        DEVICE_STATUS_INITIAL,DEVICE_STATUS_CONNECTING,DEVICE_STATUS_CONNECTED,DEVICE_STATUS_DISCONNECTED
-    }
+
     private DeviceStatus deviceStatus =DeviceStatus.DEVICE_STATUS_INITIAL;
 
     @Override

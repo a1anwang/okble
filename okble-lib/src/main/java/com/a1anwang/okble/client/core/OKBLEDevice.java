@@ -13,6 +13,9 @@ import java.util.List;
  */
 
 public interface OKBLEDevice {
+    public enum DeviceStatus{
+        DEVICE_STATUS_INITIAL,DEVICE_STATUS_CONNECTING,DEVICE_STATUS_CONNECTED,DEVICE_STATUS_DISCONNECTED
+    }
 
     /**
      * 设置TAG, 此TAG为多设备场景下分辨设备提供一种实现;如果不设置,deviceTAG会默认为设置的蓝牙设备的MAC地址
@@ -40,7 +43,7 @@ public interface OKBLEDevice {
      */
     void setOperationInterval(int interval);
 
-    OKBLEDeviceImp.DeviceStatus getDeviceStatus();
+    DeviceStatus getDeviceStatus();
 
 
     /**
