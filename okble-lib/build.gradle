@@ -8,8 +8,8 @@ android {
     defaultConfig {
         minSdkVersion 18
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.0.3"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -43,7 +43,7 @@ publish{
     userOrg = 'a1anwang'//bintray.com的用户名
     groupId = 'com.a1anwang'//jcenter上的路径
     artifactId = 'okble'//项目名称
-    publishVersion = '1.0.2'//版本号
+    publishVersion = '1.0.3'//版本号
     desc = 'an easy BLE library for android'//描述，不重要
     website = siteUrl//项目主页
 }
