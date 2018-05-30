@@ -19,6 +19,8 @@ public class CommonUUIDUtils {
     private static Map<String,String> uuidDescMap=new HashMap<>();
 
 
+
+
     static {
         // Sample Services.
         uuidDescMap.put("0000180d-0000-1000-8000-00805f9b34fb", "Heart Rate Service");
@@ -175,5 +177,13 @@ public class CommonUUIDUtils {
 
     }
 
+    /**
+     *
+     * @param shortUUID  2个字节,4个长度的字符串,如feea
+     * @return 一个完整的uuid,如0000feea-0000-1000-8000-00805f9b34fb
+     */
+    public static String createUUIDByShortUUID(String shortUUID){
+        return CommonUUIDUtils.CommonUUIDStr_x.replace("xxxx", shortUUID);
+    }
 
 }

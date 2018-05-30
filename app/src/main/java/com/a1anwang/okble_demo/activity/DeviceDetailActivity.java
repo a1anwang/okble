@@ -10,10 +10,10 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.a1anwang.okble.client.core.DeviceListener;
-import com.a1anwang.okble.client.core.OKBLECharacteristicModel;
+import com.a1anwang.okble.common.OKBLECharacteristicModel;
 import com.a1anwang.okble.client.core.OKBLEDevice;
 import com.a1anwang.okble.client.core.OKBLEDeviceImp;
-import com.a1anwang.okble.client.core.OKBLEServiceModel;
+import com.a1anwang.okble.common.OKBLEServiceModel;
 import com.a1anwang.okble.client.scan.BLEScanResult;
 import com.a1anwang.okble.common.LogUtils;
 import com.a1anwang.okble_demo.R;

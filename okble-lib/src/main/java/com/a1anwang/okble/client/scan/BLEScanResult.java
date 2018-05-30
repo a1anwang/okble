@@ -41,7 +41,7 @@ public class BLEScanResult implements Parcelable {
 
     private byte[] advertisingData;
     private int rssi;
-
+    private int txPowerLevel = Integer.MIN_VALUE;
     private List<String> serviceUuids;
 
     private SparseArray<byte[]> manufacturerSpecificData;
@@ -56,6 +56,7 @@ public class BLEScanResult implements Parcelable {
         bluetoothDevice = in.readParcelable(BluetoothDevice.class.getClassLoader());
         advertisingData = in.createByteArray();
         rssi = in.readInt();
+        txPowerLevel=in.readInt();
         serviceUuids = in.createStringArrayList();
         completeLocalName = in.readString();
     }
@@ -100,12 +101,16 @@ public class BLEScanResult implements Parcelable {
       //  LogUtils.e(TAG, " rssi:" + rssi + " mac:" + bluetoothDevice.getAddress() + " name:" + bluetoothDevice.getName());
       //  LogUtils.e(TAG, " advertisingData:" + OKBLEDataUtils.Bytes2HexString(advertisingData));
         analyzeAdvertisingData();
+
     }
 
     public byte[] getAdvertisingData() {
         return advertisingData;
     }
 
+    public int getTxPowerLevel() {
+        return txPowerLevel;
+    }
 
     public BluetoothDevice getBluetoothDevice() {
         return bluetoothDevice;
@@ -163,13 +168,31 @@ public class BLEScanResult implements Parcelable {
 
 
                     }
-                } else if (type == (byte) DATA_TYPE_SERVICE_DATA) {
+                }else if(type == (byte) DATA_TYPE_SERVICE_UUIDS_16_BIT_COMPLETE){
+                    serviceUuids = new ArrayList<>();
+                    byte[] serveruuids = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
+                    // LogUtils.e(TAG, " serveruuids:" + OKBLEDataUtils.Bytes2HexString(serveruuids));
+
+                    if (serveruuids.length % 2 == 0) {
+
+                        int count = serveruuids.length / 2;
+                        for (int i = 0; i < count; i++) {
+                            byte[] serveruuid = new byte[]{serveruuids[2 * i + 1], serveruuids[2 * i]};
+                            //String uuid = CommonUUIDUtils.CommonUUIDStr_x.replace("xxxx", OKBLEDataUtils.BytesToHexString(serveruuid).toLowerCase());
+                            String uuid=OKBLEDataUtils.BytesToHexString(serveruuid);
+                            serviceUuids.add(uuid);
+                            //       LogUtils.e(TAG, "    serveruuid:" + uuid);
+                        }
+
+
+                    }
+                }else if (type == (byte) DATA_TYPE_SERVICE_DATA) {
                     serviceData = new HashMap<>();
                     byte[] serverData = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
                     byte[] uuid = new byte[]{serverData[1], serverData[0]};
                     byte[] data = OKBLEDataUtils.subByteArray(serverData, 2, serverData.length - 2);
                    // String uuidStr = CommonUUIDUtils.CommonUUIDStr_x.replace("xxxx", OKBLEDataUtils.BytesToHexString(uuid).toLowerCase());
-                    String uuidStr=OKBLEDataUtils.BytesToHexString(data);
+                    String uuidStr=OKBLEDataUtils.BytesToHexString(uuid);
                     serviceData.put(uuidStr, data);
 
                  //   LogUtils.e(TAG, "    server data :" + OKBLEDataUtils.Bytes2HexString(data) + " uuid:" + uuidStr);
@@ -189,7 +212,11 @@ public class BLEScanResult implements Parcelable {
                     byte[] nameData = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
                     completeLocalName = new String(nameData);
                  //   LogUtils.e(TAG, " completeLocalName:" + completeLocalName);
+                }else if (type == (byte) DATA_TYPE_TX_POWER_LEVEL) {
+
+                    txPowerLevel = advertisingData[index + 2];
                 }
+
 
                 index += length + 1;//1是length自身占一个字节
 
@@ -216,6 +243,7 @@ public class BLEScanResult implements Parcelable {
         dest.writeParcelable(bluetoothDevice, flags);
         dest.writeByteArray(advertisingData);
         dest.writeInt(rssi);
+        dest.writeInt(txPowerLevel);
         dest.writeStringList(serviceUuids);
         dest.writeString(completeLocalName);
     }

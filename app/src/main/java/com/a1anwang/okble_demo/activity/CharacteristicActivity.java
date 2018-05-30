@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.a1anwang.okble.client.core.BLEOperation;
 import com.a1anwang.okble.client.core.DeviceListener;
-import com.a1anwang.okble.client.core.OKBLECharacteristicModel;
+import com.a1anwang.okble.common.OKBLECharacteristicModel;
 import com.a1anwang.okble.common.OKBLEDataUtils;
 import com.a1anwang.okble_demo.R;
 import com.a1anwang.okble_demo.base.BaseActivity;
@@ -129,30 +129,6 @@ public class CharacteristicActivity extends BaseActivity implements DeviceListen
     public void onClickEvent(View v) {
         switch (v.getId()){
             case R.id.btn_read:
-                application.okbleDevice.addChangeMTUOperation(100, new BLEOperation.ChangeMTUListener() {
-                    @Override
-                    public void onMtuChange(final int mtu) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                addLog("onMtuChange mtu size:"+ mtu);
-                            }
-                        });
-                    }
-                    @Override
-                    public void onFail(int code, final String errMsg) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                addLog("change mtu onFail:"+ errMsg);
-                            }
-                        });
-                    }
-                    @Override
-                    public void onExecuteSuccess(BLEOperation.OperationType type) {
-
-                    }
-                });
                   application.okbleDevice.addReadOperation(characteristicModel.getUuid(), new BLEOperation.ReadOperationListener() {
                       @Override
                       public void onReadValue(final byte[] value) {

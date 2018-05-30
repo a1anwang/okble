@@ -1,4 +1,4 @@
-package com.a1anwang.okble.client.core;
+package com.a1anwang.okble.common;
 
 import java.util.ArrayList;
 import java.util.List;

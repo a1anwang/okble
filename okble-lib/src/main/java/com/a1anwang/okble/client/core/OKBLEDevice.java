@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothDevice;
 import android.os.Build;
 
 import com.a1anwang.okble.client.scan.BLEScanResult;
+import com.a1anwang.okble.common.OKBLEServiceModel;
 
 import java.util.List;
 

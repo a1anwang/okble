@@ -13,10 +13,13 @@ import android.os.Handler;
 import android.os.Looper;
 
 import com.a1anwang.okble.client.scan.BLEScanResult;
+import com.a1anwang.okble.common.BLEOperationQueue;
 import com.a1anwang.okble.common.CommonUUIDUtils;
 import com.a1anwang.okble.common.LogUtils;
+import com.a1anwang.okble.common.OKBLECharacteristicModel;
 import com.a1anwang.okble.common.OKBLEDataUtils;
 import com.a1anwang.okble.common.OKBLEException;
+import com.a1anwang.okble.common.OKBLEServiceModel;
 
 import java.lang.reflect.Method;
 import java.sql.Timestamp;
@@ -72,7 +75,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
     private BluetoothGatt mBluetoothGatt;
     private BLEScanResult bleScanResult;
 
-    private BLEOperationQueue  bleOperationQueue;
+    private BLEOperationQueue<BLEOperation> bleOperationQueue;
     private List<BluetoothGattService> bluetoothGattServices;
     private HashMap<String, BluetoothGattCharacteristic> characteristicHashMap = new HashMap<>();
 
@@ -129,7 +132,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
 
     public OKBLEDeviceImp(Context context) {
         this.context = context;
-        bleOperationQueue=new BLEOperationQueue();
+        bleOperationQueue=new BLEOperationQueue<>();
     }
 
     public OKBLEDeviceImp(Context context, BLEScanResult bleScanResult) {
@@ -141,7 +144,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
         }
         deviceStatus = DeviceStatus.DEVICE_STATUS_DISCONNECTED;
 
-        bleOperationQueue=new BLEOperationQueue();
+        bleOperationQueue=new BLEOperationQueue<>();
     }
 
 

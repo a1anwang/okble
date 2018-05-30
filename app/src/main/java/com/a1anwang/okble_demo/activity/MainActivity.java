@@ -56,6 +56,18 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        scanManager.stopScan();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        scanManager.startScan();
+    }
+
+    @Override
     public void beforeInitView() {
         scanedResults=new MyLinkedHashMap<>();
         openflags=new HashMap<>();
@@ -72,6 +84,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
                 LogUtils.e("onRefresh ");
                 scanedResults.clear();
+                openflags.clear();
                 adapter.notifyDataSetChanged();
                 scanManager.startScan();
 
@@ -251,7 +264,6 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
                 Map<String,byte[]> servicesDatas= bleScanResult.getServiceData();
                 if(servicesDatas!=null&&servicesDatas.size()>0){
                     viewholder.tv_service_data.setText(formatServiceData(servicesDatas));
-                    viewholder.tv_service_data.setText("0x"+OKBLEDataUtils.BytesToHexString(array.valueAt(0)));
                     ((View)viewholder.tv_service_data.getParent()).setVisibility(View.VISIBLE);
                 }else{
                     ((View)viewholder.tv_service_data.getParent()).setVisibility(View.GONE);
@@ -338,6 +350,7 @@ public class MainActivity extends BaseActivity implements AdapterView.OnItemClic
         for (String key: servicesDatas.keySet()){
             str+="uuid:0x"+key+" data:0x"+OKBLEDataUtils.BytesToHexString(servicesDatas.get(key))+"\n";
         }
+
         return str.substring(0,str.length()-1);
     }
 }

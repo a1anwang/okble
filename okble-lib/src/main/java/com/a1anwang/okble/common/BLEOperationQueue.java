@@ -1,4 +1,4 @@
-package com.a1anwang.okble.client.core;
+package com.a1anwang.okble.common;
 
 import java.util.LinkedList;
 
@@ -6,19 +6,17 @@ import java.util.LinkedList;
  * Created by a1anwang.com on 2018/5/16.
  */
 
-public class BLEOperationQueue {
-    private LinkedList<BLEOperation> bleOperations;
+public class BLEOperationQueue<T> {
+    private LinkedList<T> bleOperations;
 
-    public BLEOperationQueue(){
-        super();
-        bleOperations=new LinkedList<>();
-    }
 
-    synchronized public void add(BLEOperation operation){
+
+
+    synchronized public void add(T operation){
         bleOperations.add(operation);
     }
 
-    synchronized public BLEOperation removeFirst(){
+    synchronized public T removeFirst(){
        return  bleOperations.removeFirst();
     }
 
@@ -30,7 +28,7 @@ public class BLEOperationQueue {
         return  bleOperations.size();
     }
 
-    public BLEOperation get(int index){
+    public T get(int index){
         return  bleOperations.get(index);
     }
 
