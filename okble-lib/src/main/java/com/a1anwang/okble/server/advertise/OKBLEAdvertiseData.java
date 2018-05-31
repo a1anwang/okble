@@ -76,9 +76,9 @@ public class OKBLEAdvertiseData {
         }
 
         public Builder addManufacturerData(int manufacturerId, byte[] manufacturerSpecificData) {
-            if (manufacturerId < 0) {
+            if (manufacturerId < 0||manufacturerId>0xff) {
                 throw new IllegalArgumentException(
-                        "invalid manufacturerId - " + manufacturerId);
+                        "invalid manufacturerId - " + manufacturerId +" valid range:[0,0xFF]");
             }
             if (manufacturerSpecificData == null) {
                 throw new IllegalArgumentException("manufacturerSpecificData is null");
@@ -86,14 +86,14 @@ public class OKBLEAdvertiseData {
             mManufacturerSpecificData.put(manufacturerId, manufacturerSpecificData);
             return this;
         }
-        /**
-         * Whether the transmission power level should be included in the advertise packet. Tx power
-         * level field takes 3 bytes in advertise packet.
-         */
-        public Builder setIncludeTxPowerLevel(boolean includeTxPowerLevel) {
-            mIncludeTxPowerLevel = includeTxPowerLevel;
-            return this;
-        }
+//        /**
+//         * Whether the transmission power level should be included in the advertise packet. Tx power
+//         * level field takes 3 bytes in advertise packet.
+//         */
+//        public Builder setIncludeTxPowerLevel(boolean includeTxPowerLevel) {
+//            mIncludeTxPowerLevel = includeTxPowerLevel;
+//            return this;
+//        }
 
         /**
          * Set whether the device name should be included in advertise packet.

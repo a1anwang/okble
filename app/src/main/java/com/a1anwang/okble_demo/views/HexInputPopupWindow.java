@@ -1,4 +1,4 @@
-package com.a1anwang.okble_demo.common;
+package com.a1anwang.okble_demo.views;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -6,13 +6,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.a1anwang.okble.client.core.BLEOperation;
-import com.a1anwang.okble.client.core.DeviceListener;
+import com.a1anwang.okble.client.core.OKBLEOperation;
+import com.a1anwang.okble.client.core.OKBLEDeviceListener;
 import com.a1anwang.okble.common.OKBLECharacteristicModel;
 import com.a1anwang.okble.common.OKBLEDataUtils;
 import com.a1anwang.okble_demo.R;
 import com.a1anwang.okble_demo.base.BaseActivity;
-import com.a1anwang.okble_demo.common.HexInputPopupWindow;
+import com.a1anwang.okble_demo.views.HexInputPopupWindow;
 
 import java.sql.Timestamp;
 
@@ -20,7 +20,7 @@ import java.sql.Timestamp;
  * Created by a1anwang.com on 2018/5/23.
  */
 
-public class CharacteristicActivity extends BaseActivity implements DeviceListener {
+public class CharacteristicActivity extends BaseActivity implements OKBLEDeviceListener {
     public  static  final  String EXTRA_Characteristic=CharacteristicActivity.class.getName()+".EXTRA_Characteristic";
 
     OKBLECharacteristicModel characteristicModel;
@@ -129,7 +129,7 @@ public class CharacteristicActivity extends BaseActivity implements DeviceListen
     public void onClickEvent(View v) {
         switch (v.getId()){
             case R.id.btn_read:
-                  application.okbleDevice.addReadOperation(characteristicModel.getUuid(), new BLEOperation.ReadOperationListener() {
+                  application.okbleDevice.addReadOperation(characteristicModel.getUuid(), new OKBLEOperation.ReadOperationListener() {
                       @Override
                       public void onReadValue(final byte[] value) {
                           runOnUiThread(new Runnable() {
@@ -151,7 +151,7 @@ public class CharacteristicActivity extends BaseActivity implements DeviceListen
                       }
 
                       @Override
-                      public void onExecuteSuccess(BLEOperation.OperationType type) {
+                      public void onExecuteSuccess(OKBLEOperation.OperationType type) {
 
                       }
                   });
@@ -163,7 +163,7 @@ public class CharacteristicActivity extends BaseActivity implements DeviceListen
                         @Override
                         public void onInputComplete(final String value) {
                             if(value.length()>0){
-                                application.okbleDevice.addWriteOperation(characteristicModel.getUuid(),value,new BLEOperation.WriteOperationListener() {
+                                application.okbleDevice.addWriteOperation(characteristicModel.getUuid(),value,new OKBLEOperation.WriteOperationListener() {
                                     @Override
                                     public void onWriteValue(final byte[] byteValue) {
                                         runOnUiThread(new Runnable() {
@@ -185,7 +185,7 @@ public class CharacteristicActivity extends BaseActivity implements DeviceListen
                                     }
 
                                     @Override
-                                    public void onExecuteSuccess(BLEOperation.OperationType type) {
+                                    public void onExecuteSuccess(OKBLEOperation.OperationType type) {
                                         runOnUiThread(new Runnable() {
                                             @Override
                                             public void run() {
@@ -202,18 +202,18 @@ public class CharacteristicActivity extends BaseActivity implements DeviceListen
                 break;
             case R.id.btn_notify:
             case R.id.btn_indicate:
-                final BLEOperation.OperationType[] operationType = new BLEOperation.OperationType[1];
-                application.okbleDevice.addNotifyOrIndicateOperation(characteristicModel.getUuid(), true, new BLEOperation.NotifyOrIndicateOperationListener() {
+                final OKBLEOperation.OperationType[] operationType = new OKBLEOperation.OperationType[1];
+                application.okbleDevice.addNotifyOrIndicateOperation(characteristicModel.getUuid(), true, new OKBLEOperation.NotifyOrIndicateOperationListener() {
                     @Override
                     public void onNotifyOrIndicateComplete() {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 addLog("onNotifyOrIndicateComplete");
-                                if(operationType[0]==BLEOperation.OperationType.OperationType_Enable_Indicate){
+                                if(operationType[0]== OKBLEOperation.OperationType.OperationType_Enable_Indicate){
                                     btn_indicate.setText("Indication enabled");
                                     btn_indicate.setEnabled(false);
-                                }else if(operationType[0]==BLEOperation.OperationType.OperationType_Enable_Notify){
+                                }else if(operationType[0]== OKBLEOperation.OperationType.OperationType_Enable_Notify){
                                     btn_notify.setText("Notification enabled");
                                     btn_notify.setEnabled(false);
                                 }
@@ -232,7 +232,7 @@ public class CharacteristicActivity extends BaseActivity implements DeviceListen
                     }
 
                     @Override
-                    public void onExecuteSuccess(BLEOperation.OperationType type) {
+                    public void onExecuteSuccess(OKBLEOperation.OperationType type) {
                         operationType[0] =type;
                     }
                 });

@@ -29,9 +29,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
-import static com.a1anwang.okble.client.core.BLEOperation.BaseOperationListener.Operation_FAILED_BLE_Failed;
-import static com.a1anwang.okble.client.core.BLEOperation.BaseOperationListener.Operation_FAILED_Overtime;
-import static com.a1anwang.okble.client.core.BLEOperation.OperationType.OperationType_Read;
+import static com.a1anwang.okble.client.core.OKBLEOperation.BaseOperationListener.Operation_FAILED_BLE_Failed;
+import static com.a1anwang.okble.client.core.OKBLEOperation.BaseOperationListener.Operation_FAILED_Overtime;
+import static com.a1anwang.okble.client.core.OKBLEOperation.OperationType.OperationType_Read;
 
 
 /**
@@ -75,13 +75,13 @@ public class OKBLEDeviceImp implements OKBLEDevice {
     private BluetoothGatt mBluetoothGatt;
     private BLEScanResult bleScanResult;
 
-    private BLEOperationQueue<BLEOperation> bleOperationQueue;
+    private BLEOperationQueue<OKBLEOperation> bleOperationQueue;
     private List<BluetoothGattService> bluetoothGattServices;
     private HashMap<String, BluetoothGattCharacteristic> characteristicHashMap = new HashMap<>();
 
 
 
-    private List<DeviceListener> deviceListeners;
+    private List<OKBLEDeviceListener> OKBLEDeviceListeners;
 
 
     private final  int Default_MTU=23;
@@ -89,24 +89,24 @@ public class OKBLEDeviceImp implements OKBLEDevice {
 
 
     @Override
-    public void addDeviceListener( DeviceListener deviceListener) {
-        if(deviceListeners==null){
-            deviceListeners=new ArrayList<>();
+    public void addDeviceListener( OKBLEDeviceListener OKBLEDeviceListener) {
+        if(OKBLEDeviceListeners ==null){
+            OKBLEDeviceListeners =new ArrayList<>();
         }
-        deviceListeners.add(deviceListener);
+        OKBLEDeviceListeners.add(OKBLEDeviceListener);
     }
 
     @Override
-    public void removeDeviceListener(DeviceListener deviceListener) {
-        if(deviceListeners!=null){
-            deviceListeners.remove(deviceListener);
+    public void removeDeviceListener(OKBLEDeviceListener OKBLEDeviceListener) {
+        if(OKBLEDeviceListeners !=null){
+            OKBLEDeviceListeners.remove(OKBLEDeviceListener);
         }
     }
 
     @Override
     public void clearDeviceListener() {
-        if(deviceListeners!=null){
-            deviceListeners.clear();
+        if(OKBLEDeviceListeners !=null){
+            OKBLEDeviceListeners.clear();
         }
     }
 
@@ -329,9 +329,9 @@ public class OKBLEDeviceImp implements OKBLEDevice {
 
 
 
-                    if (deviceListeners != null) {
-                        LogUtils.e(" deviceListeners size:"+deviceListeners.size());
-                        for (DeviceListener listener:deviceListeners){
+                    if (OKBLEDeviceListeners != null) {
+                        LogUtils.e(" OKBLEDeviceListeners size:"+ OKBLEDeviceListeners.size());
+                        for (OKBLEDeviceListener listener: OKBLEDeviceListeners){
                             listener.onDisconnected(deviceTAG);
                         }
                     }
@@ -342,10 +342,10 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             } else {
                 deviceStatus = DeviceStatus.DEVICE_STATUS_DISCONNECTED;
                 reSet();
-                if (deviceListeners != null) {
-                    LogUtils.e(" deviceListeners size:"+deviceListeners.size());
+                if (OKBLEDeviceListeners != null) {
+                    LogUtils.e(" OKBLEDeviceListeners size:"+ OKBLEDeviceListeners.size());
 
-                    for (DeviceListener listener:deviceListeners){
+                    for (OKBLEDeviceListener listener: OKBLEDeviceListeners){
                         listener.onDisconnected(deviceTAG);
                     }
                 }
@@ -370,8 +370,8 @@ public class OKBLEDeviceImp implements OKBLEDevice {
 //                            LogUtils.e(TAG,"characteristic "+characteristic.getUuid().toString());
 //                        }
 //                    }
-                if (deviceListeners != null) {
-                    for (DeviceListener listener:deviceListeners){
+                if (OKBLEDeviceListeners != null) {
+                    for (OKBLEDeviceListener listener: OKBLEDeviceListeners){
                         listener.onConnected(deviceTAG);
                     }
                 }
@@ -384,28 +384,28 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             LogUtils.e(TAG," onCharacteristicRead status:"+status +" characteristic:"+characteristic.getUuid().toString() +" value:"+OKBLEDataUtils.BytesToHexString(characteristic.getValue()));
             if(status==BluetoothGatt.GATT_SUCCESS){
                 if(characteristic.getUuid().toString().equals(CommonUUIDUtils.Battery_Level)){
-                    if (deviceListeners != null) {
-                        for (DeviceListener listener:deviceListeners){
+                    if (OKBLEDeviceListeners != null) {
+                        for (OKBLEDeviceListener listener: OKBLEDeviceListeners){
                             listener.onReadBattery(deviceTAG,characteristic.getValue()[0]);
                         }
                     }
                 }
             }
-            if (deviceListeners != null) {
-                for (DeviceListener listener:deviceListeners){
+            if (OKBLEDeviceListeners != null) {
+                for (OKBLEDeviceListener listener: OKBLEDeviceListeners){
                     listener.onReadValue(deviceTAG,characteristic.getUuid().toString(),characteristic.getValue(),status==BluetoothGatt.GATT_SUCCESS);
                 }
             }
 
             if (bleOperationQueue.getOperationSize() > 0) {
-                BLEOperation operation= bleOperationQueue.removeFirst();
+                OKBLEOperation operation= bleOperationQueue.removeFirst();
                 if(operation!=null&&operation.operationListener!=null){
                     if(status==BluetoothGatt.GATT_SUCCESS){
-                        if(operation.operationListener instanceof BLEOperation.ReadOperationListener){
-                            ((BLEOperation.ReadOperationListener)operation.operationListener).onReadValue(characteristic.getValue());
+                        if(operation.operationListener instanceof OKBLEOperation.ReadOperationListener){
+                            ((OKBLEOperation.ReadOperationListener)operation.operationListener).onReadValue(characteristic.getValue());
                         }
                     }else{
-                        operation.operationListener.onFail(Operation_FAILED_BLE_Failed,BLEOperationFailedDescUtils.getDesc(status));
+                        operation.operationListener.onFail(Operation_FAILED_BLE_Failed, OKBLEOperationFailedDescUtils.getDesc(status));
                     }
                 }
                 handler.removeCallbacks(nextRunnable);
@@ -419,20 +419,20 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             super.onCharacteristicWrite(gatt, characteristic, status);
 
             LogUtils.e(TAG," onCharacteristicWrite status:"+status +" characteristic:"+characteristic.getUuid().toString());
-            if (deviceListeners != null) {
-                for (DeviceListener listener:deviceListeners){
+            if (OKBLEDeviceListeners != null) {
+                for (OKBLEDeviceListener listener: OKBLEDeviceListeners){
                     listener.onWriteValue(deviceTAG,characteristic.getUuid().toString(),characteristic.getValue(),status==BluetoothGatt.GATT_SUCCESS);
                 }
             }
             if (bleOperationQueue.getOperationSize() > 0) {
-                BLEOperation operation= bleOperationQueue.removeFirst();
+                OKBLEOperation operation= bleOperationQueue.removeFirst();
                 if(operation!=null&&operation.operationListener!=null){
                     if(status==BluetoothGatt.GATT_SUCCESS){
-                        if(operation.operationListener instanceof BLEOperation.WriteOperationListener){
-                            ((BLEOperation.WriteOperationListener)operation.operationListener).onWriteValue(characteristic.getValue());
+                        if(operation.operationListener instanceof OKBLEOperation.WriteOperationListener){
+                            ((OKBLEOperation.WriteOperationListener)operation.operationListener).onWriteValue(characteristic.getValue());
                         }
                     }else{
-                        operation.operationListener.onFail(Operation_FAILED_BLE_Failed,BLEOperationFailedDescUtils.getDesc(status));
+                        operation.operationListener.onFail(Operation_FAILED_BLE_Failed, OKBLEOperationFailedDescUtils.getDesc(status));
                     }
                 }
                 handler.removeCallbacks(nextRunnable);
@@ -445,8 +445,8 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             super.onCharacteristicChanged(gatt, characteristic);
 
             LogUtils.e(TAG," onCharacteristicChanged characteristic:"+characteristic.getUuid().toString() +" value:"+ OKBLEDataUtils.BytesToHexString(characteristic.getValue()));
-            if (deviceListeners != null) {
-                for (DeviceListener listener:deviceListeners){
+            if (OKBLEDeviceListeners != null) {
+                for (OKBLEDeviceListener listener: OKBLEDeviceListeners){
                     listener.onReceivedValue(deviceTAG,characteristic.getUuid().toString(),characteristic.getValue());
                 }
             }
@@ -462,14 +462,14 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             super.onDescriptorWrite(gatt, descriptor, status);
             LogUtils.e(TAG," onDescriptorWrite:"+status+" descriptor:"+descriptor.getUuid().toString()+" char:"+descriptor.getCharacteristic().getUuid().toString());
             if (bleOperationQueue.getOperationSize() > 0) {
-                BLEOperation operation= bleOperationQueue.removeFirst();
+                OKBLEOperation operation= bleOperationQueue.removeFirst();
                 if(operation!=null&&operation.operationListener!=null){
                     if(status==BluetoothGatt.GATT_SUCCESS){
-                        if(operation.operationListener instanceof BLEOperation.NotifyOrIndicateOperationListener){
-                            ((BLEOperation.NotifyOrIndicateOperationListener)operation.operationListener).onNotifyOrIndicateComplete();
+                        if(operation.operationListener instanceof OKBLEOperation.NotifyOrIndicateOperationListener){
+                            ((OKBLEOperation.NotifyOrIndicateOperationListener)operation.operationListener).onNotifyOrIndicateComplete();
                         }
                     }else{
-                        operation.operationListener.onFail(Operation_FAILED_BLE_Failed,BLEOperationFailedDescUtils.getDesc(status));
+                        operation.operationListener.onFail(Operation_FAILED_BLE_Failed, OKBLEOperationFailedDescUtils.getDesc(status));
                     }
                 }
 
@@ -488,14 +488,14 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             super.onMtuChanged(gatt, mtu, status);
             LogUtils.e("onMtuChanged mtu:"+mtu);
             if (bleOperationQueue.getOperationSize() > 0) {
-                BLEOperation operation= bleOperationQueue.removeFirst();
+                OKBLEOperation operation= bleOperationQueue.removeFirst();
                 if(operation!=null&&operation.operationListener!=null){
                     if(status==BluetoothGatt.GATT_SUCCESS){
-                        if(operation.operationListener instanceof BLEOperation.ChangeMTUListener){
-                            ((BLEOperation.ChangeMTUListener)operation.operationListener).onMtuChange(mtu);
+                        if(operation.operationListener instanceof OKBLEOperation.ChangeMTUListener){
+                            ((OKBLEOperation.ChangeMTUListener)operation.operationListener).onMtuChange(mtu);
                         }
                     }else{
-                        operation.operationListener.onFail(Operation_FAILED_BLE_Failed,BLEOperationFailedDescUtils.getDesc(status));
+                        operation.operationListener.onFail(Operation_FAILED_BLE_Failed, OKBLEOperationFailedDescUtils.getDesc(status));
                     }
                 }
 
@@ -551,13 +551,13 @@ public class OKBLEDeviceImp implements OKBLEDevice {
 
     @Override
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public void addChangeMTUOperation(int mtu,BLEOperation.ChangeMTUListener changeMTUListener) {
+    public void addChangeMTUOperation(int mtu,OKBLEOperation.ChangeMTUListener changeMTUListener) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             if (!isConnected()) {
                 String errMsg="change mtu failed, device not connected";
                 LogUtils.e(TAG,errMsg);
                 if(changeMTUListener!=null){
-                    changeMTUListener.onFail(BLEOperation.BaseOperationListener.Operation_FAILED_Device_Not_Connected,errMsg);
+                    changeMTUListener.onFail(OKBLEOperation.BaseOperationListener.Operation_FAILED_Device_Not_Connected,errMsg);
                 }
                 return;
             }
@@ -565,36 +565,36 @@ public class OKBLEDeviceImp implements OKBLEDevice {
                 String errMsg="change mtu failed, mtu invalid";
                 LogUtils.e(TAG,errMsg);
                 if(changeMTUListener!=null){
-                    changeMTUListener.onFail(BLEOperation.BaseOperationListener.Operation_FAILED_Device_Not_Connected,errMsg);
+                    changeMTUListener.onFail(OKBLEOperation.BaseOperationListener.Operation_FAILED_Device_Not_Connected,errMsg);
                 }
                 return;
             }
 
-            BLEOperation bleOperation = new BLEOperation();
-            bleOperation.mtu=mtu;
-            bleOperation.operationType = BLEOperation.OperationType.OperationType_Change_MTU;
-            bleOperation.operationListener=changeMTUListener;
-            bleOperationQueue.add(bleOperation);
+            OKBLEOperation okbleOperation = new OKBLEOperation();
+            okbleOperation.mtu=mtu;
+            okbleOperation.operationType =OKBLEOperation. OperationType.OperationType_Change_MTU;
+            okbleOperation.operationListener=changeMTUListener;
+            bleOperationQueue.add(okbleOperation);
             checkNextBleOperation();
 
         }else{
             String errMsg="change mtu failed, need android api 21";
             LogUtils.e(TAG,errMsg);
             if(changeMTUListener!=null){
-                changeMTUListener.onFail(BLEOperation.BaseOperationListener.Operation_FAILED_Other,errMsg);
+                changeMTUListener.onFail(OKBLEOperation.BaseOperationListener.Operation_FAILED_Other,errMsg);
             }
         }
     }
 
-    public void addWriteOperation(String characteristicUUID, String value, BLEOperation.WriteOperationListener listener) {
+    public void addWriteOperation(String characteristicUUID, String value, OKBLEOperation.WriteOperationListener listener) {
        addWriteOperation(characteristicUUID,OKBLEDataUtils.hexStringToBytes(value),listener);
     }
-    public void addWriteOperation(String characteristicUUID, byte[] value,BLEOperation.WriteOperationListener listener){
+    public void addWriteOperation(String characteristicUUID, byte[] value,OKBLEOperation.WriteOperationListener listener){
         if (!isConnected()) {
             String errMsg="addWriteOperation failed, device not connected";
             LogUtils.e(TAG,errMsg);
             if(listener!=null){
-                listener.onFail(BLEOperation.BaseOperationListener.Operation_FAILED_Device_Not_Connected,errMsg);
+                listener.onFail(OKBLEOperation.BaseOperationListener.Operation_FAILED_Device_Not_Connected,errMsg);
             }
             return;
         }
@@ -603,7 +603,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             String errMsg="addWriteOperation failed, value is null";
             LogUtils.e(TAG,errMsg);
             if(listener!=null){
-                listener.onFail(BLEOperation.BaseOperationListener.Operation_FAILED_Null_Value,errMsg);
+                listener.onFail(OKBLEOperation.BaseOperationListener.Operation_FAILED_Null_Value,errMsg);
             }
             return;
         }
@@ -614,7 +614,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             String errMsg="characteristicUUID not valid";
             LogUtils.e(TAG,errMsg);
             if(listener!=null){
-                listener.onFail(BLEOperation.BaseOperationListener.Operation_FAILED_Invalid_UUID,errMsg);
+                listener.onFail(OKBLEOperation.BaseOperationListener.Operation_FAILED_Invalid_UUID,errMsg);
             }
             return;
         }
@@ -627,26 +627,26 @@ public class OKBLEDeviceImp implements OKBLEDevice {
         }
         if (characteristic != null) {
             if((characteristic.getProperties()&BluetoothGattCharacteristic.PROPERTY_WRITE)!=0 ){
-                BLEOperation bleOperation = new BLEOperation();
-                bleOperation.operationType = BLEOperation.OperationType.OperationType_Write;
-                bleOperation.bleChar = characteristic;
-                bleOperation.value = value;
-                bleOperation.operationListener=listener;
-                bleOperationQueue.add(bleOperation);
+                OKBLEOperation okbleOperation = new OKBLEOperation();
+                okbleOperation.operationType = OKBLEOperation.OperationType.OperationType_Write;
+                okbleOperation.bleChar = characteristic;
+                okbleOperation.value = value;
+                okbleOperation.operationListener=listener;
+                bleOperationQueue.add(okbleOperation);
                 checkNextBleOperation();
             }else if((characteristic.getProperties()&BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE)!=0){
-                BLEOperation bleOperation = new BLEOperation();
-                bleOperation.operationType = BLEOperation.OperationType.OperationType_Write_No_Response;
-                bleOperation.bleChar = characteristic;
-                bleOperation.value = value;
-                bleOperation.operationListener=listener;
-                bleOperationQueue.add(bleOperation);
+                OKBLEOperation okbleOperation = new OKBLEOperation();
+                okbleOperation.operationType = OKBLEOperation.OperationType.OperationType_Write_No_Response;
+                okbleOperation.bleChar = characteristic;
+                okbleOperation.value = value;
+                okbleOperation.operationListener=listener;
+                bleOperationQueue.add(okbleOperation);
                 checkNextBleOperation();
             } else{
                 String errMsg="addWriteOperation failed, write property not found";
                 LogUtils.e(TAG,errMsg);
                 if(listener!=null){
-                    listener.onFail(BLEOperation.BaseOperationListener.Operation_FAILED_Characteristic_Property_Not_Found,errMsg);
+                    listener.onFail(OKBLEOperation.BaseOperationListener.Operation_FAILED_Characteristic_Property_Not_Found,errMsg);
                 }
                 return;
             }
@@ -655,7 +655,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             String errMsg="addWriteOperation failed, characteristic not found";
             LogUtils.e(TAG,errMsg );
             if(listener!=null){
-                listener.onFail(BLEOperation.BaseOperationListener.Operation_FAILED_Characteristic_Not_Found,errMsg);
+                listener.onFail(OKBLEOperation.BaseOperationListener.Operation_FAILED_Characteristic_Not_Found,errMsg);
             }
             return;
         }
@@ -663,12 +663,12 @@ public class OKBLEDeviceImp implements OKBLEDevice {
 
 
 
-    public void addReadOperation(String characteristicUUID,BLEOperation.ReadOperationListener listener){
+    public void addReadOperation(String characteristicUUID,OKBLEOperation.ReadOperationListener listener){
         if (!isConnected()) {
             String errMsg="addReadOperation failed, device not connected";
             LogUtils.e(TAG, errMsg);
             if(listener!=null){
-                listener.onFail(BLEOperation.BaseOperationListener.Operation_FAILED_Device_Not_Connected,errMsg);
+                listener.onFail(OKBLEOperation.BaseOperationListener.Operation_FAILED_Device_Not_Connected,errMsg);
             }
             return;
         }
@@ -678,7 +678,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             LogUtils.e(TAG,errMsg);
             if(listener!=null){
 
-                listener.onFail(BLEOperation.BaseOperationListener.Operation_FAILED_Invalid_UUID,errMsg);
+                listener.onFail(OKBLEOperation.BaseOperationListener.Operation_FAILED_Invalid_UUID,errMsg);
             }
             return;
         }
@@ -692,18 +692,18 @@ public class OKBLEDeviceImp implements OKBLEDevice {
         if (characteristic != null) {
 
             if((characteristic.getProperties()&BluetoothGattCharacteristic.PROPERTY_READ)!=0 ){
-                BLEOperation bleOperation = new BLEOperation();
-                bleOperation.operationType = OperationType_Read;
-                bleOperation.bleChar = characteristic;
-                bleOperation.operationListener=listener;
-                bleOperationQueue.add(bleOperation);
+                OKBLEOperation okbleOperation = new OKBLEOperation();
+                okbleOperation.operationType = OperationType_Read;
+                okbleOperation.bleChar = characteristic;
+                okbleOperation.operationListener=listener;
+                bleOperationQueue.add(okbleOperation);
                 checkNextBleOperation();
             }else{
 
                 String errMsg="addReadOperation failed, read property not found";
                 LogUtils.e(TAG, errMsg);
                 if(listener!=null){
-                    listener.onFail(BLEOperation.BaseOperationListener.Operation_FAILED_Characteristic_Property_Not_Found,errMsg);
+                    listener.onFail(OKBLEOperation.BaseOperationListener.Operation_FAILED_Characteristic_Property_Not_Found,errMsg);
                 }
                 return;
             }
@@ -711,17 +711,17 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             String errMsg="addReadOperation failed, characteristic not found";
             LogUtils.e(TAG,errMsg );
             if(listener!=null){
-                listener.onFail(BLEOperation.BaseOperationListener.Operation_FAILED_Characteristic_Not_Found,errMsg);
+                listener.onFail(OKBLEOperation.BaseOperationListener.Operation_FAILED_Characteristic_Not_Found,errMsg);
             }
             return;
         }
     }
-    public void addNotifyOrIndicateOperation(String characteristicUUID,boolean enable,BLEOperation.NotifyOrIndicateOperationListener listener){
+    public void addNotifyOrIndicateOperation(String characteristicUUID,boolean enable,OKBLEOperation.NotifyOrIndicateOperationListener listener){
         if (!isConnected()) {
             String errMsg="addNotifyOrIndicateOperation failed, device not connected";
             LogUtils.e(TAG, errMsg);
             if(listener!=null){
-                listener.onFail(BLEOperation.BaseOperationListener.Operation_FAILED_Device_Not_Connected,errMsg);
+                listener.onFail(OKBLEOperation.BaseOperationListener.Operation_FAILED_Device_Not_Connected,errMsg);
             }
             return;
         }
@@ -731,7 +731,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             String errMsg="characteristicUUID not valid ";
             LogUtils.e(TAG, errMsg);
             if(listener!=null){
-                listener.onFail(BLEOperation.BaseOperationListener.Operation_FAILED_Invalid_UUID,errMsg);
+                listener.onFail(OKBLEOperation.BaseOperationListener.Operation_FAILED_Invalid_UUID,errMsg);
             }
             return;
         }
@@ -745,28 +745,28 @@ public class OKBLEDeviceImp implements OKBLEDevice {
         if (characteristic != null) {
 
             if((characteristic.getProperties()&BluetoothGattCharacteristic.PROPERTY_NOTIFY)!=0 ){
-                BLEOperation bleOperation = new BLEOperation();
+                OKBLEOperation okbleOperation = new OKBLEOperation();
                 if(enable){
-                    bleOperation.operationType =enable? BLEOperation.OperationType.OperationType_Enable_Notify:BLEOperation.OperationType.OperationType_Disable_Notify;
+                    okbleOperation.operationType =enable? OKBLEOperation.OperationType.OperationType_Enable_Notify: OKBLEOperation.OperationType.OperationType_Disable_Notify;
                 }
-                bleOperation.bleChar = characteristic;
-                bleOperation.operationListener=listener;
-                bleOperationQueue.add(bleOperation);
+                okbleOperation.bleChar = characteristic;
+                okbleOperation.operationListener=listener;
+                bleOperationQueue.add(okbleOperation);
                 checkNextBleOperation();
             }else if((characteristic.getProperties()&BluetoothGattCharacteristic.PROPERTY_INDICATE)!=0){
-                BLEOperation bleOperation = new BLEOperation();
+                OKBLEOperation okbleOperation = new OKBLEOperation();
                 if(enable){
-                    bleOperation.operationType =enable? BLEOperation.OperationType.OperationType_Enable_Indicate:BLEOperation.OperationType.OperationType_Disable_Indicate;
+                    okbleOperation.operationType =enable? OKBLEOperation.OperationType.OperationType_Enable_Indicate: OKBLEOperation.OperationType.OperationType_Disable_Indicate;
                 }
-                bleOperation.bleChar = characteristic;
-                bleOperation.operationListener=listener;
-                bleOperationQueue.add(bleOperation);
+                okbleOperation.bleChar = characteristic;
+                okbleOperation.operationListener=listener;
+                bleOperationQueue.add(okbleOperation);
                 checkNextBleOperation();
             }else{
                 String errMsg="addNotifyOrIndicateOperation failed, Notify or Indicate property not found";
                 LogUtils.e(TAG, errMsg);
                 if(listener!=null){
-                    listener.onFail(BLEOperation.BaseOperationListener.Operation_FAILED_Characteristic_Property_Not_Found,errMsg);
+                    listener.onFail(OKBLEOperation.BaseOperationListener.Operation_FAILED_Characteristic_Property_Not_Found,errMsg);
                 }
                 return ;
             }
@@ -775,7 +775,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             String errMsg="addNotifyOrIndicateOperation failed, characteristic not found";
             LogUtils.e(TAG, errMsg);
             if(listener!=null){
-                listener.onFail(BLEOperation.BaseOperationListener.Operation_FAILED_Characteristic_Not_Found,errMsg);
+                listener.onFail(OKBLEOperation.BaseOperationListener.Operation_FAILED_Characteristic_Not_Found,errMsg);
             }
         }
     }
@@ -806,29 +806,29 @@ public class OKBLEDeviceImp implements OKBLEDevice {
 
     synchronized private void checkNextBleOperation() {
         if (bleOperationQueue.getOperationSize() == 1) {
-            BLEOperation bleOperation = bleOperationQueue.get(0);
-            doBleOperation(bleOperation);
+            OKBLEOperation okbleOperation = bleOperationQueue.get(0);
+            doBleOperation(okbleOperation);
         }
     }
 
-    synchronized private void  doBleOperation(BLEOperation bleOperation) {
+    synchronized private void  doBleOperation(OKBLEOperation okbleOperation) {
 
         LogUtils.e(TAG, " BleOperation size:" + bleOperationQueue.getOperationSize());
         if (!isConnected()) {
             LogUtils.e(TAG, "doBleOperation failed, device not connected");
             return;
         }
-        switch (bleOperation.operationType) {
+        switch (okbleOperation.operationType) {
             case OperationType_Read:{
-                LogUtils.e(TAG, " read:" + bleOperation.bleChar.getUuid().toString());
-                boolean success= readCharacteristic(bleOperation.bleChar);
+                LogUtils.e(TAG, " read:" + okbleOperation.bleChar.getUuid().toString());
+                boolean success= readCharacteristic(okbleOperation.bleChar);
                 if(success){
-                    if(bleOperation.operationListener!=null){
-                        bleOperation.operationListener.onExecuteSuccess(bleOperation.operationType);
+                    if(okbleOperation.operationListener!=null){
+                        okbleOperation.operationListener.onExecuteSuccess(okbleOperation.operationType);
                     }
                 }else{
-                    if(bleOperation.operationListener!=null){
-                        bleOperation.operationListener.onFail(Operation_FAILED_BLE_Failed,"BLE_Failed");
+                    if(okbleOperation.operationListener!=null){
+                        okbleOperation.operationListener.onFail(Operation_FAILED_BLE_Failed,"BLE_Failed");
                     }
                     bleOperationQueue.removeFirst();
                     doNextBleOperation();
@@ -838,16 +838,16 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             case OperationType_Enable_Notify:
             case OperationType_Enable_Indicate: {
                 LogUtils.e(TAG, " enableNotification/Indication:"
-                        + bleOperation.bleChar.getUuid().toString());
+                        + okbleOperation.bleChar.getUuid().toString());
 
-                boolean success = setNotificationOrIndication(true, bleOperation.bleChar);
+                boolean success = setNotificationOrIndication(true, okbleOperation.bleChar);
                 if (success) {
-                    if (bleOperation.operationListener != null) {
-                        bleOperation.operationListener.onExecuteSuccess(bleOperation.operationType);
+                    if (okbleOperation.operationListener != null) {
+                        okbleOperation.operationListener.onExecuteSuccess(okbleOperation.operationType);
                     }
                 } else {
-                    if (bleOperation.operationListener != null) {
-                        bleOperation.operationListener.onFail(Operation_FAILED_BLE_Failed, "BLE_Failed");
+                    if (okbleOperation.operationListener != null) {
+                        okbleOperation.operationListener.onFail(Operation_FAILED_BLE_Failed, "BLE_Failed");
                     }
                     bleOperationQueue.removeFirst();
                     doNextBleOperation();
@@ -857,16 +857,16 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             case OperationType_Disable_Notify:
             case OperationType_Disable_Indicate:{
                 LogUtils.e(TAG, " disableNotification/Indication:"
-                        + bleOperation.bleChar.getUuid().toString());
-               boolean success= setNotificationOrIndication(false, bleOperation.bleChar);
+                        + okbleOperation.bleChar.getUuid().toString());
+               boolean success= setNotificationOrIndication(false, okbleOperation.bleChar);
 
                 if (success) {
-                    if (bleOperation.operationListener != null) {
-                        bleOperation.operationListener.onExecuteSuccess(bleOperation.operationType);
+                    if (okbleOperation.operationListener != null) {
+                        okbleOperation.operationListener.onExecuteSuccess(okbleOperation.operationType);
                     }
                 } else {
-                    if (bleOperation.operationListener != null) {
-                        bleOperation.operationListener.onFail(Operation_FAILED_BLE_Failed, "BLE_Failed");
+                    if (okbleOperation.operationListener != null) {
+                        okbleOperation.operationListener.onFail(Operation_FAILED_BLE_Failed, "BLE_Failed");
                     }
                     bleOperationQueue.removeFirst();
                     doNextBleOperation();
@@ -874,15 +874,15 @@ public class OKBLEDeviceImp implements OKBLEDevice {
                 break;}
             case OperationType_Write_No_Response:
             case OperationType_Write:{
-                byte[] values = bleOperation.value;
-                boolean success= writeCharacteristic(bleOperation.bleChar, values);
+                byte[] values = okbleOperation.value;
+                boolean success= writeCharacteristic(okbleOperation.bleChar, values);
                 if (success) {
-                    if (bleOperation.operationListener != null) {
-                        bleOperation.operationListener.onExecuteSuccess(bleOperation.operationType);
+                    if (okbleOperation.operationListener != null) {
+                        okbleOperation.operationListener.onExecuteSuccess(okbleOperation.operationType);
                     }
                 } else {
-                    if (bleOperation.operationListener != null) {
-                        bleOperation.operationListener.onFail(Operation_FAILED_BLE_Failed, "BLE_Failed");
+                    if (okbleOperation.operationListener != null) {
+                        okbleOperation.operationListener.onFail(Operation_FAILED_BLE_Failed, "BLE_Failed");
                     }
                     bleOperationQueue.removeFirst();
                     doNextBleOperation();
@@ -890,15 +890,15 @@ public class OKBLEDeviceImp implements OKBLEDevice {
                 break;}
             case OperationType_Change_MTU:
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    LogUtils.e(TAG, " requestMtu :"+bleOperation.mtu);
-                    boolean success=  mBluetoothGatt.requestMtu(bleOperation.mtu);
+                    LogUtils.e(TAG, " requestMtu :"+ okbleOperation.mtu);
+                    boolean success=  mBluetoothGatt.requestMtu(okbleOperation.mtu);
                     if (success) {
-                        if (bleOperation.operationListener != null) {
-                            bleOperation.operationListener.onExecuteSuccess(bleOperation.operationType);
+                        if (okbleOperation.operationListener != null) {
+                            okbleOperation.operationListener.onExecuteSuccess(okbleOperation.operationType);
                         }
                     } else {
-                        if (bleOperation.operationListener != null) {
-                            bleOperation.operationListener.onFail(Operation_FAILED_BLE_Failed, "BLE_Failed");
+                        if (okbleOperation.operationListener != null) {
+                            okbleOperation.operationListener.onFail(Operation_FAILED_BLE_Failed, "BLE_Failed");
                         }
                         bleOperationQueue.removeFirst();
                         doNextBleOperation();
@@ -919,7 +919,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
         @Override
         public void run() {
             if (bleOperationQueue.getOperationSize() > 0) {
-                BLEOperation operation= bleOperationQueue.removeFirst();
+                OKBLEOperation operation= bleOperationQueue.removeFirst();
                 if(operation!=null&&operation.operationListener!=null){
                     operation.operationListener.onFail(Operation_FAILED_Overtime,"failed,Overtime");
                 }
@@ -931,9 +931,9 @@ public class OKBLEDeviceImp implements OKBLEDevice {
 
     private void doNextBleOperation() {
         if (bleOperationQueue.getOperationSize() > 0) {
-            BLEOperation bleOperation = bleOperationQueue.get(0);
+            OKBLEOperation okbleOperation = bleOperationQueue.get(0);
 
-            doBleOperation(bleOperation);
+            doBleOperation(okbleOperation);
         }
     }
 

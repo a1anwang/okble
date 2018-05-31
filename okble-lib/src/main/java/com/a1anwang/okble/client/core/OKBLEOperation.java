@@ -6,12 +6,12 @@ import android.bluetooth.BluetoothGattCharacteristic;
  * Created by a1anwang.com on 2018/5/16.
  */
 
-public class BLEOperation {
+public class OKBLEOperation {
     public byte[] value;
     public int mtu;
     public BluetoothGattCharacteristic bleChar;
 
-    public BLEOperation.OperationType operationType;
+    public OKBLEOperation.OperationType operationType;
 
     public BaseOperationListener operationListener;
 

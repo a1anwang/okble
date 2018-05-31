@@ -29,8 +29,8 @@ public interface OKBLEDevice {
      */
     String getDeviceTAG();
 
-    void addDeviceListener(DeviceListener deviceListener);
-    void removeDeviceListener(DeviceListener deviceListener);
+    void addDeviceListener(OKBLEDeviceListener OKBLEDeviceListener);
+    void removeDeviceListener(OKBLEDeviceListener OKBLEDeviceListener);
     void clearDeviceListener();
     /**
      * 设置蓝牙操作(读,写,打开/关闭通知/指示)的超时时间,单位毫秒
@@ -82,34 +82,34 @@ public interface OKBLEDevice {
      * @param characteristicUUID 长度须为4，比如 ffe1;或者是一个完整的uuid:0000ffe1-0000-1000-8000-00805f9b34fb
      * @param value    16进制字符串形式的数据,如 EB16
      */
-    void addWriteOperation(String characteristicUUID, String value, BLEOperation.WriteOperationListener listener);
+    void addWriteOperation(String characteristicUUID, String value, OKBLEOperation.WriteOperationListener listener);
 
 
     /**添加写入数据的操作
      * @param characteristicUUID 长度须为4，比如 ffe1;或者是一个完整的uuid:0000ffe1-0000-1000-8000-00805f9b34fb
      * @param value    byte[]形式的数据
      */
-    void addWriteOperation(String characteristicUUID, byte[] value,BLEOperation.WriteOperationListener listener);
+    void addWriteOperation(String characteristicUUID, byte[] value,OKBLEOperation.WriteOperationListener listener);
 
     /**
      *添加读特征值的操作
      * @param characteristicUUID 长度须为4，比如 ffe1;或者是一个完整的uuid:0000ffe1-0000-1000-8000-00805f9b34fb
      */
-    void addReadOperation(String characteristicUUID,BLEOperation.ReadOperationListener listener);
+    void addReadOperation(String characteristicUUID,OKBLEOperation.ReadOperationListener listener);
 
     /**
      * 添加开启/关闭 通知/指示的操作,会自动识别是通知还是指示
      * @param characteristicUUID 长度须为4，比如 ffe1;或者是一个完整的uuid:0000ffe1-0000-1000-8000-00805f9b34fb
      * @param enable   是否开启
      */
-    void addNotifyOrIndicateOperation(String characteristicUUID,boolean enable,BLEOperation.NotifyOrIndicateOperationListener listener);
+    void addNotifyOrIndicateOperation(String characteristicUUID,boolean enable,OKBLEOperation.NotifyOrIndicateOperationListener listener);
 
     /**
      *配置mtu
      * @param mtu
      */
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    void addChangeMTUOperation(int mtu,BLEOperation.ChangeMTUListener changeMTUListener);
+    void addChangeMTUOperation(int mtu,OKBLEOperation.ChangeMTUListener changeMTUListener);
 
     boolean isNotifyEnabled(String uuid);
     boolean isIndicateEnabled(String uuid);

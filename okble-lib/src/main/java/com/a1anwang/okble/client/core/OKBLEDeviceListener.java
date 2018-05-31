@@ -5,7 +5,7 @@ package com.a1anwang.okble.client.core;
  * contact：www.a1anwang.com
  */
 
-public interface DeviceListener {
+public interface OKBLEDeviceListener {
 
     public void onConnected(String deviceTAG);
 

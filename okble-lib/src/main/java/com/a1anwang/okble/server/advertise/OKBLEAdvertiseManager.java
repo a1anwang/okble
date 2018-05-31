@@ -72,6 +72,7 @@ public class OKBLEAdvertiseManager {
                 for (ParcelUuid key_uuid:keySet){
                     advertiseDataBuilder.addServiceData(key_uuid,data.getServiceData().get(key_uuid));
                 }
+
                 AdvertiseData mAdvertiseData=advertiseDataBuilder.build();
 
                 mAdvertiseCallback=new AdvertiseCallback() {

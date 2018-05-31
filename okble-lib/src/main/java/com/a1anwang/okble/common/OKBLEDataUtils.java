@@ -193,5 +193,15 @@ public class OKBLEDataUtils {
 
         return rs;
     }
+    public static boolean isValidShortUUID(String uuid){
+        String regEx = "^[a-fA-F0-9]{4}$";  //FDA50693-A4E2-4FB1-AFCF-C6EB07647825
+        Pattern pattern = Pattern.compile(regEx);
+
+        Matcher matcher = pattern.matcher(uuid);
+        // 字符串是否与正则表达式相匹配
+        boolean rs = matcher.matches();
+
+        return rs;
+    }
 
 }

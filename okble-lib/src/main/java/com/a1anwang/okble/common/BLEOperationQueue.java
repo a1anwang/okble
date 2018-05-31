@@ -7,12 +7,11 @@ import java.util.LinkedList;
  */
 
 public class BLEOperationQueue<T> {
-    private LinkedList<T> bleOperations;
-
-
+    private LinkedList<T> bleOperations=new LinkedList<>();
 
 
     synchronized public void add(T operation){
+
         bleOperations.add(operation);
     }
 

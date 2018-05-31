@@ -7,7 +7,7 @@ import android.util.SparseArray;
  * Created by a1anwang.com on 2018/5/24.
  */
 
-public class BLEOperationFailedDescUtils {
+public class OKBLEOperationFailedDescUtils {
 
     private static SparseArray<String> descArray=new SparseArray<>();
 

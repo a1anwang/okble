@@ -9,7 +9,7 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-import com.a1anwang.okble.client.core.DeviceListener;
+import com.a1anwang.okble.client.core.OKBLEDeviceListener;
 import com.a1anwang.okble.common.OKBLECharacteristicModel;
 import com.a1anwang.okble.client.core.OKBLEDevice;
 import com.a1anwang.okble.client.core.OKBLEDeviceImp;
@@ -26,7 +26,7 @@ import java.util.List;
  * Created by a1anwang.com on 2018/5/22.
  */
 
-public class DeviceDetailActivity extends BaseActivity implements DeviceListener, ExpandableListView.OnChildClickListener {
+public class DeviceDetailActivity extends BaseActivity implements OKBLEDeviceListener, ExpandableListView.OnChildClickListener {
     public  final  String TAG="DeviceDetailActivity";
     public  static  final String EXTRA_BLEScanResult=DeviceDetailActivity.class.getName()+".EXTRA_BLEScanResult";
 
