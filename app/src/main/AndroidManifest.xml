@@ -25,6 +25,10 @@
         </activity>
         <activity android:name=".activity.AdvertiseActivity">
         </activity>
+        <activity android:name=".activity.ScanBeaconActivity">
+        </activity>
+        <activity android:name=".activity.BeIBeaconActivity">
+        </activity>
     </application>
 
 </manifest>

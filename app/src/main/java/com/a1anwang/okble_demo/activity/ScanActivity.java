@@ -2,6 +2,7 @@ package com.a1anwang.okble_demo.activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.ActionBar;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,9 +18,9 @@ import com.a1anwang.okble.client.scan.DeviceScanCallBack;
 import com.a1anwang.okble.client.scan.OKBLEScanManager;
 import com.a1anwang.okble.common.LogUtils;
 import com.a1anwang.okble.common.OKBLEDataUtils;
-import com.a1anwang.okble_demo.common.MyLinkedHashMap;
 import com.a1anwang.okble_demo.R;
 import com.a1anwang.okble_demo.base.BaseActivity;
+import com.a1anwang.okble_demo.common.MyLinkedHashMap;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
@@ -61,10 +62,15 @@ public class ScanActivity extends BaseActivity implements AdapterView.OnItemClic
         scanManager.stopScan();
     }
 
+    boolean isFirstResume=true;
     @Override
     protected void onResume() {
         super.onResume();
-        scanManager.startScan();
+        if(!isFirstResume){
+            scanManager.startScan();
+        }
+        isFirstResume=false;
+
     }
 
     @Override
@@ -77,6 +83,12 @@ public class ScanActivity extends BaseActivity implements AdapterView.OnItemClic
 
     @Override
     public void initView() {
+        ActionBar actionBar=getSupportActionBar();
+        if(actionBar!=null){
+            actionBar.hide();
+        }
+        setHeadVisibility(View.VISIBLE);
+        setTitle("Scan peripheral");
         refreshLayout=findViewById(R.id.refreshLayout);
         refreshLayout.autoRefresh();
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {

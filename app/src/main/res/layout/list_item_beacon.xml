@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="80dp"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tv_rssi"
+        android:layout_width="80dp"
+        android:layout_height="fill_parent"
+        android:paddingLeft="20dp"
+        android:text="-80"
+        android:gravity="center"
+        android:textSize="27sp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="80dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="DeviceName"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tv_uuid"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:gravity="left"
+            android:text="uuid"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="25dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:text="major:"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_major"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:gravity="left|center_vertical"
+                android:text="3"
+                 
+                android:textSize="15sp" />
+             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:text="minor:"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_minor"
+                android:layout_width="80dp"
+                android:layout_height="20dp"
+                android:gravity="left|center_vertical"
+                android:text="1"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="#cccccc" />
+
+</RelativeLayout>

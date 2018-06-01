@@ -1,5 +1,7 @@
 package com.a1anwang.okble.common;
 
+import android.os.ParcelUuid;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -182,8 +184,24 @@ public class CommonUUIDUtils {
      * @param shortUUID  2个字节,4个长度的字符串,如feea
      * @return 一个完整的uuid,如0000feea-0000-1000-8000-00805f9b34fb
      */
-    public static String createUUIDByShortUUID(String shortUUID){
+    public static String createCompleteUUIDByShortUUID(String shortUUID){
         return CommonUUIDUtils.CommonUUIDStr_x.replace("xxxx", shortUUID);
     }
 
+
+    /**
+     *
+     * @param uuidStr  2个字节,4个长度的字符串,如feea 或完整的uuid,如0000feea-0000-1000-8000-00805f9b34fb
+     * @return
+     */
+    public static ParcelUuid createUUIDByShortOrCompleteUUIDStr(String uuidStr){
+
+        if(OKBLEDataUtils.isValidShortUUID(uuidStr)){
+            return ParcelUuid.fromString(createCompleteUUIDByShortUUID(uuidStr));
+        }else if(OKBLEDataUtils.isValidUUID(uuidStr)){
+            return ParcelUuid.fromString(uuidStr);
+        }else{
+            return null;
+        }
+    }
 }

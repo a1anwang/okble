@@ -3,31 +3,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
     android:orientation="vertical"
     >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-        <TextView
-            android:layout_width="wrap_content"
-            android:text=""
-            android:layout_height="wrap_content" />
-    </LinearLayout>
 
     <Button
         android:id="@+id/btn_scan"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
-        android:text="扫描外设"
+        android:text="Scan peripheral"
         android:textAllCaps="false"
         android:layout_height="wrap_content" />
     <Button
         android:id="@+id/btn_peripheral"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:text="模拟外设"
+        android:text="Work as a peripheral"
         android:textAllCaps="false"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_scan_beacon"
+        android:layout_width="match_parent"
+        android:text="Scan iBeacon"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_be_beacon"
+        android:layout_width="match_parent"
+        android:text="Work as an iBeacon"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
         android:layout_height="wrap_content" />
 </LinearLayout>

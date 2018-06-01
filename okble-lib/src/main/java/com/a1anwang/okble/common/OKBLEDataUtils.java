@@ -203,5 +203,24 @@ public class OKBLEDataUtils {
 
         return rs;
     }
+    /**
+     *
+     * @param targetLenth  补齐后的长度
+     * @param src     需要补齐的字符串
+     * @param leftCharacter   用来补齐长度的字符
+     * @return  补齐字符串
+     */
+    public static String formatStringLenth(int targetLenth, String src, char leftCharacter) {
 
+        if(src.length()>targetLenth){
+            return src.substring(src.length()-targetLenth);
+        }else{
+
+            int delta=targetLenth-src.length();
+            for (int i = 0; i <delta ; i++) {
+                src=leftCharacter+src;
+            }
+            return src;
+        }
+    }
 }

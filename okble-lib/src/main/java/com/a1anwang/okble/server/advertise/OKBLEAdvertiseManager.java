@@ -11,6 +11,9 @@ import android.content.Context;
 import android.os.Build;
 import android.os.ParcelUuid;
 
+import com.a1anwang.okble.common.LogUtils;
+import com.a1anwang.okble.common.OKBLEDataUtils;
+
 import java.util.Set;
 
 /**
@@ -61,15 +64,18 @@ public class OKBLEAdvertiseManager {
                     int key=data.getManufacturerSpecificData().keyAt(i);
                     byte[] value=data.getManufacturerSpecificData().get(key);
                     advertiseDataBuilder.addManufacturerData(key,value);
+                    LogUtils.e(" Manufacturer id:"+key+" data:"+OKBLEDataUtils.BytesToHexString(value));
                 }
                 int size_2=data.getServiceUuids().size();
                 for (int i=0;i<size_2;i++){
                     ParcelUuid uuid=data.getServiceUuids().get(i);
                     advertiseDataBuilder.addServiceUuid(uuid);
+                    LogUtils.e(" service uuid:"+uuid.getUuid().toString());
                 }
 
                 Set<ParcelUuid> keySet= data.getServiceData().keySet();
                 for (ParcelUuid key_uuid:keySet){
+                    LogUtils.e(" service data uuid:"+key_uuid.getUuid().toString()+" data:"+ OKBLEDataUtils.BytesToHexString(data.getServiceData().get(key_uuid)));
                     advertiseDataBuilder.addServiceData(key_uuid,data.getServiceData().get(key_uuid));
                 }
 

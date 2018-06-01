@@ -29,6 +29,9 @@ public class MainActivity extends BaseActivity{
     public void initView() {
         findViewById(R.id.btn_scan).setOnClickListener(this);
         findViewById(R.id.btn_peripheral).setOnClickListener(this);
+        findViewById(R.id.btn_scan_beacon).setOnClickListener(this);
+        findViewById(R.id.btn_be_beacon).setOnClickListener(this);
+
     }
 
     @Override
@@ -44,6 +47,12 @@ public class MainActivity extends BaseActivity{
                 break;
             case R.id.btn_peripheral:
                     startActivity(AdvertiseActivity.class);
+                break;
+            case R.id.btn_scan_beacon:
+                startActivity(ScanBeaconActivity.class);
+                break;
+            case R.id.btn_be_beacon:
+                startActivity(BeIBeaconActivity.class);
                 break;
         }
     }

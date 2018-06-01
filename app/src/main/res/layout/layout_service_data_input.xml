@@ -12,17 +12,52 @@
         android:layout_height="1dp"
         android:background="@color/text_lighter_gray" />
 
-    <EditText
-        android:id="@+id/tv_value"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left|center_vertical"
-        android:maxLines="2"
-        android:textColor="@color/dark_gray"
-        android:enabled="false"
-        android:hint="for example:feea or 0000feea-0000-1000-8000-00805f9b34fb"
-        android:textSize="16sp"
-    />
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/tv_uuid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:maxLines="2"
+            android:padding="3dp"
+            android:textColor="@color/dark_gray"
+            android:enabled="false"
+            android:hint="uuid,for example:feea or 0000feea-0000-1000-8000-00805f9b34fb"
+            android:textSize="16sp"
+            />
+        <View
+            android:id="@+id/layout_uuid"
+            android:layout_width="match_parent"
+            android:background="@drawable/bg_edit_focus"
+            android:layout_alignBottom="@+id/tv_uuid"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/tv_data"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="left|center_vertical"
+            android:padding="3dp"
+            android:textColor="@color/dark_gray"
+            android:enabled="false"
+            android:hint="data"
+            android:textSize="16sp"
+            />
+        <View
+            android:id="@+id/layout_data"
+            android:layout_width="match_parent"
+            android:layout_alignBottom="@+id/tv_data"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
