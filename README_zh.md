@@ -15,10 +15,12 @@
  - 动态权限集成,target sdk在23(android6.0)及以上时,扫描是需要定位权限的,okble已集成,会有回调告知是否已授权
  - 向下兼容到API 18(android4.3),在android5.0中google变更了扫描api,okble依然使用的是4.3的api,只为了兼容更多的手机
  - 双回调,处理灵活:定义了统一的listener来监听设备的状态, 也可以为每一个蓝牙通讯操作设置单独的监听,方便页面多的情况下使用
- - 自动连接:断开后可以实现自动连接,直到连接成功
+ - 自动重连:断开后可以实现自动连接,直到连接成功
  - 自动识别write type,自动识别notify or indicate
  - 多设备连接管理简单
-
+ - 支持APP模拟成外设,支持APP模拟成iBeacon
+ - 支持扫描识别iBeacon
+ 
  ## 立即开始
   #### 添加依赖
  ```
@@ -27,7 +29,7 @@
         maven { url "https://jitpack.io" }
    }
    dependencies {
-         implementation 'com.github.a1anwang:okble:1.0.2'
+         implementation 'com.github.a1anwang:okble:1.0.3'
    }
  ```
   #### 扫描外设
