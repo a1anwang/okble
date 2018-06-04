@@ -110,6 +110,13 @@ public class OKBLEDeviceImp implements OKBLEDevice {
         }
     }
 
+    @Override
+    public void clearOperations() {
+        if(bleOperationQueue!=null){
+            bleOperationQueue.clear();
+        }
+    }
+
     public String getMacAddress() {
         if (this.bluetoothDevice != null) {
             return this.bluetoothDevice.getAddress();

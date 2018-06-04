@@ -104,6 +104,8 @@ public interface OKBLEDevice {
      */
     void addNotifyOrIndicateOperation(String characteristicUUID,boolean enable,OKBLEOperation.NotifyOrIndicateOperationListener listener);
 
+    void clearOperations();
+
     /**
      *配置mtu
      * @param mtu

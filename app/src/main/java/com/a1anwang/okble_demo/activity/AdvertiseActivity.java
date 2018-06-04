@@ -12,18 +12,24 @@ import android.widget.Toast;
 
 import com.a1anwang.okble.common.CommonUUIDUtils;
 import com.a1anwang.okble.common.LogUtils;
+import com.a1anwang.okble.common.OKBLECharacteristicModel;
 import com.a1anwang.okble.common.OKBLEDataUtils;
+import com.a1anwang.okble.common.OKBLEServiceModel;
 import com.a1anwang.okble.server.advertise.OKBLEAdvertiseCallback;
 import com.a1anwang.okble.server.advertise.OKBLEAdvertiseData;
 import com.a1anwang.okble.server.advertise.OKBLEAdvertiseManager;
 import com.a1anwang.okble.server.advertise.OKBLEAdvertiseSettings;
 import com.a1anwang.okble.server.core.OKBLEServerDevice;
 import com.a1anwang.okble.server.core.OKBLEServerDeviceImp;
+import com.a1anwang.okble.server.core.OKBLEServerOperation;
 import com.a1anwang.okble_demo.R;
 import com.a1anwang.okble_demo.base.BaseActivity;
 import com.a1anwang.okble_demo.views.HexInputPopupWindow;
 import com.a1anwang.okble_demo.views.ServiceDataInputPopupWindow;
 import com.a1anwang.okble_demo.views.ServiceUUIDInputPopupWindow;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by a1anwang.com on 2018/5/30.
@@ -227,7 +233,7 @@ public class AdvertiseActivity extends BaseActivity{
             public void onStartSuccess() {
                 LogUtils.e("---onStartSuccess ---");
                 Toast.makeText(mContext,"Advertising Success",Toast.LENGTH_SHORT).show();
-                configServer();
+                //configServer();
             }
             @Override
             public void onStartFailure(int errorCode, String errMsg) {
@@ -240,33 +246,20 @@ public class AdvertiseActivity extends BaseActivity{
 
     private void configServer(){
 
-        /*
-        OKBLEServiceModel serviceModel=new OKBLEServiceModel(CommonUUIDUtils.createUUIDByShortUUID("fff0"));
 
-        OKBLECharacteristicModel characteristicModel=new OKBLECharacteristicModel(CommonUUIDUtils.createUUIDByShortUUID("fff1"));
+        OKBLEServiceModel serviceModel=new OKBLEServiceModel(CommonUUIDUtils.createCompleteUUIDByShortUUID("fff0"));
+
+        OKBLECharacteristicModel characteristicModel=new OKBLECharacteristicModel(CommonUUIDUtils.createCompleteUUIDByShortUUID("fff1"));
         characteristicModel.setCanWrite(true);
-        characteristicModel.setCanWriteNoResponse(true);
         characteristicModel.setCanNotify(true);
         characteristicModel.setCanRead(true);
 
-
-
-        OKBLECharacteristicModel characteristicModel_2=new OKBLECharacteristicModel(CommonUUIDUtils.createUUIDByShortUUID("fff2"));
-        characteristicModel_2.setCanWrite(true);
+        OKBLECharacteristicModel characteristicModel_2=new OKBLECharacteristicModel(CommonUUIDUtils.createCompleteUUIDByShortUUID("fff2"));
         characteristicModel_2.setCanWriteNoResponse(true);
-        characteristicModel_2.setCanNotify(true);
-        characteristicModel_2.setCanIndicate(true);
-
-
-        OKBLECharacteristicModel characteristicModel_3=new OKBLECharacteristicModel(CommonUUIDUtils.createUUIDByShortUUID("fff3"));
-        characteristicModel_3.setCanWrite(true);
-        characteristicModel_3.setCanWriteNoResponse(true);
 
         List<OKBLECharacteristicModel> characteristicModels=new ArrayList<>();
         characteristicModels.add(characteristicModel);
         characteristicModels.add(characteristicModel_2);
-        characteristicModels.add(characteristicModel_3);
-
 
         serverDevice.addCharacteristic(characteristicModels, serviceModel, new OKBLEServerOperation.BLEServerOperationListener() {
             @Override
@@ -279,7 +272,7 @@ public class AdvertiseActivity extends BaseActivity{
                 LogUtils.e("onAddCharacteristicSuccess");
 
             }
-        });*/
+        });
 
     }
 }
