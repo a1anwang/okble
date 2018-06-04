@@ -310,3 +310,22 @@ OAD原理其实就是把固件(如.bin文件)加载成byte[]数组,然后把byte
 ```
  尽请期待
 ```
+
+### QQ讨论群 -  554029215
+
+License
+-------
+
+Copyright 2018 a1anwang
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
