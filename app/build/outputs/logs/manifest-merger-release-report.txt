@@ -1,0 +1,217 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:2:1-26:12
+MERGED from [com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-5] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshLayout-1.1.0-alpha-5.aar/f171663844cf60d7281b06d7c4715a52/AndroidManifest.xml:2:1-17:12
+MERGED from [com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshHeader-1.1.0-alpha-5.aar/8b6647720b4872e070c8d0fd3d31be12/AndroidManifest.xml:2:1-17:12
+MERGED from [com.gyf.barlibrary:barlibrary:2.3.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/barlibrary-2.3.0.aar/6122fb2a94e9f259a8e3224ae3b7e443/AndroidManifest.xml:2:1-12:12
+MERGED from [com.github.pinguo-zhouwei:CustomPopwindow:2.1.1] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/CustomPopwindow-2.1.1.aar/0c874a6d93036ebd15d05857a3e68141/AndroidManifest.xml:2:1-17:12
+MERGED from [me.grantland:autofittextview:0.2.1] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/autofittextview-0.2.1.aar/c68a0e10ddb55841993c2e60f9a7a483/AndroidManifest.xml:2:1-11:12
+MERGED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:2:1-23:12
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/bbbb88b6c2271363deacfb5343bb9258/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/9ed317bdeb02413066e51cdcbc06225a/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android:flexbox:1.0.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/flexbox-1.0.0.aar/c83917bec8568aecaebf99fecc46f202/AndroidManifest.xml:17:1-27:12
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/c8dd7521efc301adac471c8a661a7150/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/9d580f786550497df5896cf9cece42cc/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/e64b7aa3141cf148223e00d9b29508dc/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/2b5e5d95e36513475b686762486d4496/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/e6e4a1c62da1f07da89e3fe20243b765/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/81ac60910517dd9a6aaaf7ffb61cae92/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/35527fccb9085617263c286faa888399/AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/8a9a43690317f94f548825c09c4233a4/AndroidManifest.xml:17:1-31:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/495ef2c78b16c538ef58900ff5264702/AndroidManifest.xml:17:1-30:12
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:2:1-26:12
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:2:1-26:12
+	package
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:3:5-38
+		INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:2:1-26:12
+		INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:2:1-26:12
+		INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:4:5-80
+	android:name
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:4:22-78
+application
+ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:5:5-24:19
+MERGED from [com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-5] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshLayout-1.1.0-alpha-5.aar/f171663844cf60d7281b06d7c4715a52/AndroidManifest.xml:11:5-15:19
+MERGED from [com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-5] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshLayout-1.1.0-alpha-5.aar/f171663844cf60d7281b06d7c4715a52/AndroidManifest.xml:11:5-15:19
+MERGED from [com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshHeader-1.1.0-alpha-5.aar/8b6647720b4872e070c8d0fd3d31be12/AndroidManifest.xml:11:5-15:19
+MERGED from [com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshHeader-1.1.0-alpha-5.aar/8b6647720b4872e070c8d0fd3d31be12/AndroidManifest.xml:11:5-15:19
+MERGED from [com.github.pinguo-zhouwei:CustomPopwindow:2.1.1] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/CustomPopwindow-2.1.1.aar/0c874a6d93036ebd15d05857a3e68141/AndroidManifest.xml:11:5-15:19
+MERGED from [com.github.pinguo-zhouwei:CustomPopwindow:2.1.1] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/CustomPopwindow-2.1.1.aar/0c874a6d93036ebd15d05857a3e68141/AndroidManifest.xml:11:5-15:19
+MERGED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:16:5-21:19
+MERGED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:16:5-21:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/bbbb88b6c2271363deacfb5343bb9258/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/bbbb88b6c2271363deacfb5343bb9258/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/9ed317bdeb02413066e51cdcbc06225a/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/9ed317bdeb02413066e51cdcbc06225a/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/c8dd7521efc301adac471c8a661a7150/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/c8dd7521efc301adac471c8a661a7150/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/9d580f786550497df5896cf9cece42cc/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/9d580f786550497df5896cf9cece42cc/AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/e64b7aa3141cf148223e00d9b29508dc/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/e64b7aa3141cf148223e00d9b29508dc/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/2b5e5d95e36513475b686762486d4496/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/2b5e5d95e36513475b686762486d4496/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/e6e4a1c62da1f07da89e3fe20243b765/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/e6e4a1c62da1f07da89e3fe20243b765/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/81ac60910517dd9a6aaaf7ffb61cae92/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/81ac60910517dd9a6aaaf7ffb61cae92/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/35527fccb9085617263c286faa888399/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/35527fccb9085617263c286faa888399/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/8a9a43690317f94f548825c09c4233a4/AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/8a9a43690317f94f548825c09c4233a4/AndroidManifest.xml:25:5-29:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/495ef2c78b16c538ef58900ff5264702/AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/495ef2c78b16c538ef58900ff5264702/AndroidManifest.xml:24:5-28:19
+	android:supportsRtl
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:11:9-35
+	android:label
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:9:9-41
+	android:roundIcon
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:10:9-54
+	android:icon
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:8:9-43
+	android:allowBackup
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:7:9-35
+	android:theme
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:12:9-40
+	android:name
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:6:9-28
+activity#com.a1anwang.okble_demo.activity.MainActivity
+ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:13:9-19:20
+	android:name
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:13:19-56
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:14:13-18:29
+action#android.intent.action.MAIN
+ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:15:17-69
+	android:name
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:15:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:17:17-77
+	android:name
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:17:27-74
+activity#com.a1anwang.okble_demo.activity.DeviceDetailActivity
+ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:20:9-21:20
+	android:name
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:20:19-64
+activity#com.a1anwang.okble_demo.activity.CharacteristicActivity
+ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:22:9-23:20
+	android:name
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml:22:19-66
+uses-sdk
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml
+MERGED from [com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-5] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshLayout-1.1.0-alpha-5.aar/f171663844cf60d7281b06d7c4715a52/AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-5] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshLayout-1.1.0-alpha-5.aar/f171663844cf60d7281b06d7c4715a52/AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshHeader-1.1.0-alpha-5.aar/8b6647720b4872e070c8d0fd3d31be12/AndroidManifest.xml:7:5-9:41
+MERGED from [com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshHeader-1.1.0-alpha-5.aar/8b6647720b4872e070c8d0fd3d31be12/AndroidManifest.xml:7:5-9:41
+MERGED from [com.gyf.barlibrary:barlibrary:2.3.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/barlibrary-2.3.0.aar/6122fb2a94e9f259a8e3224ae3b7e443/AndroidManifest.xml:8:5-10:41
+MERGED from [com.gyf.barlibrary:barlibrary:2.3.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/barlibrary-2.3.0.aar/6122fb2a94e9f259a8e3224ae3b7e443/AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.pinguo-zhouwei:CustomPopwindow:2.1.1] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/CustomPopwindow-2.1.1.aar/0c874a6d93036ebd15d05857a3e68141/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.pinguo-zhouwei:CustomPopwindow:2.1.1] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/CustomPopwindow-2.1.1.aar/0c874a6d93036ebd15d05857a3e68141/AndroidManifest.xml:7:5-9:41
+MERGED from [me.grantland:autofittextview:0.2.1] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/autofittextview-0.2.1.aar/c68a0e10ddb55841993c2e60f9a7a483/AndroidManifest.xml:7:5-9:41
+MERGED from [me.grantland:autofittextview:0.2.1] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/autofittextview-0.2.1.aar/c68a0e10ddb55841993c2e60f9a7a483/AndroidManifest.xml:7:5-9:41
+MERGED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:7:5-9:41
+MERGED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/bbbb88b6c2271363deacfb5343bb9258/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/bbbb88b6c2271363deacfb5343bb9258/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/9ed317bdeb02413066e51cdcbc06225a/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/9ed317bdeb02413066e51cdcbc06225a/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android:flexbox:1.0.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/flexbox-1.0.0.aar/c83917bec8568aecaebf99fecc46f202/AndroidManifest.xml:23:5-25:41
+MERGED from [com.google.android:flexbox:1.0.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/flexbox-1.0.0.aar/c83917bec8568aecaebf99fecc46f202/AndroidManifest.xml:23:5-25:41
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/c8dd7521efc301adac471c8a661a7150/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/c8dd7521efc301adac471c8a661a7150/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/9d580f786550497df5896cf9cece42cc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/9d580f786550497df5896cf9cece42cc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/e64b7aa3141cf148223e00d9b29508dc/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/e64b7aa3141cf148223e00d9b29508dc/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/2b5e5d95e36513475b686762486d4496/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/2b5e5d95e36513475b686762486d4496/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/e6e4a1c62da1f07da89e3fe20243b765/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/e6e4a1c62da1f07da89e3fe20243b765/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/81ac60910517dd9a6aaaf7ffb61cae92/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/81ac60910517dd9a6aaaf7ffb61cae92/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/35527fccb9085617263c286faa888399/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/35527fccb9085617263c286faa888399/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/8a9a43690317f94f548825c09c4233a4/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/8a9a43690317f94f548825c09c4233a4/AndroidManifest.xml:21:5-23:58
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/495ef2c78b16c538ef58900ff5264702/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/495ef2c78b16c538ef58900ff5264702/AndroidManifest.xml:20:5-22:41
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/bbbb88b6c2271363deacfb5343bb9258/AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.BLUETOOTH
+ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:11:5-68
+	android:name
+		ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:11:22-65
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:12:5-74
+	android:name
+		ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:12:22-71
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:13:5-81
+	android:name
+		ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:13:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:14:5-79
+	android:name
+		ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:14:22-76
+activity#com.a1anwang.okble.permission.PermissionUtils$PermissionActivity
+ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:17:9-20:59
+	android:screenOrientation
+		ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:19:13-49
+	android:theme
+		ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:20:13-56
+	android:name
+		ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/okble-lib/build/intermediates/manifests/full/release/AndroidManifest.xml:18:13-92
+meta-data#android.support.VERSION
+ADDED from [com.android.support:appcompat-v7:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/bbbb88b6c2271363deacfb5343bb9258/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/c8dd7521efc301adac471c8a661a7150/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/c8dd7521efc301adac471c8a661a7150/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/9d580f786550497df5896cf9cece42cc/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/9d580f786550497df5896cf9cece42cc/AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-v4:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/e64b7aa3141cf148223e00d9b29508dc/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-v4:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/e64b7aa3141cf148223e00d9b29508dc/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/2b5e5d95e36513475b686762486d4496/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/2b5e5d95e36513475b686762486d4496/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/e6e4a1c62da1f07da89e3fe20243b765/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/e6e4a1c62da1f07da89e3fe20243b765/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/81ac60910517dd9a6aaaf7ffb61cae92/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/81ac60910517dd9a6aaaf7ffb61cae92/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/35527fccb9085617263c286faa888399/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/35527fccb9085617263c286faa888399/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/8a9a43690317f94f548825c09c4233a4/AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/8a9a43690317f94f548825c09c4233a4/AndroidManifest.xml:26:9-28:38
+	android:value
+		ADDED from [com.android.support:appcompat-v7:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/bbbb88b6c2271363deacfb5343bb9258/AndroidManifest.xml:28:13-35
+	android:name
+		ADDED from [com.android.support:appcompat-v7:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/bbbb88b6c2271363deacfb5343bb9258/AndroidManifest.xml:27:13-51
+meta-data#android.arch.lifecycle.VERSION
+ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/495ef2c78b16c538ef58900ff5264702/AndroidManifest.xml:25:9-27:47
+	android:value
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/495ef2c78b16c538ef58900ff5264702/AndroidManifest.xml:27:13-44
+	android:name
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/495ef2c78b16c538ef58900ff5264702/AndroidManifest.xml:26:13-58
