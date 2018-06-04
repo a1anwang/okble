@@ -7,7 +7,10 @@
 ### Peripheral
   Peripheral主要理解为硬件外设，提供数据用的。在开发APP时很少关心这个，因为大家都是直接拿着硬件来调试的。在android5.0时，增加了Peripheral相关的API， 意味着可以让android设备模拟成外设，作为Peripheral来提供数据。这样，当我们没有硬件设备的时候，可以拿2台手机进行BLE开发，很方便。还可以扩展很多其他功能，比如使用BLE实现蓝牙聊天(google sample里面有经典蓝牙的聊天demo)，还可以把手机模拟成iBeacon等等。
 ### okble将会让我们轻松实现上面提到的功能
- 
+## Demo
+[下载 APK-Demo](https://github.com/a1anwang/okble/raw/master/app/build/outputs/apk/debug/app-debug.apk)
+
+![](https://github.com/a1anwang/okble/blob/master/demo_qr.png)
 
 ## 功能特点:
  - 简单明了，一个OKBLEDevice即可完成所有通讯操作
