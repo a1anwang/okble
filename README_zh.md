@@ -1,7 +1,6 @@
 # okble: 简单易用的 Android BLE library
 ## 简介
   BLE有Center(简单理解为客户端)和Peripheral(服务端)2个角色。我们android开发常用的就是客户端角色，使用API连接硬件外设(服务端)，然后进行相关的数据交互，如读取手环上的心率电量等数据，控制蓝牙灯的开关。
-    okble功能也包含了
 ### Center
   Center主要可以分为 扫描->连接->通讯 三块内容. 通讯主要包含read，write，notify/indicate。read就是读取设备上的数据(如读取外设电量)，write就是发送数据(如发送关闭命令关闭蓝牙灯)，notify/indicate 字面意思就是通知/指示, 是用来接收设备主动上报的数据的(如手环可以每隔1秒就告诉APP心率值, 然后APP展现一个心率谱图)，这样就达成了双向通讯。
 ### Peripheral
