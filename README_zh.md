@@ -11,7 +11,8 @@
 [下载 APK-Demo](https://github.com/a1anwang/okble/raw/master/app/build/outputs/apk/debug/app-debug.apk)
 
 ![](https://github.com/a1anwang/okble/blob/master/demo_qr.png)
-
+  
+  ![](https://github.com/a1anwang/okble/raw/master/demo.gif)
 ## 功能特点:
  - 简单明了，一个OKBLEDevice即可完成所有通讯操作
  - 顺序执行通讯操作，BLE内部是不允许同时执行多次通讯的，okble使用队列让操作排队，先进先执行，保证所有的操作都能执行
