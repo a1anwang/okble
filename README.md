@@ -44,32 +44,32 @@ implementation 'com.github.a1anwang:okble:1.0.3'
 OKBLEScanManager scanManager=new OKBLEScanManager(this);
 scanManager.setScanCallBack(scanCallBack);
 DeviceScanCallBack scanCallBack=new DeviceScanCallBack() {
-@Override
-public void onBLEDeviceScan(BLEScanResult device, int rssi) {
-LogUtils.e(" scan:"+device.toString());
-}
+  @Override
+  public void onBLEDeviceScan(BLEScanResult device, int rssi) {
+      LogUtils.e(" scan:"+device.toString());
+  }
 
-@Override
-public void onFailed(int code) {
-switch (code){
-case DeviceScanCallBack.SCAN_FAILED_BLE_NOT_SUPPORT:
-Toast.makeText(mContext,"the android deice do not support BLE",Toast.LENGTH_SHORT).show();
-break;
-case DeviceScanCallBack.SCAN_FAILED_BLUETOOTH_DISABLE:
-Toast.makeText(mContext,"please enable the bluetooth",Toast.LENGTH_SHORT).show();
-break;
-case DeviceScanCallBack.SCAN_FAILED_LOCATION_PERMISSION_DISABLE:
-Toast.makeText(mContext,"Location Authority has been rejected.",Toast.LENGTH_SHORT).show();
-break;
-case DeviceScanCallBack.SCAN_FAILED_LOCATION_PERMISSION_DISABLE_FOREVER:
-Toast.makeText(mContext,"Location Authority has been rejected forever.",Toast.LENGTH_SHORT).show();
-break;
-}
-}
+  @Override
+  public void onFailed(int code) {
+    switch (code){
+      case DeviceScanCallBack.SCAN_FAILED_BLE_NOT_SUPPORT:
+      Toast.makeText(mContext,"the android deice do not support BLE",Toast.LENGTH_SHORT).show();
+      break;
+      case DeviceScanCallBack.SCAN_FAILED_BLUETOOTH_DISABLE:
+      Toast.makeText(mContext,"please enable the bluetooth",Toast.LENGTH_SHORT).show();
+      break;
+      case DeviceScanCallBack.SCAN_FAILED_LOCATION_PERMISSION_DISABLE:
+      Toast.makeText(mContext,"Location Authority has been rejected.",Toast.LENGTH_SHORT).show();
+      break;
+      case DeviceScanCallBack.SCAN_FAILED_LOCATION_PERMISSION_DISABLE_FOREVER:
+      Toast.makeText(mContext,"Location Authority has been rejected forever.",Toast.LENGTH_SHORT).show();
+      break;
+    }
+  }
 
-@Override
-public void onStartSuccess() {
-}
+  @Override
+  public void onStartSuccess() {
+  }
 };
 ```
 #### Connect to Peripher
@@ -92,92 +92,92 @@ okbleDevice.remove(); //remove will clear the connection completely; if you want
 ###### Read
 ```
 okbleDevice.addReadOperation("feea", new BLEOperation.ReadOperationListener() {
-@Override
-public void onReadValue(final byte[] value) {
-runOnUiThread(new Runnable() {
-@Override
-public void run() {
-addLog("onReadValue:"+ OKBLEDataUtils.BytesToHexString(value)+" ("+new String(value)+")");
-}
-});
-}
+  @Override
+  public void onReadValue(final byte[] value) {
+  runOnUiThread(new Runnable() {
+    @Override
+    public void run() {
+        addLog("onReadValue:"+ OKBLEDataUtils.BytesToHexString(value)+" ("+new String(value)+")");
+      }
+    });
+  }
 
-@Override
-public void onFail(int code, final String errMsg) {
-runOnUiThread(new Runnable() {
-@Override
-public void run() {
-addLog("read onFail:"+ errMsg);
-}
-});
-}
+  @Override
+  public void onFail(int code, final String errMsg) {
+    runOnUiThread(new Runnable() {
+      @Override
+      public void run() {
+        addLog("read onFail:"+ errMsg);
+      }
+    });
+  }
 
-@Override
-public void onExecuteSuccess(BLEOperation.OperationType type) {
+  @Override
+  public void onExecuteSuccess(BLEOperation.OperationType type) {
 
-}
+  }
 });
 ```
 ###### Write
 ```
 okbleDevice.addWriteOperation("feea",value,new BLEOperation.WriteOperationListener() {
-@Override
-public void onWriteValue(final byte[] byteValue) {
-runOnUiThread(new Runnable() {
-@Override
-public void run() {
-addLog(" onWriteValue:"+value);
-}
-});
-}
+  @Override
+  public void onWriteValue(final byte[] byteValue) {
+    runOnUiThread(new Runnable() {
+      @Override
+      public void run() {
+        addLog(" onWriteValue:"+value);
+      }
+    });
+  }
 
-@Override
-public void onFail(int code, final String errMsg) {
-runOnUiThread(new Runnable() {
-@Override
-public void run() {
-addLog("write onFail:"+errMsg);
-}
-});
-}
+  @Override
+  public void onFail(int code, final String errMsg) {
+    runOnUiThread(new Runnable() {
+      @Override
+      public void run() {
+        addLog("write onFail:"+errMsg);
+      }
+    });
+  }
 
-@Override
-public void onExecuteSuccess(BLEOperation.OperationType type) {
-runOnUiThread(new Runnable() {
-@Override
-public void run() {
-addLog("write value execute success");
-}
-});
-}
-});
+  @Override
+  public void onExecuteSuccess(BLEOperation.OperationType type) {
+    runOnUiThread(new Runnable() {
+      @Override
+      public void run() {
+        addLog("write value execute success");
+      }
+      });
+    }
+  });
 ```
 ###### Notify/Indicate
 ```
 okbleDevice.addNotifyOrIndicateOperation("feea", true, new BLEOperation.NotifyOrIndicateOperationListener() {
-@Override
-public void onNotifyOrIndicateComplete() {
-runOnUiThread(new Runnable() {
-@Override
-public void run() {
-addLog("onNotifyOrIndicateComplete");
-}
-});
-}
+  @Override
+  public void onNotifyOrIndicateComplete() {
+    runOnUiThread(new Runnable() {
+      @Override
+      public void run() {
+        addLog("onNotifyOrIndicateComplete");
+      }
+    });
+  }
 
-@Override
-public void onFail(int code, final String errMsg) {
-runOnUiThread(new Runnable() {
-@Override
-public void run() {
-addLog("NotifyOrIndicate onFail:"+ errMsg);
-}
-});
-}
+  @Override
+  public void onFail(int code, final String errMsg) {
+    runOnUiThread(new Runnable() {
+      @Override
+      public void run() {
+        addLog("NotifyOrIndicate onFail:"+ errMsg);
+      }
+    });
+  }
 
-@Override
-public void onExecuteSuccess(BLEOperation.OperationType type) {
-}
+  @Override
+  public void onExecuteSuccess(BLEOperation.OperationType type) {
+  }
 });
 ```
 ##### Write big data(for example:OAD)
@@ -195,27 +195,27 @@ for (int i=0;i<blockCount;i++){
 byte[] value=new byte[blockSize];
 System.arraycopy(oadValues,i*blockSize,value,0,blockSize);
 okbleDevice.addWriteOperation(OAD_WRITE_UUID, value, new OKBLEOperation.WriteOperationListener() {
-@Override
-public void onWriteValue(byte[] value) {
-percent++;
-float progress=percent*1.0f/blockCount;
-int leftSeconds= (int) ((sendInterval*blockCount)/1000*(1-progress));
-Log.e("TAG"," OAD progress:"+progress+" time left:"+leftSeconds +" seconds.");
+  @Override
+  public void onWriteValue(byte[] value) {
+    percent++;
+    float progress=percent*1.0f/blockCount;
+    int leftSeconds= (int) ((sendInterval*blockCount)/1000*(1-progress));
+    Log.e("TAG"," OAD progress:"+progress+" time left:"+leftSeconds +" seconds.");
 
-}
+  }
 
-@Override
-public void onFail(int code, String errMsg) {
-Log.e("TAG"," OAD failed");
-okbleDevice.clearOperations();
-break;
-}
+  @Override
+  public void onFail(int code, String errMsg) {
+    Log.e("TAG"," OAD failed");
+    okbleDevice.clearOperations();
+    break;
+  }
 
-@Override
-public void onExecuteSuccess(OKBLEOperation.OperationType type) {
+  @Override
+  public void onExecuteSuccess(OKBLEOperation.OperationType type) {
 
-}
-});
+  }
+ });
 }
 ```
 #### APP simulates a Peripheral (scanable and connectable)
@@ -230,47 +230,44 @@ OKBLEAdvertiseSettings settings= new OKBLEAdvertiseSettings.Builder().setConnect
 OKBLEAdvertiseData  data=new OKBLEAdvertiseData.Builder().setIncludeDeviceName(true).build();
 //start advertising
 okbleAdvertiseManager.startAdvertising(settings, data, new OKBLEAdvertiseCallback() {
-@Override
-public void onStartSuccess() {
-LogUtils.e("---onStartSuccess ---");
-Toast.makeText(mContext,"Advertising Success",Toast.LENGTH_SHORT).show();
-configServer();//config service 和characteristic
-}
-@Override
-public void onStartFailure(int errorCode, String errMsg) {
-LogUtils.e("---onStartFailure errMsg:"+errMsg);
-Toast.makeText(mContext,"Advertising Failed:"+errMsg,Toast.LENGTH_LONG).show();
-
-}
+    @Override
+    public void onStartSuccess() {
+      LogUtils.e("---onStartSuccess ---");
+      Toast.makeText(mContext,"Advertising Success",Toast.LENGTH_SHORT).show();
+      configServer();//config service 和characteristic
+    }
+    @Override
+    public void onStartFailure(int errorCode, String errMsg) {
+      LogUtils.e("---onStartFailure errMsg:"+errMsg);
+      Toast.makeText(mContext,"Advertising Failed:"+errMsg,Toast.LENGTH_LONG).show();
+    }
 });
 private void configServer(){
-OKBLEServiceModel serviceModel=new OKBLEServiceModel(CommonUUIDUtils.createCompleteUUIDByShortUUID("fff0"));
+  OKBLEServiceModel serviceModel=new OKBLEServiceModel(CommonUUIDUtils.createCompleteUUIDByShortUUID("fff0"));
 
-OKBLECharacteristicModel characteristicModel=new OKBLECharacteristicModel(CommonUUIDUtils.createCompleteUUIDByShortUUID("fff1"));
-characteristicModel.setCanWrite(true);
-characteristicModel.setCanNotify(true);
-characteristicModel.setCanRead(true);
+  OKBLECharacteristicModel characteristicModel=new OKBLECharacteristicModel(CommonUUIDUtils.createCompleteUUIDByShortUUID("fff1"));
+  characteristicModel.setCanWrite(true);
+  characteristicModel.setCanNotify(true);
+  characteristicModel.setCanRead(true);
 
-OKBLECharacteristicModel characteristicModel_2=new  OKBLECharacteristicModel(CommonUUIDUtils.createCompleteUUIDByShortUUID("fff2"));
-characteristicModel_2.setCanWriteNoResponse(true);
+  OKBLECharacteristicModel characteristicModel_2=new  OKBLECharacteristicModel(CommonUUIDUtils.createCompleteUUIDByShortUUID("fff2"));
+  characteristicModel_2.setCanWriteNoResponse(true);
 
-List<OKBLECharacteristicModel> characteristicModels=new ArrayList<>();
-characteristicModels.add(characteristicModel);
-characteristicModels.add(characteristicModel_2);
+  List<OKBLECharacteristicModel> characteristicModels=new ArrayList<>();
+  characteristicModels.add(characteristicModel);
+  characteristicModels.add(characteristicModel_2);
 
-serverDevice.addCharacteristic(characteristicModels, serviceModel, new OKBLEServerOperation.BLEServerOperationListener() {
-@Override
-public void onAddCharacteristicFailed(int errorCode, String errorMsg) {
-LogUtils.e("onAddCharacteristicFailed:"+errorMsg );
-}
+  serverDevice.addCharacteristic(characteristicModels, serviceModel, new OKBLEServerOperation.BLEServerOperationListener() {
+      @Override
+    public void onAddCharacteristicFailed(int errorCode, String errorMsg) {
+      LogUtils.e("onAddCharacteristicFailed:"+errorMsg );
+    }
 
-@Override
-public void onAddCharacteristicSuccess() {
-LogUtils.e("onAddCharacteristicSuccess");
-
-}
-});
-
+    @Override
+    public void onAddCharacteristicSuccess() {
+      LogUtils.e("onAddCharacteristicSuccess");
+    }
+  });
 }
 ```
 #### Scan iBeacon
@@ -279,10 +276,10 @@ OKBLEBeaconScanManager scanManager;
 scanManager=new OKBLEBeaconScanManager(this);
 scanManager.setBeaconScanCallback(scanCallBack);
 OKBLEBeaconScanManager.OKBLEBeaconScanCallback scanCallBack=new OKBLEBeaconScanManager.OKBLEBeaconScanCallback() {
-@Override
-public void onScanBeacon(OKBLEBeacon beacon) {
-Log.e("TAG"," scan beacon:"+beacon.toString());
-}
+    @Override
+    public void onScanBeacon(OKBLEBeacon beacon) {
+      Log.e("TAG"," scan beacon:"+beacon.toString());
+    }
 };
 ```
 #### APP simulates an iBeacon
@@ -297,15 +294,15 @@ int minor=2;
 beBeaconManager.startIBeacon(uuid,major,minor);
 
 OKBLEBeBeaconManager.OKBLEStartBeaconListener startBeaconListener=new OKBLEBeBeaconManager.OKBLEStartBeaconListener() {
-@Override
-public void onStartSuccess() {
-Toast.makeText(mContext,"start success",Toast.LENGTH_SHORT).show();
-}
+  @Override
+  public void onStartSuccess() {
+    Toast.makeText(mContext,"start success",Toast.LENGTH_SHORT).show();
+  }
 
-@Override
-public void onStartFailure(String errMsg) {
-Toast.makeText(mContext,"start failed:"+errMsg,Toast.LENGTH_SHORT).show();
-}
+  @Override
+  public void onStartFailure(String errMsg) {
+    Toast.makeText(mContext,"start failed:"+errMsg,Toast.LENGTH_SHORT).show();
+  }
 };
 ```
 #### Monitor enter/exit iBeacon region
