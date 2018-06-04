@@ -6,3 +6,5 @@
 [Download APK-Demo](https://github.com/a1anwang/okble/raw/master/app/build/outputs/apk/debug/app-debug.apk)
 
 ![](https://github.com/a1anwang/okble/blob/master/demo_qr.png)
+![](https://github.com/a1anwang/okble/raw/master/demo.gif)
+
