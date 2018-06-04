@@ -1,7 +1,14 @@
 # okble: An easy-to-use BLE library for Android
 
 ## [中文](https://github.com/a1anwang/okble/blob/master/README_zh.md) | English
+## Summary
+  BLE has two parts:Center & Peripheral. When we develop an android app,the most used is Center. Using Center-API to connect with Peripheral, and then communicate each other. For example, app can read battery level of a wristband, also app can control the bluetooth-light on/off.
+### Center
+  Center usually has three parts:Scan, Connect, Communicate. Communicate means swap data with Peripheral using method like Read, Write, Notify/Indicate. We use Read to get the data from Peripheral(for example, read battery level of a wristband). We use Write to send data to Peripheral(for example, send a turn-off command to turn the bluetooth-light off).  Notify/Indicate can help us receive the data which Peripheral uploaded(for example, the wristband uploads heart rate value every second, app can show a heart rate spectrum by receiving the value continuously). As we can see, it makes a bidirectional communication.
 
+### Peripheral
+  We could think that Peripheral is a hardware device, it works to provide data. We use little in developing android apps. In android5.0, google add some APIs about Peripheral so that we can make an android device to be a Peripheral. We can use two android phones to develop BLE app nicely. So easy! Mom doesn't have to worry about no Peripheral any more。Using Peripheral API, we can do a lot, for example chatting by BLE(there is a chatting demo using Classic Bluetooth in google samples), change an android device to an iBeacon.
+### okble help us achieve the above functions easily
 ## Demo
 [Download APK-Demo](https://github.com/a1anwang/okble/raw/master/app/build/outputs/apk/debug/app-debug.apk)
 
@@ -9,21 +16,20 @@
   
   ![](https://github.com/a1anwang/okble/raw/master/demo.gif)
 
-## 功能特点:
-- 简单明了，一个OKBLEDevice即可完成所有通讯操作
-- 顺序执行通讯操作，可以在任何地方任何时机调用read/write/notify/indicate等通讯方法，不用担心命令丢失、命令不执行。BLE内部是不允许同时执行多次通讯的，okble使用队列让操作排队，先进先执行，保证所有的操作都能执行，可自定义操作超时时间
-- 动态权限集成，target sdk在23(android6.0)及以上时, 扫描是需要定位权限的，okble已集成，会有回调告知是否已授权
-- 向下兼容到API 18(android4.3)，在android5.0中google变更了扫描api，okble依然使用的是4.3的api，只为了兼容更多的手机
-- 双回调，处理灵活:定义了统一的listener来监听设备的状态，也可以为每一个蓝牙通讯操作设置单独的监听，方便页面多的情况下使用
-- 自动重连:断开后可以实现自动连接，直到连接成功
-- 自动识别write type，自动识别notify or indicate
-- 多设备连接管理简单
-- 支持APP模拟成外设，支持APP模拟成iBeacon
-- 支持扫描识别iBeacon，支持iBeacon区域的进入和退出检测
+## Features
+- Clear and easy to use, for all of BLE communications you just need an OKBLEDevice.
+- OKBLE use a queue to manager BLE operation, you can read/write/notify/indicate every where and every time, you can diy operation overtime.
+- Dynamic permissions included, there is a scan callback showing whether the location permission is granted  in target sdk 23 or above.
+- minimum support API 18(android4.3)
+- Double listeners，more smart: a global listener to monitor Peripheral status, a solely listener for each BLE operation.
+- Auto reconnect: the auto-reconnect works continuously until connect successfully.
+- Easy use for multi-Peripheral
+- Support simulating a Peripheral, Support simulating an iBeacon.
+- Support scanning iBeacon, Support Monitoring enter/exit iBeacon region.
 
 
-## 立即开始
-#### 添加依赖
+## Usage
+#### Add a gradle dependency
 ```
 repositories {
 jcenter()
@@ -33,7 +39,7 @@ dependencies {
 implementation 'com.github.a1anwang:okble:1.0.3'
 }
 ```
-#### 扫描外设
+#### Scan Peripheral
 ```
 OKBLEScanManager scanManager=new OKBLEScanManager(this);
 scanManager.setScanCallBack(scanCallBack);
@@ -47,16 +53,16 @@ LogUtils.e(" scan:"+device.toString());
 public void onFailed(int code) {
 switch (code){
 case DeviceScanCallBack.SCAN_FAILED_BLE_NOT_SUPPORT:
-Toast.makeText(mContext,"该设备不支持BLE",Toast.LENGTH_SHORT).show();
+Toast.makeText(mContext,"the android deice do not support BLE",Toast.LENGTH_SHORT).show();
 break;
 case DeviceScanCallBack.SCAN_FAILED_BLUETOOTH_DISABLE:
-Toast.makeText(mContext,"请打开手机蓝牙",Toast.LENGTH_SHORT).show();
+Toast.makeText(mContext,"please enable the bluetooth",Toast.LENGTH_SHORT).show();
 break;
 case DeviceScanCallBack.SCAN_FAILED_LOCATION_PERMISSION_DISABLE:
-Toast.makeText(mContext,"请授予位置权限以扫描周围的蓝牙设备",Toast.LENGTH_SHORT).show();
+Toast.makeText(mContext,"Location Authority has been rejected.",Toast.LENGTH_SHORT).show();
 break;
 case DeviceScanCallBack.SCAN_FAILED_LOCATION_PERMISSION_DISABLE_FOREVER:
-Toast.makeText(mContext,"位置权限被您永久拒绝,请在设置里授予位置权限以扫描周围的蓝牙设备",Toast.LENGTH_SHORT).show();
+Toast.makeText(mContext,"Location Authority has been rejected forever.",Toast.LENGTH_SHORT).show();
 break;
 }
 }
@@ -66,23 +72,23 @@ public void onStartSuccess() {
 }
 };
 ```
-#### 连接外设
+#### Connect to Peripher
 ```
 OKBLEDevice okbleDevice=new OKBLEDeviceImp(mContext,bleScanResult);
 //okbleDevice=new OKBLEDeviceImp(mContext);
 //okbleDevice.setBluetoothDevice(mBluetoothDevice);
 okbleDevice.addDeviceListener(this);
-okbleDevice.connect(true);//true表示连接断开后OKBLE的会自动重连
+okbleDevice.connect(true);//true means OKBLE will auto reconnect to the Peripheral if the connection is disconnected.
 ```
-#### APP主动断开连接
+#### APP disconnect forwardly
 ```
-okbleDevice.disConnect(false); //false表示断开后不需要OKBLE的自动重连; disConnect断开后,可以使用okbleDevice.connect()重新连接回来
+okbleDevice.disConnect(false); //false means don't need the auto-reconnect function provided by OKBLE after disconnect;after disconnect, you can use okbleDevice.connect() to reconnect.
 ```
-#### APP清除连接
+#### APP clear the connection
 ```
-okbleDevice.remove(); //remove会清除连接的外设信息; 重新连接前需要重新调用setBleScanResult/setBluetoothDevice 来设置外设信息
+okbleDevice.remove(); //remove will clear the connection completely; if you want to reconnect, make sure use setBleScanResult/setBluetoothDevice to set Peripheral before okbleDevice.connect();
 ```
-#### 数据通讯
+#### Communicate
 ###### Read
 ```
 okbleDevice.addReadOperation("feea", new BLEOperation.ReadOperationListener() {
@@ -174,16 +180,16 @@ public void onExecuteSuccess(BLEOperation.OperationType type) {
 }
 });
 ```
-##### 发送大数据(应用场景1:OAD/空中升级)
-OAD原理其实就是把固件(如.bin文件)加载成byte[]数组,然后把byte[]数据分段发送给设备,以下代码演示了主要分段部分,OAD细节不展示(如每个包的整合),根据需求会有变化
+##### Write big data(for example:OAD)
+Exactly, OAD's principle is load byte[] from firmware file(like .bin), then send byte[] segmentations to Peripheral. The following code shows how to send byte[] segmentations, some details is hidden(like how to package each segmentation),because different products have different demands.
 ```
-final int sendInterval=50;//每个包之间的发送间隔,有些手机会因为发送太快而导致蓝牙奔溃,OAD失败率很高,可以适当增大,如80-100;
+final int sendInterval=50;//interval of each package; you may set 80-100 for some android phones, beacuse too fast ,too higher failure rate;
 okbleDevice.setOperationInterval(sendInterval);
 
 byte[] oadValues=loadBytesFromFile(filePath);
 
-final int blockSize=20;//表示一个包发送20个字节
-final int blockCount= (int) Math.ceil(oadValues.length*1.0f/blockSize);//发送的总包数
+final int blockSize=20;//one package contains 20 bytes
+final int blockCount= (int) Math.ceil(oadValues.length*1.0f/blockSize);//the total package count
 percent=0;
 for (int i=0;i<blockCount;i++){
 byte[] value=new byte[blockSize];
@@ -194,7 +200,7 @@ public void onWriteValue(byte[] value) {
 percent++;
 float progress=percent*1.0f/blockCount;
 int leftSeconds= (int) ((sendInterval*blockCount)/1000*(1-progress));
-Log.e("TAG"," OAD 进度:"+progress+" 剩余时间:"+leftSeconds +"秒");
+Log.e("TAG"," OAD progress:"+progress+" time left:"+leftSeconds +" seconds.");
 
 }
 
@@ -212,7 +218,7 @@ public void onExecuteSuccess(OKBLEOperation.OperationType type) {
 });
 }
 ```
-#### APP模拟成外设(可被扫描并连接)
+#### APP simulates a Peripheral (scanable and connectable)
 ```
 OKBLEAdvertiseManager okbleAdvertiseManager;
 OKBLEServerDevice serverDevice;
@@ -222,13 +228,13 @@ serverDevice=new OKBLEServerDeviceImp(this);
 
 OKBLEAdvertiseSettings settings= new OKBLEAdvertiseSettings.Builder().setConnectable(true).build();
 OKBLEAdvertiseData  data=new OKBLEAdvertiseData.Builder().setIncludeDeviceName(true).build();
-//开启广播
+//start advertising
 okbleAdvertiseManager.startAdvertising(settings, data, new OKBLEAdvertiseCallback() {
 @Override
 public void onStartSuccess() {
 LogUtils.e("---onStartSuccess ---");
 Toast.makeText(mContext,"Advertising Success",Toast.LENGTH_SHORT).show();
-configServer();//配置service 和characteristic
+configServer();//config service 和characteristic
 }
 @Override
 public void onStartFailure(int errorCode, String errMsg) {
@@ -267,7 +273,7 @@ LogUtils.e("onAddCharacteristicSuccess");
 
 }
 ```
-#### 扫描iBeacon设备
+#### Scan iBeacon
 ```
 OKBLEBeaconScanManager scanManager;
 scanManager=new OKBLEBeaconScanManager(this);
@@ -279,7 +285,7 @@ Log.e("TAG"," scan beacon:"+beacon.toString());
 }
 };
 ```
-#### APP模拟成iBeacon
+#### APP simulates an iBeacon
 ```
 OKBLEBeBeaconManager beBeaconManager;
 beBeaconManager=new OKBLEBeBeaconManager(this);
@@ -302,9 +308,9 @@ Toast.makeText(mContext,"start failed:"+errMsg,Toast.LENGTH_SHORT).show();
 }
 };
 ```
-#### 检测进入、退出iBeacon区域
+#### Monitor enter/exit iBeacon region
 ```
-尽请期待
+Coming soon ...
 ```
 
 
