@@ -117,24 +117,24 @@ public class OKBLEServerDeviceImp implements  OKBLEServerDevice{
         int properties=0;
         int permissions=0;
         if(characteristicModel.isCanIndicate()){
-            properties+=BluetoothGattCharacteristic.PROPERTY_INDICATE;
+            properties|=BluetoothGattCharacteristic.PROPERTY_INDICATE;
         }
         if(characteristicModel.isCanNotify()){
-            properties+=BluetoothGattCharacteristic.PROPERTY_NOTIFY;
+            properties|=BluetoothGattCharacteristic.PROPERTY_NOTIFY;
         }
         if(characteristicModel.isCanRead()){
-            properties+=BluetoothGattCharacteristic.PROPERTY_READ;
-            permissions+=BluetoothGattCharacteristic.PERMISSION_READ;
+            properties|=BluetoothGattCharacteristic.PROPERTY_READ;
+            permissions|=BluetoothGattCharacteristic.PERMISSION_READ;
         }
         if(characteristicModel.isCanWrite()){
-            properties+=BluetoothGattCharacteristic.PROPERTY_WRITE;
+            properties|=BluetoothGattCharacteristic.PROPERTY_WRITE;
         }
         if(characteristicModel.isCanWriteNoResponse()){
-            properties+=BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE;
+            properties|=BluetoothGattCharacteristic.PROPERTY_WRITE_NO_RESPONSE;
         }
 
         if(characteristicModel.isCanWrite()||characteristicModel.isCanWriteNoResponse()){
-            permissions+=BluetoothGattCharacteristic.PERMISSION_WRITE;
+            permissions|=BluetoothGattCharacteristic.PERMISSION_WRITE;
         }
 
         BluetoothGattCharacteristic characteristic = new BluetoothGattCharacteristic(

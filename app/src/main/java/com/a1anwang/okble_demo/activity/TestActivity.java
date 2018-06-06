@@ -38,7 +38,6 @@ public class TestActivity extends BaseActivity{
     @Override
     public void afterInitView() {
 
-
     }
 
     @Override
