@@ -146,14 +146,13 @@ public class AdvertiseActivity extends BaseActivity{
     }
 
     private void addServiceUUID(String value) {
-        int textHeight= (int) (getResources().getDisplayMetrics().density*30);
 
         final LinearLayout linelayout_service_uuid=findViewById(R.id.linelayout_service_uuid);
 
         final TextView textView=new TextView(mContext);
         textView.setText(value);
 
-        linelayout_service_uuid.addView(textView,0,new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT,textHeight));
+        linelayout_service_uuid.addView(textView,0,new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT));
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,14 +161,12 @@ public class AdvertiseActivity extends BaseActivity{
         });
     }
     private void addServiceData(String uuid,String value) {
-        int textHeight= (int) (getResources().getDisplayMetrics().density*30);
 
         final LinearLayout linelayout_service_data=findViewById(R.id.linelayout_service_data);
 
         final TextView textView=new TextView(mContext);
         textView.setText(uuid+":"+value);
-
-        linelayout_service_data.addView(textView,0,new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT,textHeight ));
+        linelayout_service_data.addView(textView,0,new LinearLayout.LayoutParams( LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT ));
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

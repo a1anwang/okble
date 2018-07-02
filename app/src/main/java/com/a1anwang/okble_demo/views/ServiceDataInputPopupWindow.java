@@ -4,12 +4,15 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.a1anwang.okble.common.OKBLEDataUtils;
 import com.a1anwang.okble_demo.R;
 import com.example.zhouwei.library.CustomPopWindow;
+
+import java.util.UUID;
 
 /**
  * Created by a1anwang.com on 2018/5/25.
@@ -23,6 +26,8 @@ public class ServiceDataInputPopupWindow implements View.OnClickListener {
 
     EditText tv_uuid;
     EditText tv_data;
+
+    Button btn_random;
 
     View layout_uuid;
     View layout_data;
@@ -84,6 +89,9 @@ public class ServiceDataInputPopupWindow implements View.OnClickListener {
         view.findViewById(R.id.btn_done).setOnClickListener(this);
         view.findViewById(R.id.btn_back).setOnClickListener(this);
         view.findViewById(R.id.btn_line).setOnClickListener(this);
+        btn_random= view.findViewById(R.id.btn_random);
+        btn_random.setOnClickListener(this);
+
 
     }
 
@@ -106,11 +114,13 @@ public class ServiceDataInputPopupWindow implements View.OnClickListener {
                 inUUID=true;
                 layout_uuid.setBackgroundResource(R.drawable.bg_edit_focus);
                 layout_data.setBackground(null);
+                btn_random.setVisibility(View.VISIBLE);
                 break;
             case R.id.layout_data:
                 inUUID=false;
                 layout_data.setBackgroundResource(R.drawable.bg_edit_focus);
                 layout_uuid.setBackground(null);
+                btn_random.setVisibility(View.GONE);
                 break;
             case R.id.btn_0:
                 if(inUUID){
@@ -269,6 +279,9 @@ public class ServiceDataInputPopupWindow implements View.OnClickListener {
                 tv_uuid.setText("");
                 tv_data.setText("");
                 popWindow.dissmiss();
+                break;
+            case R.id.btn_random:
+                tv_uuid.setText(UUID.randomUUID().toString().toUpperCase());
                 break;
         }
     }

@@ -1,5 +1,6 @@
 package com.a1anwang.okble.client.scan;
 
+import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
@@ -125,7 +126,7 @@ private String TAG="OKBLEScanManager";
         }
 
 
-        boolean isGranted=  PermissionUtils.isGranted(PermissionConstants.LOCATION);
+        boolean isGranted=  PermissionUtils.isGranted(Manifest.permission.ACCESS_FINE_LOCATION)||PermissionUtils.isGranted(Manifest.permission.ACCESS_COARSE_LOCATION);
         LogUtils.e("isGranted:"+isGranted);
         if(isGranted){
             if(deviceScanCallBack!=null){
@@ -146,7 +147,7 @@ private String TAG="OKBLEScanManager";
                 @Override
                 public void onDenied(List<String> permissionsDeniedForever, List<String> permissionsDenied) {
                     //权限被禁止
-                    if(permissionsDeniedForever.contains(PermissionConstants.LOCATION)){
+                    if(!permissionsDeniedForever.isEmpty()){
                         if(deviceScanCallBack!=null){
                             deviceScanCallBack.onFailed(DeviceScanCallBack.SCAN_FAILED_LOCATION_PERMISSION_DISABLE_FOREVER);
                         }
@@ -158,8 +159,6 @@ private String TAG="OKBLEScanManager";
                 }
             }).request();
         }
-
-
     }
 
     private void doScan(){

@@ -155,10 +155,11 @@
                             android:id="@+id/tv_company_id"
                             android:layout_width="match_parent"
                             android:inputType="number"
-                            android:hint="0-65535"
-                            android:layout_height="wrap_content" />
+                            android:background="@drawable/bg_edit_focus"
+                            android:layout_height="30dp" />
                     </LinearLayout>
                     <LinearLayout
+                        android:layout_marginTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="60dp">
@@ -171,7 +172,8 @@
                         <TextView
                             android:id="@+id/tv_company_value"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:background="@drawable/bg_edit_focus"
+                            android:layout_height="30dp" />
                     </LinearLayout>
 
                 </LinearLayout>

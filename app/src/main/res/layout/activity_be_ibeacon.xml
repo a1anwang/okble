@@ -26,7 +26,9 @@
             <EditText
                 android:id="@+id/edit_uuid"
                 android:enabled="false"
+                android:paddingLeft="4dp"
                 android:layout_width="match_parent"
+                android:background="@drawable/bg_edit_focus"
                 android:layout_height="wrap_content" />
             <View
                 android:id="@+id/layout_uuid"
@@ -52,6 +54,8 @@
                 android:id="@+id/edit_major"
                 android:layout_width="match_parent"
                 android:hint="0-65535"
+                android:paddingLeft="4dp"
+                android:background="@drawable/bg_edit_focus"
                 android:inputType="number"
                 android:layout_height="wrap_content" />
     </LinearLayout>
@@ -71,7 +75,9 @@
             android:id="@+id/edit_minor"
             android:layout_width="match_parent"
             android:hint="0-65535"
+            android:paddingLeft="4dp"
             android:inputType="number"
+            android:background="@drawable/bg_edit_focus"
             android:layout_height="wrap_content" />
     </LinearLayout>
 

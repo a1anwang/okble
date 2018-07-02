@@ -10,6 +10,8 @@ import com.a1anwang.okble.common.OKBLEDataUtils;
 import com.a1anwang.okble_demo.R;
 import com.example.zhouwei.library.CustomPopWindow;
 
+import java.util.UUID;
+
 /**
  * Created by a1anwang.com on 2018/5/25.
  */
@@ -66,6 +68,8 @@ public class CompleteUUIDInputPopupWindow implements View.OnClickListener {
         view.findViewById(R.id.btn_done).setOnClickListener(this);
         view.findViewById(R.id.btn_back).setOnClickListener(this);
         view.findViewById(R.id.btn_line).setOnClickListener(this);
+        view.findViewById(R.id.btn_random).setOnClickListener(this);
+
 
     }
 
@@ -157,6 +161,10 @@ public class CompleteUUIDInputPopupWindow implements View.OnClickListener {
             case R.id.btn_back:
                 tv_value.setText("");
                 popWindow.dissmiss();
+                break;
+            case R.id.btn_random:
+
+                tv_value.setText(UUID.randomUUID().toString().toUpperCase());
                 break;
         }
     }
