@@ -29,6 +29,8 @@ public interface OKBLEDevice {
      */
     String getDeviceTAG();
 
+    BluetoothDevice getBluetoothDevice();
+
     void addDeviceListener(OKBLEDeviceListener OKBLEDeviceListener);
     void removeDeviceListener(OKBLEDeviceListener OKBLEDeviceListener);
     void clearDeviceListener();

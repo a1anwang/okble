@@ -59,10 +59,7 @@ public class MyDialog extends Dialog {
 					btn_right.setVisibility(View.GONE);
 					line_vertical.setVisibility(View.GONE);
 				}
-
 			}
-
-		
 		this.setContentView(view);
 	}
 

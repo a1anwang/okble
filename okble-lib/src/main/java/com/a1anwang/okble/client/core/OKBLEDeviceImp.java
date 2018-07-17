@@ -136,6 +136,11 @@ public class OKBLEDeviceImp implements OKBLEDevice {
         return deviceTAG;
     }
 
+    @Override
+    public BluetoothDevice getBluetoothDevice() {
+        return this.bluetoothDevice;
+    }
+
 
     public OKBLEDeviceImp(Context context) {
         this.context = context;

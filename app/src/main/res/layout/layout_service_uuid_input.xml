@@ -244,7 +244,7 @@
             android:layout_weight="1"
             android:layout_height="40dp"
             android:background="@drawable/bg_hex_button"
-            android:text="返回"
+            android:text="@string/back"
             android:textSize="18sp" />
     </LinearLayout>
 
