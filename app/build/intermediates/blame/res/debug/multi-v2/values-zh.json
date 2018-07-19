@@ -1,0 +1,60 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-zh/values-zh.xml",
+            "map": [
+                {
+                    "source": "/Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshLayout-1.1.0-alpha-5.aar/5f0ee6d3c3570f70f2772ece76af3922/res/values-zh/values-zh.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,163,255,306,357,410,465,519,575,629,680,731,784,838,894,948,1004",
+                        "endColumns": "107,91,50,50,52,54,53,55,53,50,50,52,53,55,53,55,60",
+                        "endOffsets": "158,250,301,352,405,460,514,570,624,675,726,779,833,889,943,999,1060"
+                    },
+                    "to": {
+                        "startLines": "13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "620,728,820,871,922,975,1030,1084,1140,1194,1245,1296,1349,1403,1459,1513,1569",
+                        "endColumns": "107,91,50,50,52,54,53,55,53,50,50,52,53,55,53,55,60",
+                        "endOffsets": "723,815,866,917,970,1025,1079,1135,1189,1240,1291,1344,1398,1454,1508,1564,1625"
+                    }
+                },
+                {
+                    "source": "/Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/src/main/res/values-zh/strings.xml",
+                    "from": {
+                        "startLines": "3,12,6,10,8",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "56,241,108,207,172",
+                        "endColumns": "49,35,62,32,33",
+                        "endOffsets": "101,272,166,235,201"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,12,30",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "55,105,141,587,1630",
+                        "endColumns": "49,35,62,32,33",
+                        "endOffsets": "100,136,199,615,1659"
+                    }
+                },
+                {
+                    "source": "/Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshHeader-1.1.0-alpha-5.aar/7609a52268a73a0f1da653815ced01a5/res/values-zh/values-zh.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,108,162,219,271,324,381",
+                        "endColumns": "52,53,56,51,52,56,56",
+                        "endOffsets": "103,157,214,266,319,376,433"
+                    },
+                    "to": {
+                        "startLines": "5,6,7,8,9,10,11",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "204,257,311,368,420,473,530",
+                        "endColumns": "52,53,56,51,52,56,56",
+                        "endOffsets": "252,306,363,415,468,525,582"
+                    }
+                }
+            ]
+        }
+    ]
+}
