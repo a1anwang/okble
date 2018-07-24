@@ -10,7 +10,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.a1anwang.okble.beacon.OKBLEBeacon;
-import com.a1anwang.okble.beacon.OKBLEBeaconScanManager;
+import com.a1anwang.okble.beacon.OKBLEBeaconManager;
 import com.a1anwang.okble.common.LogUtils;
 import com.a1anwang.okble_demo.R;
 import com.a1anwang.okble_demo.base.BaseActivity;
@@ -20,7 +20,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 public class ScanBeaconActivity extends BaseActivity {
 
-    OKBLEBeaconScanManager scanManager;
+    OKBLEBeaconManager scanManager;
 
 
     RefreshLayout refreshLayout;
@@ -60,7 +60,7 @@ public class ScanBeaconActivity extends BaseActivity {
     public void beforeInitView() {
         scanedResults=new MyLinkedHashMap<>();
 
-        scanManager=new OKBLEBeaconScanManager(this);
+        scanManager=new OKBLEBeaconManager(this);
         scanManager.setBeaconScanCallback(scanCallBack);
     }
 
@@ -101,7 +101,7 @@ public class ScanBeaconActivity extends BaseActivity {
 
     }
 
-    OKBLEBeaconScanManager.OKBLEBeaconScanCallback scanCallBack=new OKBLEBeaconScanManager.OKBLEBeaconScanCallback() {
+    OKBLEBeaconManager.OKBLEBeaconScanCallback scanCallBack=new OKBLEBeaconManager.OKBLEBeaconScanCallback() {
         @Override
         public void onScanBeacon(OKBLEBeacon beacon) {
             scanedResults.put(beacon.getIdentifier(),beacon);

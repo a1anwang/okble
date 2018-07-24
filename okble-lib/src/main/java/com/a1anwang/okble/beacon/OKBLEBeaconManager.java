@@ -12,7 +12,7 @@ import com.a1anwang.okble.common.OKBLEDataUtils;
  * Created by a1anwang.com on 2018/5/30.
  */
 //纳尼
-public class OKBLEBeaconScanManager {
+public class OKBLEBeaconManager {
     private Context mContext;
     private OKBLEScanManager okbleScanManager;
 
@@ -22,7 +22,7 @@ public class OKBLEBeaconScanManager {
         this.callback=mCallback;
     }
 
-    public OKBLEBeaconScanManager(Context context){
+    public OKBLEBeaconManager(Context context){
         super();
         this.mContext=context;
         init();
