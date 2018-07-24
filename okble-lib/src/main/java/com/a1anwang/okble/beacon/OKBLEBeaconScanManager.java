@@ -11,7 +11,7 @@ import com.a1anwang.okble.common.OKBLEDataUtils;
 /**
  * Created by a1anwang.com on 2018/5/30.
  */
-
+//纳尼
 public class OKBLEBeaconScanManager {
     private Context mContext;
     private OKBLEScanManager okbleScanManager;
