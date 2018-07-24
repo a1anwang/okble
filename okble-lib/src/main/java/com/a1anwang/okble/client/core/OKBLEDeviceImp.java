@@ -420,8 +420,10 @@ public class OKBLEDeviceImp implements OKBLEDevice {
                         operation.operationListener.onFail(Operation_FAILED_BLE_Failed, OKBLEOperationFailedDescUtils.getDesc(status));
                     }
                 }
-                handler.removeCallbacks(nextRunnable);
-                handler.postDelayed(nextRunnable,OperationInterval);
+                if(bleOperationQueue.getOperationSize()>0){
+                    handler.removeCallbacks(nextRunnable);
+                    handler.postDelayed(nextRunnable,OperationInterval);
+                }
             }
 
         }
@@ -447,8 +449,10 @@ public class OKBLEDeviceImp implements OKBLEDevice {
                         operation.operationListener.onFail(Operation_FAILED_BLE_Failed, OKBLEOperationFailedDescUtils.getDesc(status));
                     }
                 }
-                handler.removeCallbacks(nextRunnable);
-                handler.postDelayed(nextRunnable,OperationInterval);
+                if(bleOperationQueue.getOperationSize()>0){
+                    handler.removeCallbacks(nextRunnable);
+                    handler.postDelayed(nextRunnable,OperationInterval);
+                }
             }
         }
 
@@ -484,9 +488,10 @@ public class OKBLEDeviceImp implements OKBLEDevice {
                         operation.operationListener.onFail(Operation_FAILED_BLE_Failed, OKBLEOperationFailedDescUtils.getDesc(status));
                     }
                 }
-
-                handler.removeCallbacks(nextRunnable);
-                handler.postDelayed(nextRunnable,OperationInterval);
+                if(bleOperationQueue.getOperationSize()>0){
+                    handler.removeCallbacks(nextRunnable);
+                    handler.postDelayed(nextRunnable,OperationInterval);
+                }
             }
         }
 
@@ -510,9 +515,10 @@ public class OKBLEDeviceImp implements OKBLEDevice {
                         operation.operationListener.onFail(Operation_FAILED_BLE_Failed, OKBLEOperationFailedDescUtils.getDesc(status));
                     }
                 }
-
-                handler.removeCallbacks(nextRunnable);
-                handler.postDelayed(nextRunnable,OperationInterval);
+                if(bleOperationQueue.getOperationSize()>0){
+                    handler.removeCallbacks(nextRunnable);
+                    handler.postDelayed(nextRunnable,OperationInterval);
+                }
             }
         }
     };
