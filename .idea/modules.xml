@@ -4,9 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/OKBLE-master.iml" filepath="$PROJECT_DIR$/OKBLE-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/okble.iml" filepath="$PROJECT_DIR$/okble.iml" />
-      <module fileurl="file://$PROJECT_DIR$/okble-lib/okble-lib.iml" filepath="$PROJECT_DIR$/okble-lib/okble-lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/okble-lib/okble-lib.iml" filepath="$PROJECT_DIR$/okble-lib/okble-lib.iml" />
     </modules>
   </component>
