@@ -1,9 +1,14 @@
 package com.a1anwang.okble.client.scan;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
+import android.bluetooth.le.BluetoothLeScanner;
+import android.bluetooth.le.ScanCallback;
+import android.bluetooth.le.ScanResult;
+import android.bluetooth.le.ScanSettings;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -21,7 +26,7 @@ import java.util.List;
  */
 
 public class OKBLEScanManager {
-private String TAG="OKBLEScanManager";
+    private String TAG="OKBLEScanManager";
     private static final int DefaultScanDuration = 10 * 1000;
     private static final int DefaultSleepDuration = 2 * 1000;
 
@@ -35,6 +40,11 @@ private String TAG="OKBLEScanManager";
     private Context context;
     private DeviceScanCallBack deviceScanCallBack;
     private boolean isScanning = false;
+
+
+    private static final int MsgWhat_stopScan=0;
+
+    private static final int MsgWhat_startScan=1;
 
     public boolean isScanning() {
         return isScanning;
@@ -64,8 +74,7 @@ private String TAG="OKBLEScanManager";
         if (!bluetoothAdapter.isEnabled()) {
             bluetoothAdapter.enable();
         }
-
-        LogUtils.e(TAG," 本地MAC："+bluetoothAdapter.getAddress() +" "+bluetoothAdapter.getName());
+       // LogUtils.e(TAG," 本地MAC："+bluetoothAdapter.getAddress() +" "+bluetoothAdapter.getName());
     }
 
     public void setScanDuration(int scanDuration) {
@@ -89,19 +98,13 @@ private String TAG="OKBLEScanManager";
 
         @Override
         public void handleMessage(Message msg) {
-
-            if (msg.what < 1) { //
-
-                if (isScanning) {
-                    stopScan();
-
-                    handle.sendEmptyMessageDelayed(0, sleepDuration);
-                } else {
-                    doScan();
-
-                    handle.sendEmptyMessageDelayed(0, scanDuration);
-                }
-
+          //  LogUtils.e(" msg.what:"+msg.what);
+            if(msg.what==MsgWhat_stopScan){
+                doStopScan();
+                handle.removeMessages(MsgWhat_startScan);
+                handle.sendEmptyMessageDelayed(MsgWhat_startScan, sleepDuration);
+            }else if(msg.what==MsgWhat_startScan){
+                doScan();
             }
         }
 
@@ -162,14 +165,42 @@ private String TAG="OKBLEScanManager";
     }
 
     private void doScan(){
+        if(!bluetoothIsEnable()){
+            return;
+        }
         LogUtils.e("doScan");
         isScanning = true;
-        bluetoothAdapter.stopLeScan(callback);
-
-        bluetoothAdapter.startLeScan(callback);
         if (sleepDuration > 0) {
+            handle.removeMessages(MsgWhat_stopScan);
+            handle.sendEmptyMessageDelayed(MsgWhat_stopScan, scanDuration);
+        }
 
-            handle.sendEmptyMessageDelayed(0, scanDuration);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP&& isSpecialPhone()) {
+            if(bleScanner!=null&&bleScannerCallback!=null){
+                ((BluetoothLeScanner)bleScanner).stopScan((ScanCallback) bleScannerCallback);
+            }
+            if(bleScannerCallback==null){
+                bleScannerCallback=new ScanCallback() {
+                    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+                    @Override
+                    public void onScanResult(int callbackType, ScanResult result) {
+                        super.onScanResult(callbackType, result);
+                        if(!isScanning) return;
+                        BLEScanResult bleScanResult = new BLEScanResult(result.getDevice(), result.getScanRecord().getBytes(),result.getRssi());
+                        if (deviceScanCallBack != null) {
+                            deviceScanCallBack.onBLEDeviceScan(bleScanResult, result.getRssi());
+                        }
+                    }
+                };
+            }
+            if(bleScanner==null){
+                bleScanner=bluetoothAdapter.getBluetoothLeScanner();
+            }
+            ((BluetoothLeScanner)bleScanner).startScan(null,new ScanSettings.Builder().setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY).build(), (ScanCallback) bleScannerCallback);
+
+        }else{
+            bluetoothAdapter.stopLeScan(callback);
+            bluetoothAdapter.startLeScan(callback);
         }
 
     }
@@ -179,14 +210,28 @@ private String TAG="OKBLEScanManager";
 
     public void stopScan() {
         isScanning = false;
-        bluetoothAdapter.stopLeScan(callback);
-        handle.removeMessages(0);
+        doStopScan();
+    }
+    private void doStopScan(){
+        handle.removeMessages(MsgWhat_startScan);
+        if(!bluetoothIsEnable()){
+            return;
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP&&isSpecialPhone()) {
+            if(bleScanner!=null&&bleScannerCallback!=null){
+                ((BluetoothLeScanner)bleScanner).stopScan((ScanCallback) bleScannerCallback);
+            }
+        }else{
+            bluetoothAdapter.stopLeScan(callback);
+
+        }
     }
 
 
     private BluetoothAdapter.LeScanCallback callback = new BluetoothAdapter.LeScanCallback() {
         @Override
         synchronized public void onLeScan(BluetoothDevice device, final int rssi, byte[] scanRecord) {
+            if(!isScanning) return;
             BLEScanResult bleScanResult = new BLEScanResult(device, scanRecord,rssi);
             if (deviceScanCallBack != null) {
                 deviceScanCallBack.onBLEDeviceScan(bleScanResult, rssi);
@@ -194,8 +239,18 @@ private String TAG="OKBLEScanManager";
         }
     };
     //***************************************************************************************//
+    private Object bleScannerCallback;
+    private Object bleScanner;
 
 
+    /**
+     * 判断是不是需要特殊适配的机型，比如一加手机，在android8.0系统上使用4.3API扫描方法无法扫描到BLE设备，但是使用5.0API可以扫描到
+     * @return
+     */
+    private boolean isSpecialPhone(){
 
+
+        return true;
+    }
 
 }
