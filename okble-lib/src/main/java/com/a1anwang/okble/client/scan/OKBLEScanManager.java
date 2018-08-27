@@ -1,14 +1,9 @@
 package com.a1anwang.okble.client.scan;
 
 import android.Manifest;
-import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
-import android.bluetooth.le.BluetoothLeScanner;
-import android.bluetooth.le.ScanCallback;
-import android.bluetooth.le.ScanResult;
-import android.bluetooth.le.ScanSettings;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -98,7 +93,7 @@ public class OKBLEScanManager {
 
         @Override
         public void handleMessage(Message msg) {
-          //  LogUtils.e(" msg.what:"+msg.what);
+            LogUtils.e(" msg.what:"+msg.what);
             if(msg.what==MsgWhat_stopScan){
                 doStopScan();
                 handle.removeMessages(MsgWhat_startScan);
@@ -175,33 +170,10 @@ public class OKBLEScanManager {
             handle.sendEmptyMessageDelayed(MsgWhat_stopScan, scanDuration);
         }
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP&& isSpecialPhone()) {
-            if(bleScanner!=null&&bleScannerCallback!=null){
-                ((BluetoothLeScanner)bleScanner).stopScan((ScanCallback) bleScannerCallback);
-            }
-            if(bleScannerCallback==null){
-                bleScannerCallback=new ScanCallback() {
-                    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-                    @Override
-                    public void onScanResult(int callbackType, ScanResult result) {
-                        super.onScanResult(callbackType, result);
-                        if(!isScanning) return;
-                        BLEScanResult bleScanResult = new BLEScanResult(result.getDevice(), result.getScanRecord().getBytes(),result.getRssi());
-                        if (deviceScanCallBack != null) {
-                            deviceScanCallBack.onBLEDeviceScan(bleScanResult, result.getRssi());
-                        }
-                    }
-                };
-            }
-            if(bleScanner==null){
-                bleScanner=bluetoothAdapter.getBluetoothLeScanner();
-            }
-            ((BluetoothLeScanner)bleScanner).startScan(null,new ScanSettings.Builder().setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY).build(), (ScanCallback) bleScannerCallback);
 
-        }else{
-            bluetoothAdapter.stopLeScan(callback);
-            bluetoothAdapter.startLeScan(callback);
-        }
+        bluetoothAdapter.stopLeScan(callback);
+        bluetoothAdapter.startLeScan(callback);
+
 
     }
 
@@ -210,6 +182,8 @@ public class OKBLEScanManager {
 
     public void stopScan() {
         isScanning = false;
+        handle.removeMessages(MsgWhat_startScan);
+        handle.removeMessages(MsgWhat_stopScan);
         doStopScan();
     }
     private void doStopScan(){
@@ -217,14 +191,8 @@ public class OKBLEScanManager {
         if(!bluetoothIsEnable()){
             return;
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP&&isSpecialPhone()) {
-            if(bleScanner!=null&&bleScannerCallback!=null){
-                ((BluetoothLeScanner)bleScanner).stopScan((ScanCallback) bleScannerCallback);
-            }
-        }else{
-            bluetoothAdapter.stopLeScan(callback);
 
-        }
+        bluetoothAdapter.stopLeScan(callback);
     }
 
 
@@ -238,19 +206,20 @@ public class OKBLEScanManager {
             }
         }
     };
-    //***************************************************************************************//
-    private Object bleScannerCallback;
-    private Object bleScanner;
 
 
-    /**
-     * 判断是不是需要特殊适配的机型，比如一加手机，在android8.0系统上使用4.3API扫描方法无法扫描到BLE设备，但是使用5.0API可以扫描到
-     * @return
-     */
-    private boolean isSpecialPhone(){
+    public void requestLocationPermission(){
+        boolean isGranted=  PermissionUtils.isGranted(Manifest.permission.ACCESS_FINE_LOCATION)||PermissionUtils.isGranted(Manifest.permission.ACCESS_COARSE_LOCATION);
+        if(isGranted) return;
+        PermissionUtils.permission(PermissionConstants.LOCATION).callback(new PermissionUtils.FullCallback() {
+            @Override
+            public void onGranted(List<String> permissionsGranted) {
+            }
 
+            @Override
+            public void onDenied(List<String> permissionsDeniedForever, List<String> permissionsDenied) {
 
-        return true;
+            }
+        }).request();
     }
-
 }

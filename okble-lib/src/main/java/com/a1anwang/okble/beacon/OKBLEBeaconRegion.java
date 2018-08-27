@@ -52,4 +52,16 @@ public class OKBLEBeaconRegion {
     public String getIdentifier(){
         return this.uuid+"_"+this.major+"_"+this.minor;
     }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public int getMajor() {
+        return major;
+    }
+
+    public int getMinor() {
+        return minor;
+    }
 }

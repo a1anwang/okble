@@ -91,7 +91,7 @@ public class OKBLEServerDeviceImp implements  OKBLEServerDevice{
     }
     synchronized private void checkNextBleOperation() {
         if (bleOperationQueue.getOperationSize() == 1) {
-            OKBLEServerOperation bleOperation = bleOperationQueue.get(0);
+            OKBLEServerOperation bleOperation = bleOperationQueue.getFirst();
             doBleOperation(bleOperation);
         }
     }
@@ -232,7 +232,7 @@ public class OKBLEServerDeviceImp implements  OKBLEServerDevice{
     };
     private void doNextBleOperation() {
         if (bleOperationQueue.getOperationSize() > 0) {
-            OKBLEServerOperation okbleServerOperation = bleOperationQueue.get(0);
+            OKBLEServerOperation okbleServerOperation = bleOperationQueue.getFirst();
 
             doBleOperation(okbleServerOperation);
         }

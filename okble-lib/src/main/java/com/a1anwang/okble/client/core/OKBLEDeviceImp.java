@@ -412,7 +412,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
                 }
             }
 
-            if (bleOperationQueue.getOperationSize() > 0) {
+            if (!bleOperationQueue.isEmpty()) {
                 OKBLEOperation operation= bleOperationQueue.removeFirst();
                 if(operation!=null&&operation.operationListener!=null){
                     if(status==BluetoothGatt.GATT_SUCCESS){
@@ -423,7 +423,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
                         operation.operationListener.onFail(Operation_FAILED_BLE_Failed, OKBLEOperationFailedDescUtils.getDesc(status));
                     }
                 }
-                if(bleOperationQueue.getOperationSize()>0){
+                if(!bleOperationQueue.isEmpty()){
                     handler.removeCallbacks(nextRunnable);
                     handler.postDelayed(nextRunnable,OperationInterval);
                 }
@@ -441,7 +441,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
                     listener.onWriteValue(deviceTAG,characteristic.getUuid().toString(),characteristic.getValue(),status==BluetoothGatt.GATT_SUCCESS);
                 }
             }
-            if (bleOperationQueue.getOperationSize() > 0) {
+            if (!bleOperationQueue.isEmpty()) {
                 OKBLEOperation operation= bleOperationQueue.removeFirst();
                 if(operation!=null&&operation.operationListener!=null){
                     if(status==BluetoothGatt.GATT_SUCCESS){
@@ -452,7 +452,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
                         operation.operationListener.onFail(Operation_FAILED_BLE_Failed, OKBLEOperationFailedDescUtils.getDesc(status));
                     }
                 }
-                if(bleOperationQueue.getOperationSize()>0){
+                if(!bleOperationQueue.isEmpty()){
                     handler.removeCallbacks(nextRunnable);
                     handler.postDelayed(nextRunnable,OperationInterval);
                 }
@@ -481,7 +481,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             super.onDescriptorWrite(gatt, descriptor, status);
             LogUtils.e(TAG," onDescriptorWrite:"+status+" descriptor:"+descriptor.getUuid().toString()+" char:"+descriptor.getCharacteristic().getUuid().toString());
             handler.removeCallbacks(operationOverTimeRunnable);
-            if (bleOperationQueue.getOperationSize() > 0) {
+            if (!bleOperationQueue.isEmpty()) {
                 OKBLEOperation operation= bleOperationQueue.removeFirst();
                 if(operation!=null&&operation.operationListener!=null){
                     if(status==BluetoothGatt.GATT_SUCCESS){
@@ -492,7 +492,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
                         operation.operationListener.onFail(Operation_FAILED_BLE_Failed, OKBLEOperationFailedDescUtils.getDesc(status));
                     }
                 }
-                if(bleOperationQueue.getOperationSize()>0){
+                if(!bleOperationQueue.isEmpty()){
                     handler.removeCallbacks(nextRunnable);
                     handler.postDelayed(nextRunnable,OperationInterval);
                 }
@@ -509,7 +509,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
             super.onMtuChanged(gatt, mtu, status);
             LogUtils.e("onMtuChanged mtu:"+mtu);
             handler.removeCallbacks(operationOverTimeRunnable);
-            if (bleOperationQueue.getOperationSize() > 0) {
+            if (!bleOperationQueue.isEmpty()) {
                 OKBLEOperation operation= bleOperationQueue.removeFirst();
                 if(operation!=null&&operation.operationListener!=null){
                     if(status==BluetoothGatt.GATT_SUCCESS){
@@ -520,7 +520,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
                         operation.operationListener.onFail(Operation_FAILED_BLE_Failed, OKBLEOperationFailedDescUtils.getDesc(status));
                     }
                 }
-                if(bleOperationQueue.getOperationSize()>0){
+                if(!bleOperationQueue.isEmpty()){
                     handler.removeCallbacks(nextRunnable);
                     handler.postDelayed(nextRunnable,OperationInterval);
                 }
@@ -532,7 +532,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
     Runnable nextRunnable=new Runnable() {
         @Override
         public void run() {
-            if (bleOperationQueue.getOperationSize() > 0) {
+            if (!bleOperationQueue.isEmpty()) {
                 doNextBleOperation();
             }
         }
@@ -829,7 +829,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
 
     synchronized private void checkNextBleOperation() {
         if (bleOperationQueue.getOperationSize() == 1) {
-            OKBLEOperation okbleOperation = bleOperationQueue.get(0);
+            OKBLEOperation okbleOperation = bleOperationQueue.getFirst();
             doBleOperation(okbleOperation);
         }
     }
@@ -949,7 +949,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
 
         @Override
         public void run() {
-            if (bleOperationQueue.getOperationSize() > 0) {
+            if (!bleOperationQueue.isEmpty()) {
                 OKBLEOperation operation= bleOperationQueue.removeFirst();
                 if(operation!=null&&operation.operationListener!=null){
                     operation.operationListener.onFail(Operation_FAILED_Overtime,"failed,Overtime");
@@ -960,8 +960,8 @@ public class OKBLEDeviceImp implements OKBLEDevice {
     };
 
     private void doNextBleOperation() {
-        if (bleOperationQueue.getOperationSize() > 0) {
-            OKBLEOperation okbleOperation = bleOperationQueue.get(0);
+        if (!bleOperationQueue.isEmpty()) {
+            OKBLEOperation okbleOperation = bleOperationQueue.getFirst();
 
             doBleOperation(okbleOperation);
         }

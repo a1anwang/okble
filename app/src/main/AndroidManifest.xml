@@ -29,6 +29,8 @@
         </activity>
         <activity android:name=".activity.BeIBeaconActivity">
         </activity>
+        <activity android:name=".activity.MonitorBeaconRegionActivity">
+        </activity>
     </application>
 
 </manifest>

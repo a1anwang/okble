@@ -1,7 +1,0 @@
-#Internal package file, do not edit.
-#Tue Jul 24 13:19:58 CST 2018
-0.baseType=DIRECTORY
-0.base=/Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/build/intermediates/transforms/dexMerger/debug/0
-0.path=classes.dex
-0.set=DEX
-count=1

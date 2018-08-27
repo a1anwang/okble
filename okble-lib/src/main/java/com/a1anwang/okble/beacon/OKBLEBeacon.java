@@ -79,7 +79,7 @@ public class OKBLEBeacon {
     }
 
     public String getIdentifier(){
-        String key= uuid+"."+major+"."+minor;
+        String key= uuid+"_"+major+"_"+minor;
         return key;
     }
 }

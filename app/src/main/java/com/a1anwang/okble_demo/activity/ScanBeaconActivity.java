@@ -57,6 +57,12 @@ public class ScanBeaconActivity extends BaseActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        scanManager.stopScan();
+    }
+
+    @Override
     public void beforeInitView() {
         scanedResults=new MyLinkedHashMap<>();
 

@@ -70,7 +70,6 @@ public class OKBLEBeaconManager {
                     if(monitoringBeaconRegions.size()>0 ){
                         String key=okbleBeacon.getIdentifier();
 
-
                         if(monitoringBeaconRegions.containsKey(key)){
                             //如果正在监控这个区域
                             RegionObject regionObject=monitoringBeaconRegions.get(key);
@@ -83,7 +82,7 @@ public class OKBLEBeaconManager {
                             RegionObject regionObject=monitoringBeaconRegions.get(key);
                             handleEnterRegion(regionObject);
                         }
-                        key = okbleBeacon.getUuid() + "_" + okbleBeacon.getMinor() + "_-1";
+                        key = okbleBeacon.getUuid() + "_" + okbleBeacon.getMajor() + "_-1";
                         if (monitoringBeaconRegions.containsKey(key)) {
                             //如果正在监控这个区域
                             RegionObject regionObject=monitoringBeaconRegions.get(key);
@@ -243,7 +242,11 @@ public class OKBLEBeaconManager {
         }
     };
 
-
+    public void requestLocationPermission(){
+        if(okbleScanManager!=null){
+            okbleScanManager.requestLocationPermission();
+        }
+    }
 
     public interface OKBLEBeaconScanCallback{
         void onScanBeacon(OKBLEBeacon beacon);

@@ -40,6 +40,7 @@ public class BeIBeaconActivity extends BaseActivity{
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        beBeaconManager.stop();
     }
 
     @Override

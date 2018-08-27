@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.a1anwang.okble_demo"
-    android:versionCode="1"
-    android:versionName="1.0.7" >
+    android:versionCode="2"
+    android:versionName="1.0.8" >
 
     <uses-sdk
         android:minSdkVersion="18"
@@ -42,9 +42,10 @@
         </activity>
         <activity android:name="com.a1anwang.okble_demo.activity.BeIBeaconActivity" >
         </activity>
+        <activity android:name="com.a1anwang.okble_demo.activity.MonitorBeaconRegionActivity" >
+        </activity>
         <activity
             android:name="com.a1anwang.okble.permission.PermissionUtils$PermissionActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Transparent_Activity" />
 
         <meta-data

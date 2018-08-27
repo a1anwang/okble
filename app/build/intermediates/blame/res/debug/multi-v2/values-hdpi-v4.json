@@ -15,22 +15,6 @@
                     }
                 }
             ]
-        },
-        {
-            "outputFile": "/Users/smartwallit/Desktop/Alan_project/MyBleSDK/android/OKBLE-master/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-hdpi-v4/values-hdpi-v4.xml",
-            "map": [
-                {
-                    "source": "/Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c6093925c9f246bd4d65427196fe9410/res/values-hdpi-v4/values-hdpi-v4.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "6",
-                        "endColumns": "13",
-                        "endOffsets": "327"
-                    }
-                }
-            ]
         }
     ]
 }

@@ -1,15 +1,15 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-34:12
-INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-34:12
-INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-34:12
-INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-34:12
+ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-36:12
 MERGED from [com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-5] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshLayout-1.1.0-alpha-5.aar/5f0ee6d3c3570f70f2772ece76af3922/AndroidManifest.xml:2:1-17:12
 MERGED from [com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshHeader-1.1.0-alpha-5.aar/7609a52268a73a0f1da653815ced01a5/AndroidManifest.xml:2:1-17:12
 MERGED from [com.gyf.barlibrary:barlibrary:2.3.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/barlibrary-2.3.0.aar/d6947d657f678e65df4b41e7a2bc1b3f/AndroidManifest.xml:2:1-12:12
 MERGED from [com.github.pinguo-zhouwei:CustomPopwindow:2.1.1] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/CustomPopwindow-2.1.1.aar/406470c7a9b930089b295e4d50684ce4/AndroidManifest.xml:2:1-17:12
 MERGED from [me.grantland:autofittextview:0.2.1] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/autofittextview-0.2.1.aar/3fa1e4afb4aa66e7adb984bc6f920a05/AndroidManifest.xml:2:1-11:12
-MERGED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/okble-lib/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-23:12
+MERGED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/okble-lib/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-22:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c6093925c9f246bd4d65427196fe9410/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/d867300fe7a0cf3f60d8a40dd6989497/AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android:flexbox:1.0.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/flexbox-1.0.0.aar/ecadbe9c837d5643dcc1b333fcd8b230/AndroidManifest.xml:17:1-27:12
@@ -22,20 +22,20 @@ MERGED from [com.android.support:support-core-utils:26.1.0] /Users/smartwallit/.
 MERGED from [com.android.support:support-core-ui:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/a0e9f441f3f120a5877c989982b0878b/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-compat:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/da7ee1a5dbae0ec9a648a89521f2de4c/AndroidManifest.xml:17:1-31:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/7206d8806bf05569eb78f12371e24452/AndroidManifest.xml:17:1-30:12
-INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-34:12
-INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-34:12
-INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-34:12
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-36:12
+INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-36:12
 	package
 		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:3:5-38
 		INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml
-		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-34:12
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-36:12
 		INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml
-		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-34:12
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:1-36:12
 		INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:2:11-69
@@ -44,15 +44,15 @@ ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/A
 	android:name
 		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:4:22-78
 application
-ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:5:5-32:19
+ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:5:5-34:19
 MERGED from [com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-5] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshLayout-1.1.0-alpha-5.aar/5f0ee6d3c3570f70f2772ece76af3922/AndroidManifest.xml:11:5-15:19
 MERGED from [com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-5] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshLayout-1.1.0-alpha-5.aar/5f0ee6d3c3570f70f2772ece76af3922/AndroidManifest.xml:11:5-15:19
 MERGED from [com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshHeader-1.1.0-alpha-5.aar/7609a52268a73a0f1da653815ced01a5/AndroidManifest.xml:11:5-15:19
 MERGED from [com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-5] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/SmartRefreshHeader-1.1.0-alpha-5.aar/7609a52268a73a0f1da653815ced01a5/AndroidManifest.xml:11:5-15:19
 MERGED from [com.github.pinguo-zhouwei:CustomPopwindow:2.1.1] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/CustomPopwindow-2.1.1.aar/406470c7a9b930089b295e4d50684ce4/AndroidManifest.xml:11:5-15:19
 MERGED from [com.github.pinguo-zhouwei:CustomPopwindow:2.1.1] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/CustomPopwindow-2.1.1.aar/406470c7a9b930089b295e4d50684ce4/AndroidManifest.xml:11:5-15:19
-MERGED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/okble-lib/build/intermediates/manifests/full/debug/AndroidManifest.xml:16:5-21:19
-MERGED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/okble-lib/build/intermediates/manifests/full/debug/AndroidManifest.xml:16:5-21:19
+MERGED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/okble-lib/build/intermediates/manifests/full/debug/AndroidManifest.xml:16:5-20:19
+MERGED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/okble-lib/build/intermediates/manifests/full/debug/AndroidManifest.xml:16:5-20:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c6093925c9f246bd4d65427196fe9410/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c6093925c9f246bd4d65427196fe9410/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.0] /Users/smartwallit/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.0.aar/d867300fe7a0cf3f60d8a40dd6989497/AndroidManifest.xml:9:5-20
@@ -127,6 +127,10 @@ activity#com.a1anwang.okble_demo.activity.BeIBeaconActivity
 ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:30:9-31:20
 	android:name
 		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:30:19-61
+activity#com.a1anwang.okble_demo.activity.MonitorBeaconRegionActivity
+ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:32:9-33:20
+	android:name
+		ADDED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml:32:19-71
 uses-sdk
 INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/src/main/AndroidManifest.xml
@@ -196,11 +200,9 @@ ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/o
 	android:name
 		ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/okble-lib/build/intermediates/manifests/full/debug/AndroidManifest.xml:14:22-76
 activity#com.a1anwang.okble.permission.PermissionUtils$PermissionActivity
-ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/okble-lib/build/intermediates/manifests/full/debug/AndroidManifest.xml:17:9-20:59
-	android:screenOrientation
-		ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/okble-lib/build/intermediates/manifests/full/debug/AndroidManifest.xml:19:13-49
+ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/okble-lib/build/intermediates/manifests/full/debug/AndroidManifest.xml:17:9-19:59
 	android:theme
-		ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/okble-lib/build/intermediates/manifests/full/debug/AndroidManifest.xml:20:13-56
+		ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/okble-lib/build/intermediates/manifests/full/debug/AndroidManifest.xml:19:13-56
 	android:name
 		ADDED from [:okble-lib] /Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/okble-lib/build/intermediates/manifests/full/debug/AndroidManifest.xml:18:13-92
 meta-data#android.support.VERSION

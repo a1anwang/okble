@@ -1,13 +1,13 @@
 package com.a1anwang.okble.common;
 
-import java.util.LinkedList;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Created by a1anwang.com on 2018/5/16.
  */
 
 public class BLEOperationQueue<T> {
-    private LinkedList<T> bleOperations=new LinkedList<>();
+    private ConcurrentLinkedQueue<T> bleOperations=new ConcurrentLinkedQueue<>();
 
 
     synchronized public void add(T operation){
@@ -16,7 +16,7 @@ public class BLEOperationQueue<T> {
     }
 
     synchronized public T removeFirst(){
-       return  bleOperations.removeFirst();
+        return  bleOperations.poll();
     }
 
     public void  clear(){
@@ -27,8 +27,11 @@ public class BLEOperationQueue<T> {
         return  bleOperations.size();
     }
 
-    public T get(int index){
-        return  bleOperations.get(index);
+    public T getFirst(){
+        return bleOperations.peek();
     }
 
+    public boolean isEmpty(){
+        return bleOperations.isEmpty();
+    }
 }

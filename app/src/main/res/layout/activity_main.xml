@@ -37,4 +37,13 @@
         android:textAllCaps="false"
         android:layout_marginTop="20dp"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_monitor_beacon"
+        android:layout_width="match_parent"
+        android:text="Monitor BeaconRegion"
+        android:textAllCaps="false"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

@@ -31,6 +31,7 @@ public class MainActivity extends BaseActivity{
         findViewById(R.id.btn_peripheral).setOnClickListener(this);
         findViewById(R.id.btn_scan_beacon).setOnClickListener(this);
         findViewById(R.id.btn_be_beacon).setOnClickListener(this);
+        findViewById(R.id.btn_monitor_beacon).setOnClickListener(this);
 
     }
 
@@ -54,6 +55,10 @@ public class MainActivity extends BaseActivity{
             case R.id.btn_be_beacon:
                 startActivity(BeIBeaconActivity.class);
                 break;
+            case R.id.btn_monitor_beacon:
+                startActivity(MonitorBeaconRegionActivity.class);
+                break;
+
         }
     }
 }

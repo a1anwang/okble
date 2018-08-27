@@ -67,7 +67,7 @@ public class OKBLEBeBeaconManager {
         });
     }
     public void  stop(){
-
+        advertiseManager.stopAdvertising();
     }
 
     public interface OKBLEStartBeaconListener {
