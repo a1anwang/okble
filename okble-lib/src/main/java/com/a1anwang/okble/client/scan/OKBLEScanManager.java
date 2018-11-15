@@ -90,7 +90,7 @@ public class OKBLEScanManager {
 
     private boolean autoRebootBluetoothWhenScanFailed=true;
 
-    public void autoRebootBluetoothWhenScanFailed(boolean value){
+    public void setAutoRebootBluetoothWhenScanFailed(boolean value){
         autoRebootBluetoothWhenScanFailed=value;
     }
 
