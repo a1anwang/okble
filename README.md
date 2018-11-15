@@ -36,7 +36,7 @@ repositories {
   maven { url "https://jitpack.io" }
 }
 dependencies {
-  implementation 'com.github.a1anwang:okble:1.0.5'
+  implementation 'com.github.a1anwang:okble:1.0.8'
 }
 ```
 #### Scan Peripheral
@@ -307,7 +307,25 @@ OKBLEBeBeaconManager.OKBLEStartBeaconListener startBeaconListener=new OKBLEBeBea
 ```
 #### Monitor enter/exit iBeacon region
 ```
-Coming soon ...
+OKBLEBeaconManager beaconManager=new OKBLEBeaconManager(this);
+beaconManager.setRegionListener(this);
+String uuid ="12345678-1234-1234-1234-1234567890ab";
+int major=1;
+int minor=2;
+OKBLEBeaconRegion okbleBeaconRegion=OKBLEBeaconRegion.getInstance(uuid,major,minor);
+//OKBLEBeaconRegion okbleBeaconRegion=OKBLEBeaconRegion.getInstance(uuid,major);
+//OKBLEBeaconRegion okbleBeaconRegion=OKBLEBeaconRegion.getInstance(uuid);
+beaconManager.startMonitoringForRegion(okbleBeaconRegion);
+
+@Override
+public void onEnterBeaconRegion(OKBLEBeaconRegion beaconRegion) {
+
+}
+
+@Override
+public void onExitBeaconRegion(OKBLEBeaconRegion beaconRegion) {
+
+}
 ```
 
 

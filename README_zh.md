@@ -33,7 +33,7 @@
         maven { url "https://jitpack.io" }
    }
    dependencies {
-         implementation 'com.github.a1anwang:okble:1.0.5'
+         implementation 'com.github.a1anwang:okble:1.0.8'
    }
  ```
   #### 扫描外设
@@ -307,7 +307,25 @@ OAD原理其实就是把固件(如.bin文件)加载成byte[]数组,然后把byte
 ```
 #### 检测进入、退出iBeacon区域
 ```
- 尽请期待
+OKBLEBeaconManager beaconManager=new OKBLEBeaconManager(this);
+beaconManager.setRegionListener(this);
+String uuid ="12345678-1234-1234-1234-1234567890ab";
+int major=1;
+int minor=2;
+OKBLEBeaconRegion okbleBeaconRegion=OKBLEBeaconRegion.getInstance(uuid,major,minor);
+//OKBLEBeaconRegion okbleBeaconRegion=OKBLEBeaconRegion.getInstance(uuid,major);
+//OKBLEBeaconRegion okbleBeaconRegion=OKBLEBeaconRegion.getInstance(uuid);
+beaconManager.startMonitoringForRegion(okbleBeaconRegion);
+
+@Override
+public void onEnterBeaconRegion(OKBLEBeaconRegion beaconRegion) {
+
+}
+
+@Override
+public void onExitBeaconRegion(OKBLEBeaconRegion beaconRegion) {
+
+}
 ```
 
 ### QQ讨论群 -  554029215
