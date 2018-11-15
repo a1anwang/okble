@@ -74,6 +74,14 @@ public class OKBLEScanManager {
             bluetoothAdapter.disable();
         }
     }
+    /**
+     * 打开手机蓝牙
+     */
+    public void enableBluetooth(){
+        if(bluetoothAdapter!=null){
+            bluetoothAdapter.enable();
+        }
+    }
 
     public void setScanCallBack(DeviceScanCallBack scanCallBack) {
         this.deviceScanCallBack = scanCallBack;
@@ -308,5 +316,18 @@ public class OKBLEScanManager {
 
         return true;
     }
+    public void requestLocationPermission(){
+        boolean isGranted=  PermissionUtils.isGranted(Manifest.permission.ACCESS_FINE_LOCATION)||PermissionUtils.isGranted(Manifest.permission.ACCESS_COARSE_LOCATION);
+        if(isGranted) return;
+        PermissionUtils.permission(PermissionConstants.LOCATION).callback(new PermissionUtils.FullCallback() {
+            @Override
+            public void onGranted(List<String> permissionsGranted) {
+            }
 
+            @Override
+            public void onDenied(List<String> permissionsDeniedForever, List<String> permissionsDenied) {
+
+            }
+        }).request();
+    }
 }
