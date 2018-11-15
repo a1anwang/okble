@@ -1,16 +1,20 @@
 package com.a1anwang.okble.client.scan;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
+import android.bluetooth.le.BluetoothLeScanner;
+import android.bluetooth.le.ScanCallback;
+import android.bluetooth.le.ScanResult;
+import android.bluetooth.le.ScanSettings;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 
-import com.a1anwang.okble.common.LogUtils;
 import com.a1anwang.okble.permission.PermissionConstants;
 import com.a1anwang.okble.permission.PermissionUtils;
 
@@ -50,6 +54,27 @@ public class OKBLEScanManager {
         init();
     }
 
+    private boolean enableBluetooth=false;
+    /**
+     *
+     * @param context
+     * @param enableBluetooth 初始化时候，如果手机蓝牙未打开，则调用打开蓝牙代码
+     */
+    public OKBLEScanManager(Context context,boolean enableBluetooth) {
+        this.context = context;
+        this.enableBluetooth=enableBluetooth;
+        init();
+    }
+
+    /**
+     * 关闭手机蓝牙
+     */
+    public void disableBluetooth(){
+        if(bluetoothAdapter!=null){
+            bluetoothAdapter.disable();
+        }
+    }
+
     public void setScanCallBack(DeviceScanCallBack scanCallBack) {
         this.deviceScanCallBack = scanCallBack;
     }
@@ -63,14 +88,22 @@ public class OKBLEScanManager {
         return true;
     }
 
+    private boolean autoRebootBluetoothWhenScanFailed=true;
+
+    public void autoRebootBluetoothWhenScanFailed(boolean value){
+        autoRebootBluetoothWhenScanFailed=value;
+    }
+
     private void init() {
         bluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
         bluetoothAdapter = bluetoothManager.getAdapter();
-        if (!bluetoothAdapter.isEnabled()) {
-            bluetoothAdapter.enable();
+        if(enableBluetooth){
+            if(!bluetoothAdapter.isEnabled()) {
+                bluetoothAdapter.enable();
+            }
         }
-       // LogUtils.e(TAG," 本地MAC："+bluetoothAdapter.getAddress() +" "+bluetoothAdapter.getName());
-    }
+
+     }
 
     public void setScanDuration(int scanDuration) {
         this.scanDuration = scanDuration;
@@ -93,7 +126,7 @@ public class OKBLEScanManager {
 
         @Override
         public void handleMessage(Message msg) {
-            LogUtils.e(" msg.what:"+msg.what);
+            // LogUtils.e(" msg.what:"+msg.what);
             if(msg.what==MsgWhat_stopScan){
                 doStopScan();
                 handle.removeMessages(MsgWhat_startScan);
@@ -123,9 +156,7 @@ public class OKBLEScanManager {
             return ;
         }
 
-
         boolean isGranted=  PermissionUtils.isGranted(Manifest.permission.ACCESS_FINE_LOCATION)||PermissionUtils.isGranted(Manifest.permission.ACCESS_COARSE_LOCATION);
-        LogUtils.e("isGranted:"+isGranted);
         if(isGranted){
             if(deviceScanCallBack!=null){
                 deviceScanCallBack.onStartSuccess();
@@ -163,17 +194,69 @@ public class OKBLEScanManager {
         if(!bluetoothIsEnable()){
             return;
         }
-        LogUtils.e("doScan");
         isScanning = true;
         if (sleepDuration > 0) {
             handle.removeMessages(MsgWhat_stopScan);
             handle.sendEmptyMessageDelayed(MsgWhat_stopScan, scanDuration);
         }
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP&& isSpecialPhone()) {
+            if(bleScanner!=null&&bleScannerCallback!=null){
+                ((BluetoothLeScanner)bleScanner).stopScan((ScanCallback) bleScannerCallback);
+            }
+            if(bleScannerCallback==null){
+                bleScannerCallback=new ScanCallback() {
+                    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+                    @Override
+                    public void onScanResult(int callbackType, ScanResult result) {
+                        super.onScanResult(callbackType, result);
+                        if(!isScanning) return;
+                        BLEScanResult bleScanResult = new BLEScanResult(result.getDevice(), result.getScanRecord().getBytes(),result.getRssi());
+                        if (deviceScanCallBack != null) {
+                            deviceScanCallBack.onBLEDeviceScan(bleScanResult, result.getRssi());
+                        }
+                    }
 
+                    @Override
+                    public void onScanFailed(int errorCode) {
+                        super.onScanFailed(errorCode);
+                        if(deviceScanCallBack!=null){
+                            deviceScanCallBack.onFailed(DeviceScanCallBack.SCAN_FAILED_SYSTEM);
+                        }
+                        if(autoRebootBluetoothWhenScanFailed){
+                            if(bluetoothAdapter!=null){
+                                bluetoothAdapter.disable();
+                                new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        while(true) {
+                                            try {
+                                                Thread.sleep(500);
+                                            } catch (InterruptedException e) {
+                                                e.printStackTrace();
+                                            }
+                                            //要等待蓝牙彻底关闭，然后再打开，才能实现重启效果
+                                            if(bluetoothAdapter.getState() == BluetoothAdapter.STATE_OFF) {
+                                                bluetoothAdapter.enable();
+                                                break;
+                                            }
+                                        }
+                                    }
 
-        bluetoothAdapter.stopLeScan(callback);
-        bluetoothAdapter.startLeScan(callback);
+                                }).start();
+                            }
+                        }
+                    }
+                };
+            }
+            if(bleScanner==null){
+                bleScanner=bluetoothAdapter.getBluetoothLeScanner();
+            }
+            ((BluetoothLeScanner)bleScanner).startScan(null,new ScanSettings.Builder().setScanMode(ScanSettings.SCAN_MODE_LOW_LATENCY).build(), (ScanCallback) bleScannerCallback);
 
+        }else{
+            bluetoothAdapter.stopLeScan(callback);
+            bluetoothAdapter.startLeScan(callback);
+        }
 
     }
 
@@ -182,17 +265,22 @@ public class OKBLEScanManager {
 
     public void stopScan() {
         isScanning = false;
-        handle.removeMessages(MsgWhat_startScan);
-        handle.removeMessages(MsgWhat_stopScan);
         doStopScan();
+        handle.removeMessages(MsgWhat_stopScan);
     }
     private void doStopScan(){
         handle.removeMessages(MsgWhat_startScan);
         if(!bluetoothIsEnable()){
             return;
         }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP&&isSpecialPhone()) {
+            if(bleScanner!=null&&bleScannerCallback!=null){
+                ((BluetoothLeScanner)bleScanner).stopScan((ScanCallback) bleScannerCallback);
+            }
+        }else{
+            bluetoothAdapter.stopLeScan(callback);
 
-        bluetoothAdapter.stopLeScan(callback);
+        }
     }
 
 
@@ -206,20 +294,19 @@ public class OKBLEScanManager {
             }
         }
     };
+    //***************************************************************************************//
+    private Object bleScannerCallback;
+    private Object bleScanner;
 
 
-    public void requestLocationPermission(){
-        boolean isGranted=  PermissionUtils.isGranted(Manifest.permission.ACCESS_FINE_LOCATION)||PermissionUtils.isGranted(Manifest.permission.ACCESS_COARSE_LOCATION);
-        if(isGranted) return;
-        PermissionUtils.permission(PermissionConstants.LOCATION).callback(new PermissionUtils.FullCallback() {
-            @Override
-            public void onGranted(List<String> permissionsGranted) {
-            }
+    /**
+     * 判断是不是需要特殊适配的机型，比如一加手机，在android8.0系统上使用4.3API扫描方法无法扫描到BLE设备，但是使用5.0API可以扫描到
+     * @return
+     */
+    private boolean isSpecialPhone(){
 
-            @Override
-            public void onDenied(List<String> permissionsDeniedForever, List<String> permissionsDenied) {
 
-            }
-        }).request();
+        return true;
     }
+
 }

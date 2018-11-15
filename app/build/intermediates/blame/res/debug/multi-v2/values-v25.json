@@ -4,7 +4,7 @@
             "outputFile": "/Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v25/values-v25.xml",
             "map": [
                 {
-                    "source": "/Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/c6093925c9f246bd4d65427196fe9410/res/values-v25/values-v25.xml",
+                    "source": "/Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/bbbb88b6c2271363deacfb5343bb9258/res/values-v25/values-v25.xml",
                     "from": {
                         "startLines": "2,3,4,6",
                         "startColumns": "4,4,4,4",
