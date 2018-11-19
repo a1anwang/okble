@@ -36,7 +36,7 @@ repositories {
   maven { url "https://jitpack.io" }
 }
 dependencies {
-  implementation 'com.github.a1anwang:okble:1.0.9'
+  implementation 'com.github.a1anwang:okble:1.1.0'
 }
 ```
 #### Scan Peripheral
