@@ -159,6 +159,9 @@ public class OKBLEBeaconManager {
             return null;
         }
         SparseArray<byte[]> manufacturerData= scanResult.getManufacturerSpecificData();
+        if(manufacturerData==null||manufacturerData.size()==0){
+            return null;
+        }
         int size_1=manufacturerData.size();
         for (int i=0;i<size_1;i++){
             int key=manufacturerData.keyAt(i);
