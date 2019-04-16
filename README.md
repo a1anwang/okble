@@ -1,5 +1,5 @@
 # okble: An easy-to-use BLE library for Android
-
+[![](https://jitpack.io/v/a1anwang/okble.svg)](https://jitpack.io/#a1anwang/okble)
 ## [中文](https://github.com/a1anwang/okble/blob/master/README_zh.md) | English
 ## Summary
   BLE has two parts:Center & Peripheral. When we develop an android app,the most used is Center. Using Center-API to connect with Peripheral, and then communicate each other. For example, app can read battery level of a wristband, also app can control the bluetooth-light on/off.
