@@ -1,3 +1,4 @@
+[![](https://jitpack.io/v/a1anwang/okble.svg)](https://jitpack.io/#a1anwang/okble)
 # okble: 简单易用的 Android BLE library
 ## 简介
   BLE有Center(简单理解为客户端)和Peripheral(服务端)2个角色。我们android开发常用的就是客户端角色，使用API连接硬件外设(服务端)，然后进行相关的数据交互，如读取手环上的心率电量等数据，控制蓝牙灯的开关。
