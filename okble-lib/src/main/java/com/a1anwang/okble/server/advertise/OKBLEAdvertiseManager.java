@@ -45,12 +45,12 @@ public class OKBLEAdvertiseManager {
     public void startAdvertising(OKBLEAdvertiseSettings okbleAdvertiseSettings, OKBLEAdvertiseData data, final OKBLEAdvertiseCallback okbleAdvertiseCallback){
         stopAdvertising();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            if(!bluetoothAdapter.isMultipleAdvertisementSupported()){
-                if(okbleAdvertiseCallback!=null){
-                    okbleAdvertiseCallback.onStartFailure(OKBLEAdvertiseCallback.ADVERTISE_FAILED_FEATURE_UNSUPPORTED,OKBLEAdvertiseFailedDescUtils.getDesc(OKBLEAdvertiseCallback.ADVERTISE_FAILED_FEATURE_UNSUPPORTED));
-                }
-                return;
-            }
+//            if(!bluetoothAdapter.isMultipleAdvertisementSupported()){
+//                if(okbleAdvertiseCallback!=null){
+//                    okbleAdvertiseCallback.onStartFailure(OKBLEAdvertiseCallback.ADVERTISE_FAILED_FEATURE_UNSUPPORTED,OKBLEAdvertiseFailedDescUtils.getDesc(OKBLEAdvertiseCallback.ADVERTISE_FAILED_FEATURE_UNSUPPORTED));
+//                }
+//                return;
+//            }
             if(mBluetoothLeAdvertiser==null){
                 mBluetoothLeAdvertiser = bluetoothAdapter.getBluetoothLeAdvertiser();
             }

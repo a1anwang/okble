@@ -11,6 +11,7 @@ import android.bluetooth.le.ScanResult;
 import android.bluetooth.le.ScanSettings;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
@@ -96,8 +97,13 @@ public class OKBLEScanManager {
         return true;
     }
 
-    private boolean autoRebootBluetoothWhenScanFailed=true;
+    private boolean autoRebootBluetoothWhenScanFailed=false;//开启扫描返回失败的时候 是否自动调用代码重启手机蓝牙
 
+
+    /**
+     *
+     * @param value
+     */
     public void setAutoRebootBluetoothWhenScanFailed(boolean value){
         autoRebootBluetoothWhenScanFailed=value;
     }
@@ -329,5 +335,20 @@ public class OKBLEScanManager {
 
             }
         }).request();
+    }
+
+
+    /**
+     * 手机是否开启位置服务
+     */
+    public boolean isLocationServiceEnable() {
+        LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+        boolean gps = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        boolean network = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+
+        if (gps || network) {
+            return true;
+        }
+        return false;
     }
 }

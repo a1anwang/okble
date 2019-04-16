@@ -125,6 +125,7 @@ public class OKBLEBeaconManager {
      */
     public void stopScan(){
         okbleScanManager.stopScan();
+        handler.removeCallbacksAndMessages(null);
     }
 
     private int monitoringBeaconRegionID = 0;//监控的iBeacon区域的id
@@ -221,7 +222,9 @@ public class OKBLEBeaconManager {
         if(!regionObject.hasEntered){
             regionObject.hasEntered = true;
             if(regionListener!=null){
-                regionListener.onEnterBeaconRegion(regionObject.region);
+                if(okbleScanManager.isScanning()){
+                    regionListener.onEnterBeaconRegion(regionObject.region);
+                }
             }
         }
     }
@@ -239,7 +242,9 @@ public class OKBLEBeaconManager {
 
                 regionObject.hasEntered = false;
                 if(regionListener!=null){
-                    regionListener.onExitBeaconRegion(beaconRegion);
+                    if(okbleScanManager.isScanning()){
+                        regionListener.onExitBeaconRegion(beaconRegion);
+                    }
                 }
             }
         }

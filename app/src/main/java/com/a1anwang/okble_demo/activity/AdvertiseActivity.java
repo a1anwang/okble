@@ -194,7 +194,7 @@ public class AdvertiseActivity extends BaseActivity{
             TextView tv= (TextView) linelayout_service_uuid.getChildAt(i);
             ParcelUuid uuid=CommonUUIDUtils.createUUIDByShortOrCompleteUUIDStr(tv.getText().toString());
             if(uuid!=null){
-                dataBuilder.addServiceUuid(uuid)  ;
+                dataBuilder.addServiceUuid(uuid);
             }
         }
 

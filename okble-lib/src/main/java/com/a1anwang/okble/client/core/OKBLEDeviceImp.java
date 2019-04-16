@@ -93,12 +93,14 @@ public class OKBLEDeviceImp implements OKBLEDevice {
         if(OKBLEDeviceListeners ==null){
             OKBLEDeviceListeners =new ArrayList<>();
         }
+        if(!OKBLEDeviceListeners.contains(OKBLEDeviceListener))
         OKBLEDeviceListeners.add(OKBLEDeviceListener);
     }
 
     @Override
     public void removeDeviceListener(OKBLEDeviceListener OKBLEDeviceListener) {
         if(OKBLEDeviceListeners !=null){
+            if(OKBLEDeviceListener!=null)
             OKBLEDeviceListeners.remove(OKBLEDeviceListener);
         }
     }
@@ -246,7 +248,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
         handler.postDelayed(connectGattRunnable, 300);
     }
 
-    public void connectComplete(){
+    private void connectComplete(){
         handler.removeCallbacks(connectGattRunnable);
     }
 
@@ -462,7 +464,6 @@ public class OKBLEDeviceImp implements OKBLEDevice {
         @Override
         public void onCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic) {
             super.onCharacteristicChanged(gatt, characteristic);
-
             LogUtils.e(TAG," onCharacteristicChanged characteristic:"+characteristic.getUuid().toString() +" value:"+ OKBLEDataUtils.BytesToHexString(characteristic.getValue()));
             if (OKBLEDeviceListeners != null) {
                 for (OKBLEDeviceListener listener: OKBLEDeviceListeners){
@@ -538,6 +539,7 @@ public class OKBLEDeviceImp implements OKBLEDevice {
         }
     };
     private void reSet() {
+        autoReconnect=false;
         if(deviceTAG!=null && bluetoothDevice!=null&& deviceTAG.equals(getMacAddress())){
             //deviceTAG是默认的mac地址的话,reset时候,重置deviceTAG
             deviceTAG="";

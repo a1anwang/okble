@@ -258,6 +258,21 @@
             ]
         },
         {
+            "outputFile": "/Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/build/intermediates/res/merged/debug/values-tl_values-tl.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/bbbb88b6c2271363deacfb5343bb9258/res/values-tl/values-tl.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,174,282,405,513,630,718,824,945,1024,1102,1186,1295,1406,1507,1617,1734,1842,1965,2067,2151",
+                        "endColumns": "118,107,122,107,116,87,105,120,78,77,83,108,110,100,109,116,107,122,101,83,100",
+                        "endOffsets": "169,277,400,508,625,713,819,940,1019,1097,1181,1290,1401,1502,1612,1729,1837,1960,2062,2146,2247"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "/Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/build/intermediates/res/merged/debug/values_values.arsc.flat",
             "map": [
                 {
@@ -440,21 +455,6 @@
                         "startOffsets": "61851,61917,61982,62053,62110,62167,62237",
                         "endColumns": "65,64,70,56,56,69,71",
                         "endOffsets": "61912,61977,62048,62105,62162,62232,62304"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "/Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/build/intermediates/res/merged/debug/values-tl_values-tl.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/bbbb88b6c2271363deacfb5343bb9258/res/values-tl/values-tl.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,174,282,405,513,630,718,824,945,1024,1102,1186,1295,1406,1507,1617,1734,1842,1965,2067,2151",
-                        "endColumns": "118,107,122,107,116,87,105,120,78,77,83,108,110,100,109,116,107,122,101,83,100",
-                        "endOffsets": "169,277,400,508,625,713,819,940,1019,1097,1181,1290,1401,1502,1612,1729,1837,1960,2062,2146,2247"
                     }
                 }
             ]
@@ -941,16 +941,16 @@
             ]
         },
         {
-            "outputFile": "/Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/build/intermediates/res/merged/debug/values-ms_values-ms.arsc.flat",
+            "outputFile": "/Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/build/intermediates/res/merged/debug/values-fa_values-fa.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/bbbb88b6c2271363deacfb5343bb9258/res/values-ms/values-ms.xml",
+                    "source": "/Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/bbbb88b6c2271363deacfb5343bb9258/res/values-fa/values-fa.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,166,274,397,502,610,697,801,912,990,1069,1149,1261,1370,1467,1576,1679,1786,1908,2009,2089",
-                        "endColumns": "110,107,122,104,107,86,103,110,77,78,79,111,108,96,108,102,106,121,100,79,100",
-                        "endOffsets": "161,269,392,497,605,692,796,907,985,1064,1144,1256,1365,1462,1571,1674,1781,1903,2004,2084,2185"
+                        "startOffsets": "55,165,275,401,504,615,699,802,917,996,1074,1155,1267,1370,1468,1578,1682,1791,1916,2017,2098",
+                        "endColumns": "109,109,125,102,110,83,102,114,78,77,80,111,102,97,109,103,108,124,100,80,100",
+                        "endOffsets": "160,270,396,499,610,694,797,912,991,1069,1150,1262,1365,1463,1573,1677,1786,1911,2012,2093,2194"
                     }
                 }
             ]
@@ -971,16 +971,16 @@
             ]
         },
         {
-            "outputFile": "/Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/build/intermediates/res/merged/debug/values-fa_values-fa.arsc.flat",
+            "outputFile": "/Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/build/intermediates/res/merged/debug/values-ms_values-ms.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/bbbb88b6c2271363deacfb5343bb9258/res/values-fa/values-fa.xml",
+                    "source": "/Users/smartwallit/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/bbbb88b6c2271363deacfb5343bb9258/res/values-ms/values-ms.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,165,275,401,504,615,699,802,917,996,1074,1155,1267,1370,1468,1578,1682,1791,1916,2017,2098",
-                        "endColumns": "109,109,125,102,110,83,102,114,78,77,80,111,102,97,109,103,108,124,100,80,100",
-                        "endOffsets": "160,270,396,499,610,694,797,912,991,1069,1150,1262,1365,1463,1573,1677,1786,1911,2012,2093,2194"
+                        "startOffsets": "55,166,274,397,502,610,697,801,912,990,1069,1149,1261,1370,1467,1576,1679,1786,1908,2009,2089",
+                        "endColumns": "110,107,122,104,107,86,103,110,77,78,79,111,108,96,108,102,106,121,100,79,100",
+                        "endOffsets": "161,269,392,497,605,692,796,907,985,1064,1144,1256,1365,1462,1571,1674,1781,1903,2004,2084,2185"
                     }
                 }
             ]

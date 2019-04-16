@@ -1,5 +1,6 @@
 package com.a1anwang.okble_demo.activity;
 
+import android.util.Log;
 import android.view.View;
 
 import com.a1anwang.okble_demo.R;
@@ -22,6 +23,18 @@ public class MainActivity extends BaseActivity{
 
     @Override
     public void beforeInitView() {
+        int width= getResources().getDisplayMetrics().widthPixels;
+        int height=getResources().getDisplayMetrics().heightPixels;
+        float density=  getResources().getDisplayMetrics().density;
+        float dpi=  getResources().getDisplayMetrics().densityDpi;
+
+        float widthDP=width/density;
+        Log.e("hehe","像素 width："+width+" "+height);
+        Log.e("hehe","density："+density);
+        Log.e("hehe","widthDP："+widthDP);
+        Log.e("hehe","heightDP："+height/density);
+        Log.e("hehe","dpi："+dpi);
+
 
     }
 
