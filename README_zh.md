@@ -34,7 +34,7 @@
         maven { url "https://jitpack.io" }
    }
    dependencies {
-         implementation 'com.github.a1anwang:okble:1.1.1'
+         implementation 'com.github.a1anwang:okble:1.1.2'
    }
  ```
   #### 扫描外设
