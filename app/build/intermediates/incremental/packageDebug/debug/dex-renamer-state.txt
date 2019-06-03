@@ -1,4 +1,4 @@
-#Tue Apr 16 09:52:28 CST 2019
+#Mon Jun 03 16:54:07 CST 2019
 base.0=/Users/smartwallit/Desktop/Alan_project/MyBleSDK/okble/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex

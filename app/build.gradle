@@ -6,8 +6,8 @@ android {
         applicationId "com.a1anwang.okble_demo"
         minSdkVersion 18
         targetSdkVersion 26
-        versionCode 3
-        versionName "1.1.0"
+        versionCode 4
+        versionName "1.1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

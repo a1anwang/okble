@@ -256,12 +256,14 @@ public class OKBLEDeviceImp implements OKBLEDevice {
 
         @Override
         public void run() {
-            if (bluetoothDevice != null && !isConnected()) {
+            if (bluetoothDevice != null) {
                 reSet();
                 mBluetoothGatt = bluetoothDevice.connectGatt(context, false,
                         gattCallback);
                 LogUtils.e("----connectGatt-----");
-                handler.postDelayed(this,30*1000);
+                if(autoReconnect){
+                    handler.postDelayed(this,30*1000);
+                }
             } else {
                 throw new OKBLEException("the bluetoothDevice is null, please reset the bluetoothDevice");
             }
@@ -341,8 +343,6 @@ public class OKBLEDeviceImp implements OKBLEDevice {
                 } else if (newState == BluetoothGatt.STATE_DISCONNECTED) {// 断开连接
                     deviceStatus = DeviceStatus.DEVICE_STATUS_DISCONNECTED;
                     reSet();
-
-
 
                     if (OKBLEDeviceListeners != null) {
                         LogUtils.e(" OKBLEDeviceListeners size:"+ OKBLEDeviceListeners.size());
@@ -539,7 +539,6 @@ public class OKBLEDeviceImp implements OKBLEDevice {
         }
     };
     private void reSet() {
-        autoReconnect=false;
         if(deviceTAG!=null && bluetoothDevice!=null&& deviceTAG.equals(getMacAddress())){
             //deviceTAG是默认的mac地址的话,reset时候,重置deviceTAG
             deviceTAG="";
