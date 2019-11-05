@@ -3,11 +3,13 @@ package com.a1anwang.okble.client.scan;
 import android.bluetooth.BluetoothDevice;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 import android.util.SparseArray;
 
 import com.a1anwang.okble.common.OKBLEDataUtils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -141,156 +143,161 @@ public class BLEScanResult implements Parcelable {
     synchronized private void analyzeAdvertisingData() {
 
         if (advertisingData != null && advertisingData.length > 0) {
-            int index = 0;
 
-            while (index < advertisingData.length - 1) {
-                int length = advertisingData[index];
-                if (length == 0) {
-                    break;
-                }
-                int type = advertisingData[index + 1];
-                //LogUtils.e(TAG, " type:" + OKBLEDataUtils.Bytes2HexString(new byte[]{(byte) type}));
-                if (type == (byte) DATA_TYPE_SERVICE_UUIDS_16_BIT_PARTIAL) {
-                    if(serviceUuids==null){
-                        serviceUuids = new ArrayList<>();
+            try {
+                int index = 0;
+                while (index < advertisingData.length - 1) {
+                    int length = advertisingData[index];
+                    if (length == 0) {
+                        break;
                     }
-
-                    byte[] serveruuids = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
-                   // LogUtils.e(TAG, " serveruuids:" + OKBLEDataUtils.Bytes2HexString(serveruuids));
-
-                    if (serveruuids.length % 2 == 0) {
-
-                        int count = serveruuids.length / 2;
-                        for (int i = 0; i < count; i++) {
-                            byte[] serveruuid = new byte[]{serveruuids[2 * i + 1], serveruuids[2 * i]};
-                            //String uuid = CommonUUIDUtils.CommonUUIDStr_x.replace("xxxx", OKBLEDataUtils.BytesToHexString(serveruuid).toLowerCase());
-                            String uuid=OKBLEDataUtils.BytesToHexString(serveruuid);
-                            serviceUuids.add(uuid);
-                     //       LogUtils.e(TAG, "    serveruuid:" + uuid);
-                        }
-                    }
-                }else if(type == (byte) DATA_TYPE_SERVICE_UUIDS_16_BIT_COMPLETE){
-                    if(serviceUuids==null){
-                        serviceUuids = new ArrayList<>();
-                    }
-                    byte[] serveruuids = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
-                    // LogUtils.e(TAG, " serveruuids:" + OKBLEDataUtils.Bytes2HexString(serveruuids));
-
-                    if (serveruuids.length % 2 == 0) {
-
-                        int count = serveruuids.length / 2;
-                        for (int i = 0; i < count; i++) {
-                            byte[] serveruuid = new byte[]{serveruuids[2 * i + 1], serveruuids[2 * i]};
-                            //String uuid = CommonUUIDUtils.CommonUUIDStr_x.replace("xxxx", OKBLEDataUtils.BytesToHexString(serveruuid).toLowerCase());
-                            String uuid=OKBLEDataUtils.BytesToHexString(serveruuid);
-                            serviceUuids.add(uuid);
-                            //       LogUtils.e(TAG, "    serveruuid:" + uuid);
+                    int type = advertisingData[index + 1];
+                    //LogUtils.e(TAG, " type:" + OKBLEDataUtils.Bytes2HexString(new byte[]{(byte) type}));
+                    if (type == (byte) DATA_TYPE_SERVICE_UUIDS_16_BIT_PARTIAL) {
+                        if(serviceUuids==null){
+                            serviceUuids = new ArrayList<>();
                         }
 
+                        byte[] serveruuids = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
+                        // LogUtils.e(TAG, " serveruuids:" + OKBLEDataUtils.Bytes2HexString(serveruuids));
 
-                    }
-                }else if(type == (byte) DATA_TYPE_SERVICE_UUIDS_128_BIT_PARTIAL){
-                    if(serviceUuids==null){
-                        serviceUuids = new ArrayList<>();
-                    }
-                    byte[] serveruuids = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
-                    // LogUtils.e(TAG, " serveruuids:" + OKBLEDataUtils.Bytes2HexString(serveruuids));
+                        if (serveruuids.length % 2 == 0) {
 
-                    if (serveruuids.length % 16 == 0) {
-
-                        int count = serveruuids.length / 16;
-                        for (int i = 0; i < count; i++) {
-
-                            byte[] serveruuid = new byte[16];
-                            for (int j=0;j<16;j++){
-                                serveruuid[j]=serveruuids[16 * i + (15-j)];
+                            int count = serveruuids.length / 2;
+                            for (int i = 0; i < count; i++) {
+                                byte[] serveruuid = new byte[]{serveruuids[2 * i + 1], serveruuids[2 * i]};
+                                //String uuid = CommonUUIDUtils.CommonUUIDStr_x.replace("xxxx", OKBLEDataUtils.BytesToHexString(serveruuid).toLowerCase());
+                                String uuid=OKBLEDataUtils.BytesToHexString(serveruuid);
+                                serviceUuids.add(uuid);
+                                //       LogUtils.e(TAG, "    serveruuid:" + uuid);
                             }
-                            String hexStr=OKBLEDataUtils.BytesToHexString(serveruuid);
-                            String uuid=hexStr.substring(0, 8);
-                            uuid+="-";
-                            uuid+=hexStr.substring(8, 12);
-                            uuid+="-";
-                            uuid+=hexStr.substring(12, 16);
-                            uuid+="-";
-                            uuid+=hexStr.substring(16, 20);
-                            uuid+="-";
-                            uuid+=hexStr.substring(20, 32);
-                            //String uuid = CommonUUIDUtils.CommonUUIDStr_x.replace("xxxx", OKBLEDataUtils.BytesToHexString(serveruuid).toLowerCase());
-
-                            serviceUuids.add(uuid);
-                            //       LogUtils.e(TAG, "    serveruuid:" + uuid);
                         }
+                    }else if(type == (byte) DATA_TYPE_SERVICE_UUIDS_16_BIT_COMPLETE){
+                        if(serviceUuids==null){
+                            serviceUuids = new ArrayList<>();
+                        }
+                        byte[] serveruuids = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
+                        // LogUtils.e(TAG, " serveruuids:" + OKBLEDataUtils.Bytes2HexString(serveruuids));
 
+                        if (serveruuids.length % 2 == 0) {
 
-                    }
-                }else if(type == (byte) DATA_TYPE_SERVICE_UUIDS_128_BIT_COMPLETE){
-                    if(serviceUuids==null){
-                        serviceUuids = new ArrayList<>();
-                    }
-                    byte[] serveruuids = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
-                    // LogUtils.e(TAG, " serveruuids:" + OKBLEDataUtils.Bytes2HexString(serveruuids));
-
-                    if (serveruuids.length % 16 == 0) {
-
-                        int count = serveruuids.length / 16;
-                        for (int i = 0; i < count; i++) {
-
-                            byte[] serveruuid = new byte[16];
-                            for (int j=0;j<16;j++){
-                                serveruuid[j]=serveruuids[16 * i + (15-j)];
+                            int count = serveruuids.length / 2;
+                            for (int i = 0; i < count; i++) {
+                                byte[] serveruuid = new byte[]{serveruuids[2 * i + 1], serveruuids[2 * i]};
+                                //String uuid = CommonUUIDUtils.CommonUUIDStr_x.replace("xxxx", OKBLEDataUtils.BytesToHexString(serveruuid).toLowerCase());
+                                String uuid=OKBLEDataUtils.BytesToHexString(serveruuid);
+                                serviceUuids.add(uuid);
+                                //       LogUtils.e(TAG, "    serveruuid:" + uuid);
                             }
-                            String hexStr=OKBLEDataUtils.BytesToHexString(serveruuid);
-                            String uuid=hexStr.substring(0, 8);
-                            uuid+="-";
-                            uuid+=hexStr.substring(8, 12);
-                            uuid+="-";
-                            uuid+=hexStr.substring(12, 16);
-                            uuid+="-";
-                            uuid+=hexStr.substring(16, 20);
-                            uuid+="-";
-                            uuid+=hexStr.substring(20, 32);
-                            //String uuid = CommonUUIDUtils.CommonUUIDStr_x.replace("xxxx", OKBLEDataUtils.BytesToHexString(serveruuid).toLowerCase());
 
-                            serviceUuids.add(uuid);
-                            //       LogUtils.e(TAG, "    serveruuid:" + uuid);
+
                         }
+                    }else if(type == (byte) DATA_TYPE_SERVICE_UUIDS_128_BIT_PARTIAL){
+                        if(serviceUuids==null){
+                            serviceUuids = new ArrayList<>();
+                        }
+                        byte[] serveruuids = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
+                        // LogUtils.e(TAG, " serveruuids:" + OKBLEDataUtils.Bytes2HexString(serveruuids));
+
+                        if (serveruuids.length % 16 == 0) {
+
+                            int count = serveruuids.length / 16;
+                            for (int i = 0; i < count; i++) {
+
+                                byte[] serveruuid = new byte[16];
+                                for (int j=0;j<16;j++){
+                                    serveruuid[j]=serveruuids[16 * i + (15-j)];
+                                }
+                                String hexStr=OKBLEDataUtils.BytesToHexString(serveruuid);
+                                String uuid=hexStr.substring(0, 8);
+                                uuid+="-";
+                                uuid+=hexStr.substring(8, 12);
+                                uuid+="-";
+                                uuid+=hexStr.substring(12, 16);
+                                uuid+="-";
+                                uuid+=hexStr.substring(16, 20);
+                                uuid+="-";
+                                uuid+=hexStr.substring(20, 32);
+                                //String uuid = CommonUUIDUtils.CommonUUIDStr_x.replace("xxxx", OKBLEDataUtils.BytesToHexString(serveruuid).toLowerCase());
+
+                                serviceUuids.add(uuid);
+                                //       LogUtils.e(TAG, "    serveruuid:" + uuid);
+                            }
 
 
+                        }
+                    }else if(type == (byte) DATA_TYPE_SERVICE_UUIDS_128_BIT_COMPLETE){
+                        if(serviceUuids==null){
+                            serviceUuids = new ArrayList<>();
+                        }
+                        byte[] serveruuids = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
+                        // LogUtils.e(TAG, " serveruuids:" + OKBLEDataUtils.Bytes2HexString(serveruuids));
+
+                        if (serveruuids.length % 16 == 0) {
+
+                            int count = serveruuids.length / 16;
+                            for (int i = 0; i < count; i++) {
+
+                                byte[] serveruuid = new byte[16];
+                                for (int j=0;j<16;j++){
+                                    serveruuid[j]=serveruuids[16 * i + (15-j)];
+                                }
+                                String hexStr=OKBLEDataUtils.BytesToHexString(serveruuid);
+                                String uuid=hexStr.substring(0, 8);
+                                uuid+="-";
+                                uuid+=hexStr.substring(8, 12);
+                                uuid+="-";
+                                uuid+=hexStr.substring(12, 16);
+                                uuid+="-";
+                                uuid+=hexStr.substring(16, 20);
+                                uuid+="-";
+                                uuid+=hexStr.substring(20, 32);
+                                //String uuid = CommonUUIDUtils.CommonUUIDStr_x.replace("xxxx", OKBLEDataUtils.BytesToHexString(serveruuid).toLowerCase());
+
+                                serviceUuids.add(uuid);
+                                //       LogUtils.e(TAG, "    serveruuid:" + uuid);
+                            }
+
+
+                        }
+                    }else if (type == (byte) DATA_TYPE_SERVICE_DATA) {
+                        serviceData = new HashMap<>();
+                        byte[] serverData = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
+                        byte[] uuid = new byte[]{serverData[1], serverData[0]};
+                        byte[] data = OKBLEDataUtils.subByteArray(serverData, 2, serverData.length - 2);
+                        // String uuidStr = CommonUUIDUtils.CommonUUIDStr_x.replace("xxxx", OKBLEDataUtils.BytesToHexString(uuid).toLowerCase());
+                        String uuidStr=OKBLEDataUtils.BytesToHexString(uuid);
+                        serviceData.put(uuidStr, data);
+
+                        //   LogUtils.e(TAG, "    server data :" + OKBLEDataUtils.Bytes2HexString(data) + " uuid:" + uuidStr);
+
+                    } else if (type == (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA) {
+                        manufacturerSpecificData = new SparseArray<>();
+                        byte[] manufacturerData = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
+                        byte[] manufacturerId = new byte[]{manufacturerData[1], manufacturerData[0]};
+                        //    LogUtils.e(TAG, " manufacturerId:" + OKBLEDataUtils.Bytes2HexString(manufacturerId));
+                        byte[] manufacturerValue = OKBLEDataUtils.subByteArray(manufacturerData, 2, manufacturerData.length - 2);
+                        manufacturerSpecificData.append(OKBLEDataUtils.buildUint16(manufacturerId[0], manufacturerId[1]), manufacturerValue);
+                        //   LogUtils.e(TAG, " manufacturerValue:" + OKBLEDataUtils.Bytes2HexString(manufacturerValue));
+
+
+                    } else if (type == (byte) DATA_TYPE_LOCAL_NAME_COMPLETE) {
+
+                        byte[] nameData = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
+                        completeLocalName = new String(nameData);
+                        //   LogUtils.e(TAG, " completeLocalName:" + completeLocalName);
+                    }else if (type == (byte) DATA_TYPE_TX_POWER_LEVEL) {
+
+                        txPowerLevel = advertisingData[index + 2];
                     }
-                }else if (type == (byte) DATA_TYPE_SERVICE_DATA) {
-                    serviceData = new HashMap<>();
-                    byte[] serverData = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
-                    byte[] uuid = new byte[]{serverData[1], serverData[0]};
-                    byte[] data = OKBLEDataUtils.subByteArray(serverData, 2, serverData.length - 2);
-                   // String uuidStr = CommonUUIDUtils.CommonUUIDStr_x.replace("xxxx", OKBLEDataUtils.BytesToHexString(uuid).toLowerCase());
-                    String uuidStr=OKBLEDataUtils.BytesToHexString(uuid);
-                    serviceData.put(uuidStr, data);
-
-                 //   LogUtils.e(TAG, "    server data :" + OKBLEDataUtils.Bytes2HexString(data) + " uuid:" + uuidStr);
-
-                } else if (type == (byte) DATA_TYPE_MANUFACTURER_SPECIFIC_DATA) {
-                    manufacturerSpecificData = new SparseArray<>();
-                    byte[] manufacturerData = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
-                    byte[] manufacturerId = new byte[]{manufacturerData[1], manufacturerData[0]};
-                //    LogUtils.e(TAG, " manufacturerId:" + OKBLEDataUtils.Bytes2HexString(manufacturerId));
-                    byte[] manufacturerValue = OKBLEDataUtils.subByteArray(manufacturerData, 2, manufacturerData.length - 2);
-                    manufacturerSpecificData.append(OKBLEDataUtils.buildUint16(manufacturerId[0], manufacturerId[1]), manufacturerValue);
-                 //   LogUtils.e(TAG, " manufacturerValue:" + OKBLEDataUtils.Bytes2HexString(manufacturerValue));
 
 
-                } else if (type == (byte) DATA_TYPE_LOCAL_NAME_COMPLETE) {
+                    index += length + 1;//1是length自身占一个字节
 
-                    byte[] nameData = OKBLEDataUtils.subByteArray(advertisingData, index + 2, length - 1);
-                    completeLocalName = new String(nameData);
-                 //   LogUtils.e(TAG, " completeLocalName:" + completeLocalName);
-                }else if (type == (byte) DATA_TYPE_TX_POWER_LEVEL) {
-
-                    txPowerLevel = advertisingData[index + 2];
                 }
 
-
-                index += length + 1;//1是length自身占一个字节
-
+            }catch (Exception e){
+                Log.e(TAG, "unable to parse scan record: " + Arrays.toString(advertisingData));
             }
 
 
